@@ -117,4 +117,5 @@ res = {}
 res['clearfixs'] = clear_dict
 res['datas'] = datas
 res['pages'] = pages
+res['error_code'] = 0
 print(json.dumps(res))
