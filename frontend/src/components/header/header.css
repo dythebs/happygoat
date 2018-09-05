@@ -1,0 +1,25 @@
+.header {
+  background: #90EE90;
+  position: fixed;
+  top: 0;
+  padding-top: 100px;
+  height: 500px;
+  width: 100%;
+  z-index: 2;
+  font-size: 60px;
+  font-weight: 800;
+  text-align: center;
+  background: url('https://images.unsplash.com/photo-1444858345149-8ff40887589b?crop=entropy&fit=crop&fm=jpg&h=1325&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1700') center center / cover no-repeat;
+}
+
+#title {
+  color: #fff;
+  font-weight: 300;
+}
+
+h4.title {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 10px;
+}

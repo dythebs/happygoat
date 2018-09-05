@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { Button } from "antd";
-
+import  SuspendBar from "../../components/suspendBar/SuspendBar";
+import TopNavbar from "../../components/navbar/TopNavbar";
+import "./home.css"
+import Header from "../../components/header/Header"
+import Content from "../../components/content/Content"
+import Footer from '../../components/footer/Footer';
 class Home extends React.Component {
 
 
@@ -18,8 +23,13 @@ class Home extends React.Component {
   render() {
     return(
       <div>
-        <p>huhu</p>
-        <Button>hhh</Button>
+        <TopNavbar/>
+        <SuspendBar/>
+        <div className="home-content">
+          <Header/>
+          <Content/>
+          <Footer/>
+        </div>
       </div>
     )
   }
