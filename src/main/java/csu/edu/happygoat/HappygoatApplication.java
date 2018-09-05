@@ -10,5 +10,6 @@ public class HappygoatApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HappygoatApplication.class, args);
+        System.out.println("21");
     }
 }
