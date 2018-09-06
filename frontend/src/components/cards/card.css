@@ -1,0 +1,183 @@
+ a.btn {
+  background-color: #0096a0;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.25);
+  color: #fff;
+  display: inline-block;
+  padding: 6px 30px 8px;
+  text-decoration: none;
+  transition: all 0.1s 0s ease-out;
+}
+
+a.btn:active {
+  background: #008A93;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  -webkit-transform: translate3d(0, 1px, 0);
+  transform: translate3d(0, 1px, 0);
+  transition: all 0.025s 0s ease-out;
+}
+
+a.btn.prev {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+}
+a.btn.next {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+}
+.cards {
+  display: flex;
+  justify-content: space-around
+}
+.card {
+  max-width: 300px;
+  background-color: #fff;
+  transition: all 0.3s 0s ease-in;
+  perspective: 1000;
+  z-index: 1;
+  display: inline-block;
+}
+
+.card img {
+  max-width: 300px;
+}
+
+/*
+  1、position:relative改为position:absolute；
+  2、浮动元素添加position属性（如relative，absolute等）；
+  3、去除浮动。
+*/
+div.card-title {
+  position: relative;
+  background-color: #fff;
+  padding: 6px 15px 10px;
+  z-index: 0;
+}
+
+a.toggle-info {
+  position: absolute;
+  border-radius: 32px;
+  height: 32px;
+  right: 15px;
+  top: 10px;
+  width: 32px;
+  padding: 0;
+}
+
+a.toggle-info span {
+  background: #fff;
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 16px;
+  transition: all 0.15s 0s ease-out;
+  width: 12px;
+}
+
+span.left {
+  right: 14px;
+  transform: rotate(45deg);
+}
+span.right {
+  left: 14px;
+  transform: rotate(-45deg);
+}
+.prev i{
+  position: absolute;
+  left: 10%;
+  top: 10%
+}
+.next i {
+  position: absolute;
+  right: 10%;
+  top: 10%
+}
+/* span.top {
+  top: 14px!important;
+  transform: rotate(-45deg)
+}
+
+span.bottom {
+  bottom: 14px!important;
+  transform: rotate(45deg)
+} */
+div.card-flap {
+  /* background-color: rgba(255,255,255,0.25); */
+  background: #dce1df;
+  /* padding: 6px 15px 10px; */
+  position: absolute;
+  width: 300px;
+  transform-origin: top;
+  transform: rotateX(-90deg)
+}
+
+div.flap1 {
+  transition: all 0.3s 0.3s ease-out;
+  z-index: -1;
+}
+
+div.flap2 {
+  transition: all 0.3s 0s ease-out;
+  z-index: -2;
+  /* padding: 6px 10px 10px; */
+}
+
+.card-description {
+  max-width: 300px;
+  padding: 6px 15px 10px;
+  /* position: relative; */
+}
+
+div.card-actions {
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+  padding: 10px 15px 20px;
+  text-align: center;
+}
+
+div.cards.showing div.card {
+  cursor: pointer;
+  opacity: 0.6;
+  transform: scale(0.88)
+}
+
+div.card.show {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+div.card.show a.toggle-info {
+  background-color: #ff6666;
+}
+
+div.card.show a.toggle-info span {
+  top: 15px
+}
+
+div.card.show a.toggle-info .left {
+  right: 10px
+}
+
+div.card.show a.toggle-info .right {
+  left: 10px
+}
+
+div.card.show .card-flap {
+  background: #ffffff;
+  transform: rotateX(0deg)
+}
+
+/* div.card.show.card-description { */
+/* width: 300px; */
+/* } */
+div.card.show .flap1 {
+  transition: all 0.3s 0s ease-out;
+}
+
+div.card.show .flap2 {
+  transition: all 0.3s 0.2s ease-out;
+  /* transition-delay: 0.3s */
+  /* top: 430px; */
+  /* z-index:0; */
+}

@@ -21,7 +21,10 @@ class Chatbox extends React.Component {
       ],
       loading: true
     })
-    let t = encodeURIComponent("https://changsha.daoxila.com/HunQing/Shop/AnLi").replace(new RegExp("%","g"),'~');
+    // let t = encodeURIComponent("https://changsha.daoxila.com/HunQing/Shop/AnLi").replace(new RegExp("%","g"),'~');
+    let t = encodeURIComponent("https://sh.daoxila.com/HunYan").replace(new RegExp("%", "g"), '~');
+
+
     console.log(t);
   }
 
