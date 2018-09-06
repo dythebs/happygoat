@@ -23,4 +23,10 @@ public class SearchServiceImpl implements SearchService {
         String[] cmd = new String[] {"python", "hunshasheyingsousuo.py", url};
         return PythonExec.getResult(cmd);
     }
+
+    @Override
+    public String getMiyueData() {
+        String[] cmd = new String[] {"python", "miyuesousuo.py"};
+        return PythonExec.getResult(cmd);
+    }
 }

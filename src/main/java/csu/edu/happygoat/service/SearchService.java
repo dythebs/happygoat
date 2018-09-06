@@ -6,4 +6,6 @@ public interface SearchService {
     public String getHunyanjiudianData(String url);
 
     public String getHunshasheyingData(String url);
+
+    public String getMiyueData();
 }

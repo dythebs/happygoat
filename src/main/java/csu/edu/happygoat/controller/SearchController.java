@@ -33,4 +33,9 @@ public class SearchController {
         url = UrlUtil.trimUrl(url);
         return searchService.getHunshasheyingData(url);
     }
+
+    @GetMapping("/search/miyue")
+    public String searchMiyue() {
+        return searchService.getMiyueData();
+    }
 }

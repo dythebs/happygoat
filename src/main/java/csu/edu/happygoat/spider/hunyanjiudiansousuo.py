@@ -68,7 +68,7 @@ else:
 
 
 res = {}
+res['error_code'] = 0
 res['datas'] = datas
 res['pages'] = pages
-res['error_code'] = 0
 print(json.dumps(res))
