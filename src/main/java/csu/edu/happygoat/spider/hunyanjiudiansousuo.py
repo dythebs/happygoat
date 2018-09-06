@@ -2,9 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import sys
 
 
-url = 'https://sh.daoxila.com/HunYan'
+url = sys.argv[1]
 base_url = re.findall('(https://.*?/HunYan)', url)[0]
 
 

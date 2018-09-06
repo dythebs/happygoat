@@ -1,5 +1,8 @@
 package csu.edu.happygoat.controller;
 
+import csu.edu.happygoat.service.SearchService;
+import csu.edu.happygoat.util.UrlUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,15 +13,19 @@ import java.io.UnsupportedEncodingException;
 @RestController
 @CrossOrigin
 public class SearchController {
+    @Autowired
+    SearchService searchService;
 
     @GetMapping("/search/hunlicehua/{url}")
-    public String searchHunlicehua(@PathVariable("url") String url){
-        url = url.replaceAll("~", "%");
-        try {
-            url = java.net.URLDecoder.decode(url, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return url;
+    public String searchHunlicehua(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
+        return searchService.getHunlicehuaData(url);
     }
+
+    @GetMapping("/search/hunyanjiudian/{url}")
+    public String searchHunyanjiudian(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
+        return searchService.getHunyanjiudianData(url);
+    }
+
 }
