@@ -54,6 +54,11 @@
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
