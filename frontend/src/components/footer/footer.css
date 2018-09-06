@@ -1,0 +1,31 @@
+footer {
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+  height: 400px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.colheader {
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 10px;
+}
+
+.col {
+  background: #90EE90;
+  width: 20%;
+  min-height: 300px;
+  padding: 10px;
+  position: relative;
+  min-width: 150px;
+}
+
+.topper {
+  z-index: 20;
+}
