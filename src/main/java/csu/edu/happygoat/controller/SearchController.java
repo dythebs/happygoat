@@ -28,4 +28,9 @@ public class SearchController {
         return searchService.getHunyanjiudianData(url);
     }
 
+    @GetMapping("/search/hunshasheying/{url}")
+    public String searchHunshasheying(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
+        return searchService.getHunshasheyingData(url);
+    }
 }
