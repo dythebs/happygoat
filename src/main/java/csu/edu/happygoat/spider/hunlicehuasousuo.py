@@ -115,7 +115,7 @@ pages['list'] = page_list
 
 
 res = {}
-res['error_code'] = 0
+res['code'] = 200
 res['clearfixs'] = clear_dict
 res['datas'] = datas
 res['pages'] = pages

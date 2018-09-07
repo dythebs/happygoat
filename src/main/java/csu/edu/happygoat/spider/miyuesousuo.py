@@ -28,6 +28,6 @@ for li in lis:
 	datas.append(data_dict)
 
 res = {}
-res['error_code'] = 0
+res['code'] = 200
 res['datas'] = datas
 print(json.dumps(res))
