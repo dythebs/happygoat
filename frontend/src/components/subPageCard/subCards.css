@@ -7,12 +7,15 @@
 } */
 
 .post-module {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   position: relative;
   z-index: 1;
   display: block;
   background: #FFFFFF;
   min-width: 270px;
   height: 470px;
+  margin: 10px;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -40,8 +43,8 @@
 
 .post-module .thumbnail {
   background: #000000;
-  height: 400px;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .post-module .thumbnail .date {
@@ -75,7 +78,9 @@
 
 .post-module .thumbnail img {
   display: block;
-  width: 120%;
+  width: 130%;
+  /* object-fit: contain; */
+  float: right;
   -webkit-transition: all 0.3s linear 0s;
   -moz-transition: all 0.3s linear 0s;
   -ms-transition: all 0.3s linear 0s;
@@ -88,6 +93,9 @@
   bottom: 0;
   background: #FFFFFF;
   width: 100%;
+  height: 13em;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   -webkti-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -103,6 +111,19 @@
   position: absolute;
   top: -34px;
   left: 0;
+  right: 0;
+  background: #e74c3c;
+  padding: 10px 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.post-module .post-content .cast {
+  position: absolute;
+  top: -34px;
+  right: 0;
   background: #e74c3c;
   padding: 10px 15px;
   color: #FFFFFF;
@@ -127,23 +148,33 @@
   font-weight: 400;
 }
 
+.sub_title.location {
+  margin-top: -20px;
+}
 .post-module .post-content .post-meta {
-  margin: 30px 0 0;
-  color: #999999;
+  /* margin: 30px 0 0; */
+  /* color: #999999; */
+  position: absolute;
+  bottom: 0;
+  right: 10%;
 }
 
 .post-module .post-content .post-meta .timestamp {
-  margin: 0 16px 0 0;
+  /* margin: 0 16px 0 0; */
+  right: 0;
 }
 
-.post-module .post-content .post-meta a {
-  color: #999999;
-  text-decoration: none;
+.post-module .location a {
+  /* color: #999999; */
+  color: rgba(0, 0, 0, 0.65);
+  /* font-size: 14px;
+  line-height: 1.5; */
+  /* text-decoration: none; */
 }
 .container {
-  max-width: 800px;
-  min-width: 640px;
-  margin: 0 auto;
+  max-width: 1100px;
+   /* min-width: 640px; */
+  margin: 10px auto;
 }
 
 .container:before,
@@ -154,8 +185,8 @@
 }
 
 .container .column {
-  width: 50%;
-  padding: 0 25px;
+  width:33%;
+  /* padding: 0 25px; */
   -webkti-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
