@@ -12,5 +12,7 @@ public class HappygoatApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HappygoatApplication.class, args);
+        Jedis jedis = RedisPool.getJedis();
+        System.out.println(jedis.get("test444"));
     }
 }
