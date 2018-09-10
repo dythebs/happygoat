@@ -3,14 +3,23 @@ import TopNavbar from '../../components/navbar/TopNavbar';
 import SuspendBar from '../../components/suspendBar/SuspendBar';
 import ajaxhost from '../../ajaxhost';
 import SubCards from '../../components/subPageCard/SubCards';
+import {Pagination} from "antd";
+import { withRouter,Link } from "react-router-dom";
+import "./anli.css"
+import Footer_ from '../../components/footer/Footer_';
+import Filter from '../../components/filter/Filter';
+const debug = true;
 
+const suffix = "/Page-";
 class Anli extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading:false,
       url:"https://sh.daoxila.com/HunQing/Shop/AnLi",
       // 筛选的条目
-      clearfixs: {
+      clearfixs:
+      {
         "yusuan": [
           {
             "href": "https://sh.daoxila.com/HunQing/Shop/AnLi/",
@@ -46,7 +55,8 @@ class Anli extends React.Component {
       // 当前页显示的数据
       datas: [],
       // 页数的相关信息
-      pages: {
+      pages:
+      {
         "total": "\u5171\u627e\u5230982\u6761",
         "pre": "",
         "next": "https://sh.daoxila.com/HunQing/Shop/AnLi/Page-2",
@@ -58,21 +68,37 @@ class Anli extends React.Component {
         ]
       }
     }
+    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
-    let url = encodeURIComponent(this.state.url).replace(new RegExp("%", "g"), '~');
+    console.log("mount");
+    console.log(this.props.history.location);
+    this.loadData();
+  }
+
+  loadData(){
+    let page = this.props.match.params.page;
+    let url_;
+    if (page === 1) {
+      url_ = this.state.url
+    } else {
+      url_ = this.state.url + suffix + page
+    }
+    let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
     let that = this;
-    fetch(ajaxhost +'/search/hunlicehua/'+ url, {
+    // console.log(url.split('-'));
+    fetch(ajaxhost + '/search/hunlicehua/' + url, {
       method: 'GET'
     }).then((res) => {
       if (res.ok) {
         res.json().then(function (result) {
-          console.log(result);
+          debug && console.log(result);
           that.setState({
-            clearfixs:result.clearfixs,
-            datas:result.datas,
-            pages:result.pages
+            clearfixs: result.clearfixs,
+            datas: result.datas,
+            pages: result.pages,
+            loading: true
           })
         })
       }
@@ -80,16 +106,106 @@ class Anli extends React.Component {
       console.log(res);
     })
   }
+
+  changePage(page){
+    // this.setState({
+
+    // })
+    // window.location.replace("/AnLi/" + page)
+    // console.log(this.props.history);
+    // this.setState({
+    //   loading:false/
+    // })
+     // setTimeout(() => {
+    //   this.loadData();
+    // }, 0);
+
+    let k = "/AnLi/page" + page.toString();
+
+    this.props.history.push(k);
+    // this.loadData();
+    // this.props.history.push("/home");
+    // https://sh.daoxila.com/HunQing/Shop/AnLi
+    // "https://sh.daoxila.com/HunQing/Shop/AnLi/Page-2
+    // const pageUrl = this.state.pages.list[0].href.split("/Page-");
+    // let url_="";
+    // if(page === 1){
+    //   url_ = pageUrl[0]
+    // }else{
+    //   url_ = pageUrl[0] + suffix + page;
+    // }
+
+    // let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
+    // debug && console.log(url);
+    // let that = this;
+    // fetch(ajaxhost + '/search/hunlicehua/' + url, {
+    //   method: 'GET'
+    // }).then((res) => {
+    //   if (res.ok) {
+    //     res.json().then(function (result) {
+    //       debug && console.log("6",result);
+    //       that.setState({
+    //         clearfixs: result.clearfixs,
+    //         datas: result.datas,
+    //         pages: result.pages,
+    //         loading:true
+    //       },that.forceUpdate())
+    //     })
+    //   }
+    // }).catch((res) => {
+    //   console.log(res);
+    // })
+  }
   render() {
-    const {datas} = this.state;
+    const {datas,pages,loading,clearfixs} = this.state;
+    console.log(pages);
+    let p = 5;
+    const current = parseInt(this.props.match.params.page);
+    const total = parseInt(pages.list[pages.list.length - 1].num);
     return (
-      <div>
+      // loading &&
+      <div history={this.props.history}>
        <TopNavbar/>
        <SuspendBar/>
+        <div className="filter-container">
+          <Filter title="婚礼预算" datas={clearfixs["yusuan"]}/>
+          <Filter title="婚礼风格" datas={clearfixs["fengge"]} />
+          <Filter title="主题颜色" datas={clearfixs["zhuti"]} />
+          <Filter title="所在区域" datas={clearfixs["quyu"]} />
+        </div>
        <SubCards datas={datas}/>
+       <div className="pagination-custom" >
+          <Pagination defaultCurrent={current} total={total} onChange={this.changePage}/>
+       </div>
+        <Link to={"/Anli/"+p} />
+      <Footer_ />
       </div>
     );
   }
 }
 
 export default Anli;
+// const AnliWithRouter = withRouter(Anli)
+
+// function mapStateToProps(state) {
+//   console.log(state);
+//   return {
+//     storeId: state.storeId,
+//     storeName: state.storeName
+//   };
+// }
+
+// function mapDispatchToProps(dispatch, props) {
+//   return {
+//     setStoreName(storeName) {
+//       dispatch({
+//         type: 'SET_STORE_NAME',
+//         storeName: storeName
+//       })
+//     },
+//   };
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(AN);
+// export default AnliWithRouter;
+// export default withRouter(Anli)

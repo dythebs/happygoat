@@ -19,16 +19,32 @@ class Home extends React.Component {
 
   // }
 
+  componentDidMount(){
+    console.log("mount");
+  }
+
+  test() {
+    this.props.history.push("/homehh");
+  }
   render() {
     return(
       <div>
+
         <TopNavbar/>
         <SuspendBar/>
         <div className="home-content">
+
           <Header/>
           <Content/>
           <Footer/>
+
         </div>
+        {/* <div className='content'>
+          <div className="blog-slider">
+            <button style={{ width: '400px' }} onClick={this.test.bind(this)}>huuuuuuuuuuuuuuuuu</button>
+
+          </div>
+        </div> */}
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import "./topbar.css"
+import {NavLink} from 'react-router-dom'
 export default class TopNavbar extends React.PureComponent {
   constructor(props){
     super(props);
@@ -50,7 +51,9 @@ export default class TopNavbar extends React.PureComponent {
             <a href="#" className="brand">LOGO</a>
 
             <nav role="navigation" id="navigation" className={["list", collapse ? "-on" : ""].join(" ")}>
-              <a href="#" className="item -link">Home</a>
+              {/* <a href="#" className="item -link">Home</a>  */}
+              <NavLink to="/home" className="item -link">主页</NavLink>
+              <NavLink to="/AnLi/1" className="item -link">案例推荐</NavLink>
               <a href="#" className="item -link">Articles</a>
               <a href="#" className="item -link">Projects</a>
               <a href="#" className="item -link">Resources</a>

@@ -133,13 +133,21 @@ a {
 .navbar>.toggle.-active>.icon {
   background-color: transparent;
 }
+.navbar>.toggle.active>.icon {
+  background-color: transparent;
+}
 
 .navbar>.toggle.-active>.icon:before {
   -webkit-transform: translateY(8px) rotate(45deg);
   transform: translateY(8px) rotate(45deg);
 }
+.navbar>.toggle.active>.icon:before {
+  -webkit-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+}
 
-.navbar>.toggle.-active>.icon:after {
+.navbar>.toggle.-active>.icon:after
+.navbar>.toggle.active>.icon:after {
   -webkit-transform: translateY(-8px) rotate(-45deg);
   transform: translateY(-8px) rotate(-45deg);
 }
@@ -194,6 +202,7 @@ a {
 }
 
 .navbar>.list>.item.-link.-active,
+.navbar>.list>.item.-link.active,
 .navbar>.list>.item.-link:hover,
 .navbar>.list>.item.-link:focus {
   color: #333;

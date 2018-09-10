@@ -22,7 +22,7 @@ class App extends Component {
       //   </p>
       // </div>
       <Provider store={store}>
-        <RouterIndex></RouterIndex>
+        <RouterIndex/>
       </Provider>
     );
   }

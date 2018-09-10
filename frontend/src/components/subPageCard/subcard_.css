@@ -1,21 +1,13 @@
-/* body {
-  background: #f2f2f2;
-  font-family: 'proxima-nova-soft', sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
+.j-column {
+  width: 90%;
+}
 
+.j-module,
 .post-module {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   position: relative;
   z-index: 1;
   display: block;
   background: #FFFFFF;
-  min-width: 270px;
-  height: 470px;
-  margin: 10px;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -26,6 +18,23 @@
   transition: all 0.3s linear 0s;
 }
 
+.post-module {
+  min-width: 250px;
+  max-width: 320px;
+  height: 470px;
+  /* margin: 10px; */
+  margin: 10px auto;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.j-module {
+  min-width: 90%;
+  height: 350px;
+  border-radius: 20px;
+}
+
+/* .j-thumnail:hover, */
 .post-module:hover,
 .hover {
   -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
@@ -151,6 +160,7 @@
 .sub_title.location {
   margin-top: -20px;
 }
+
 .post-module .post-content .post-meta {
   /* margin: 30px 0 0; */
   /* color: #999999; */
@@ -171,9 +181,10 @@
   line-height: 1.5; */
   /* text-decoration: none; */
 }
+
 .container {
   max-width: 1100px;
-   /* min-width: 640px; */
+  /* min-width: 640px; */
   margin: 10px auto;
 }
 
@@ -185,7 +196,7 @@
 }
 
 .container .column {
-  width:33%;
+  width: 33%;
   /* padding: 0 25px; */
   -webkti-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -193,6 +204,49 @@
   float: left;
 }
 
+/* jiudian detail */
+.j-module {
+  display: flex;
+  justify-content: space-around
+}
+
+.j-module .j-thumnail {
+  width: 70%;
+}
+
+.j-module .j-thumnail img {
+  width: 100%;
+  object-fit: cover;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.j-module .room {
+  display: inline-block
+}
+
+.j-module .j-room::before,
+.j-module .j-thumnail:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.j-module .j-title .j-cast {
+  display: inline-block;
+  position: absolute;
+  right: 10%;
+  top: 0;
+}
+
+.j-module .j-room {
+  overflow-y: scroll;
+  max-height: 80%;
+}
+
+/* .j-module .j-room li img{
+  max-height: 33%;
+} */
 @media screen and (max-width:768px) {
   .container .column {
     width: 45%

@@ -21,11 +21,6 @@ class Chatbox extends React.Component {
       ],
       loading: true
     })
-    // let t = encodeURIComponent("https://changsha.daoxila.com/HunQing/Shop/AnLi").replace(new RegExp("%","g"),'~');
-    let t = encodeURIComponent("https://sh.daoxila.com/HunYan").replace(new RegExp("%", "g"), '~');
-
-
-    console.log(t);
   }
 
   componentWillReceiveProps(nextProps){
@@ -37,9 +32,7 @@ class Chatbox extends React.Component {
   }
 
   hidechat(){
-    this.setState({
-      showchat:false
-    })
+    this.props.hideComponent();
   }
 
   sendText(){
@@ -82,8 +75,8 @@ class Chatbox extends React.Component {
             {
               data.map((item, index) => (
                 item[0] === 0?
-                <div className="message new"><figure className="avatar"><img src="http://askavenue.com/img/17.jpg" /></figure> {item[1]}</div>:
-                <div className="message message-personal new">{item[1]}</div>
+                <div className="message new" key={index}><figure className="avatar"><img src="http://askavenue.com/img/17.jpg" /></figure> {item[1]}</div>:
+                <div className="message message-personal new" key={index}>{item[1]}</div>
                 // <div className="message loading new"><figure className="avatar"><img src="http://askavenue.com/img/17.jpg" /></figure><span></span></div>
               ))
             }

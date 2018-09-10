@@ -1,5 +1,5 @@
 import {
-  TEST
+  TEST,CART
 } from '../action/ActionType';
 
 var reducer = (state = false, action) => {
@@ -8,6 +8,10 @@ var reducer = (state = false, action) => {
       return Object.assign({}, state, {
         test: action.test
       });
+    case CART:
+      return Object.assign({},state,{
+        carts:action.carts
+      })
     default:
       return state === undefined ? [] : state;
   }
