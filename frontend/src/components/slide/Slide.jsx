@@ -6,16 +6,14 @@ class Slide extends React.Component {
     return (
       <div className="blog-slider__wrp swiper-wrapper">
         <div className="blog-slider__item swiper-slide swiper-slide-active">
-          <p>hu</p>
           <div className="blog-slider__img">
             <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1535759872/kuldar-kalvik-799168-unsplash.jpg" alt="" />
           </div>
           <div className="blog-slider__content">
-            <span className="blog-slider__code">26 December 2019</span>
-            <div className="blog-slider__title">Lorem Ipsum Dolor</div>
-            <div className="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate
-    repellendus magni illo ea animi? </div>
-            <a href="#" className="blog-slider__button">READ MORE</a>
+            <span className="blog-slider__code">案例推荐</span>
+            <div className="blog-slider__title">十里桃林</div>
+            <div className="blog-slider__text">中式梦幻|仙气十足|古韵情怀 </div>
+            <a href="#" className="blog-slider__button">查看更多</a>
           </div>
         </div>
       </div>
