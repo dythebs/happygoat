@@ -38,7 +38,8 @@ public class RobotUtil {
             buffer.append(x);//将读取到的内容添加到stringbuffer中
         }
         JSONObject dsa = new JSONObject(buffer.toString().trim());//将响应结果转化为jsonobject
-        String message = dsa.getString("text");//获取返回消息
+        String message = "";
+        message = dsa.getString("text");//获取返回消息
         return message;//返回消息
     }
 
