@@ -1,0 +1,16 @@
+.filter-area {
+  margin: 0 auto;
+}
+.filter-area ul {
+  list-style: none;
+  display: inline-block;
+}
+
+.filter-area ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.filter-area ul li.active{
+  color: #f12252;
+}

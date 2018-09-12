@@ -12,12 +12,14 @@ export default class Content extends React.Component {
       ],
     }
   }
+
    render(){
     return(
       <div>
         <div className='content'>
           <div className="blog-slider">
-            <Carousel vertical autoplay>
+
+            <Carousel vertical autoplay >
               <Slide />
               <Slide />
               <Slide />
