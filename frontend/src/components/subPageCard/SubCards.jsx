@@ -2,10 +2,10 @@ import React from 'react'
 import "./subCards.css"
 import SubCard from './subCard';
 import {Spin,Icon} from 'antd';
-import Loading from '../loading/Loading';
+//import Loading from '../loading/Loading';
 
 // const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
-const antIcon = <Loading/>
+//const antIcon = <Loading/>
 class SubCards extends React.Component {
   constructor(props) {
     super(props);
