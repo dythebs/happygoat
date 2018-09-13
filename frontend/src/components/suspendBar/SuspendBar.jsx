@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon,BackTop} from "antd";
+import { Icon,BackTop,Progress} from "antd";
 import './suspendBar.css'
 import Chatbox from '../chatbox/Chatbox';
 import Cart from '../cart/Cart';
@@ -8,7 +8,8 @@ class SuspendBar extends React.Component {
     super(props);
     this.state = {
       showchat:false,
-      showcart:false
+      showcart:false,
+      percent:40
     }
     this.showchat = this.showchat.bind(this);
     this.showcart = this.showcart.bind(this);
@@ -16,6 +17,9 @@ class SuspendBar extends React.Component {
     this.hidechat = this.hidechat.bind(this);
   }
 
+  componentDidMount(){
+    // 获得userid，获得进度,设置进度值
+  }
   showchat(){
     this.setState({
       showchat:true
@@ -40,14 +44,17 @@ class SuspendBar extends React.Component {
     })
   }
   render() {
-    const {showchat,showcart} = this.state;
+    const {showchat,showcart,percent} = this.state;
     return (
       <div>
         <button className="bar-button" id="portfolio" href="#" title="在线客服" onClick={this.showchat}>
           <Icon type="message" theme="outlined" className="icon"/>
         </button>
         <button className="bar-button" id="codepen" title="购物车" onClick={this.showcart}>
-          <Icon type="shopping-cart" theme="outlined" className="icon"/>
+          <Icon type="star" theme="outlined" className="icon" />
+        </button>
+        <button className="bar-button" id='progress' href="#" title="婚礼进度">
+          <Progress type="circle" percent={percent} width={40} />
         </button>
         <BackTop>
           <div className="bar-button">UP</div>

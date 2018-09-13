@@ -21,15 +21,19 @@ a.btn.prev {
   position: absolute;
   top: 50%;
   left: 15%;
+  z-index: 2;
 }
 a.btn.next {
   position: absolute;
   top: 50%;
   right: 15%;
+  z-index: 2;
 }
 .cards {
   display: flex;
-  justify-content: space-around
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: scroll;
 }
 .card {
   max-width: 300px;
@@ -180,4 +184,16 @@ div.card.show .flap2 {
   /* transition-delay: 0.3s */
   /* top: 430px; */
   /* z-index:0; */
+}
+
+@media screen and (max-width: 768px) {
+  .cards {
+   height:100%
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cards {
+    height: 100%;
+  }
 }

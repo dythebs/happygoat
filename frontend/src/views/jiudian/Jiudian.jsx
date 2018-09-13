@@ -118,19 +118,27 @@ class Jiudian extends React.Component {
     const { datas, pages,loading} = this.state;
     const current = parseInt(this.props.match.params.page);
     const total = parseInt(pages.list[pages.list.length - 1].num);
-    return (
-      // loading &&
-      <div>
-        <TopNavbar/>
-        <SuspendBar/>
-        <JiudianCard datas={datas} />
-        {/* {loading}?<JiudianCard datas={datas} />:<Loading /> */}
-        <div className="pagination-custom" >
-          <Pagination defaultCurrent={current} total={total} onChange={this.changePage} />
+    if(loading){
+      return (
+        <div>
+          <TopNavbar />
+          <SuspendBar />
+          <JiudianCard datas={datas} />
+          {/* {loading}?<JiudianCard datas={datas} />:<Loading /> */}
+          <div className="pagination-custom" >
+            <Pagination defaultCurrent={current} total={total} onChange={this.changePage} />
+          </div>
+          <Footer_ />
         </div>
-        <Footer_/>
-      </div>
-    );
+      )
+    }else{
+      return (
+        <div>
+          <Loading/>
+        </div>
+      )
+    }
+
   }
 }
 

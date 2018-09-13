@@ -62,6 +62,9 @@ class SubCard extends React.Component {
               <div className="month">{zan}</div>
             </div>
             <img src={img} />
+            <div className='mask'>
+              <button className='fill'></button>
+            </div>
           </div>
           <div className="post-content">
             {tagsH}

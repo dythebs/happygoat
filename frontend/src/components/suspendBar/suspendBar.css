@@ -1,5 +1,6 @@
 /* Scroll To Bottom */
 #codepen,
+#progress,
 #portfolio {
   z-index: 4;
   position: fixed;
@@ -35,19 +36,16 @@ button:focus {
 .bar-button:active {
   transform: scale(0.99);
 }
-/* #codepen .icon,
-#portfolio .icon {
-  line-height: 56px;
-} */
-
+#progress:hover,
 #codepen:hover,
 #portfolio:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 /* CodePen */
+#codepen,
 #portfolio {
-  bottom: 96px;
+  bottom: 90px;
   right: 36px;
   background: #ed2553;
   width: 44px;
@@ -55,7 +53,12 @@ button:focus {
   -webkit-animation: buttonFadeInUp 1s ease;
   animation: buttonFadeInUp 1s ease;
 }
-/*
-#portfolio .icon {
-  line-height: 44px;
-} */
+#codepen {
+  bottom: 140px;
+}
+.ant-progress-circle-path {
+  stroke: #fadb14;
+}
+.ant-progress-circle .ant-progress-text{
+  color: #ffffff;
+}

@@ -1,0 +1,214 @@
+/* @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https: //fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+} */
+
+/* html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+} */
+
+.global-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.global-wrapper aside {
+  position: relative;
+  width: 112px;
+  float: left;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid silver;
+}
+
+.global-wrapper aside h1 {
+  color: white;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  margin: 25px auto;
+  background: #0FA0EB;
+}
+
+.global-wrapper aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.global-wrapper aside ul li {
+  padding: 20px 0 10px 0;
+  cursor: pointer;
+}
+
+.global-wrapper aside ul li:hover {
+  border-left: 3px solid #0FA0EB;
+  background: ghostwhite;
+}
+
+.global-wrapper aside ul li:hover i {
+  color: #0FA0EB !important;
+}
+
+.global-wrapper aside ul li .nav-item {
+  display: inline-block;
+  width: 30px;
+  overflow: hidden;
+  height: 30px;
+  transition: width 0.3s ease-in-out;
+  white-space: nowrap;
+  color: #858E99;
+}
+
+.global-wrapper aside ul li .nav-item i {
+  float: left;
+  position: relative;
+  top: -3px;
+  color: #858E99;
+  font-size: 30px;
+}
+
+.global-wrapper aside ul li .nav-item span {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.global-wrapper aside ul .active {
+  border-left: 3px solid #0FA0EB;
+  background: ghostwhite;
+}
+
+.global-wrapper aside ul .active i {
+  color: #0FA0EB !important;
+}
+
+.global-wrapper aside ul:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.global-wrapper main {
+  float: left;
+  width: calc(100% - 114px);
+  height: 100%;
+  overflow: scroll;
+  transition: all 0.3s ease-in-out;
+}
+
+.global-wrapper main #blackout-on-hover {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.global-wrapper main header {
+  position: relative;
+  background: #0FA0EB;
+  width: 100%;
+  height: 264px;
+}
+
+.global-wrapper main header h2 {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 34px;
+  left: 20px;
+}
+
+.global-wrapper main header nav {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  padding: 25px;
+  font-weight: 100;
+  color: white;
+}
+
+.global-wrapper main #card-view {
+  padding: 20px;
+}
+
+.global-wrapper main #card-view article {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 300px;
+  background: white;
+  border: 1px solid silver;
+  margin: 15px;
+  border-radius: 2px;
+}
+
+.global-wrapper main #card-view article .card-image {
+  width: 100%;
+  height: 150px;
+  background-color: #858E99;
+  background-image: url('https://static.pexels.com/photos/134392/pexels-photo-134392-large.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+
+.global-wrapper main #card-view article .card-text {
+  padding: 0px 10px;
+}
+
+.global-wrapper main #card-view article button {
+  background: #0FA0EB;
+  border: 0;
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
+}
+
+.global-wrapper main #card-view article button:hover {
+  background: #858E99;
+}
+
+.global-wrapper aside:hover {
+  width: 300px;
+  transition: all 0.3s ease-in-out;
+}
+
+.global-wrapper aside:hover .nav-item {
+  display: inline-block;
+  width: 150px;
+  overflow: hidden;
+  height: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.global-wrapper aside:hover .nav-item i {
+  float: left;
+}
+
+.global-wrapper aside:hover .nav-item span {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.global-wrapper aside:hover ~ #main {
+  width: calc(100% - 302px);
+  transition: all 0.3s ease-in-out;
+}
+
+.global-wrapper aside:hover ~ #main #blackout-on-hover {
+  position: absolute;
+  background: black;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}

@@ -183,9 +183,13 @@
 }
 
 .container {
-  max-width: 1100px;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  /* max-width: 1100px; */
   /* min-width: 640px; */
-  margin: 10px auto;
+  margin: 0 auto;
+  max-width: 80%;
 }
 
 .container:before,
@@ -262,3 +266,4 @@
     width: 90%;
   }
 }
+

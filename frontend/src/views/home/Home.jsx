@@ -30,7 +30,7 @@ class Home extends React.Component {
     return(
       <div>
 
-        <TopNavbar/>
+        <TopNavbar type={true}/>
         <SuspendBar/>
         <div className="home-content">
 

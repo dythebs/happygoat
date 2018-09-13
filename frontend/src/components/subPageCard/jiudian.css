@@ -62,10 +62,12 @@
   padding: 1.5rem;
   margin: 0 auto;
   width: 30%;
+  text-align: center;
   /* min-width: 40%; */
 }
 .article-details .star {
-
+  font-size:20px;
+  cursor: pointer;
 }
 .post-category {
   display: inline-block;
@@ -82,6 +84,9 @@
 .j-room {
   overflow-y:auto;
   height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .post-title {
