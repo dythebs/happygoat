@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class SMSUtil {
 
-    public void sendSMS(String phoneNumber) {
+    public void sendSMS(String phoneNumber,String code) {
         // 短信应用SDK AppID     // 1400开头
         int appid = 1400138159;
         // 短信应用SDK AppKey
@@ -29,7 +29,7 @@ public class SMSUtil {
         String smsSign = "猿仙人";
         try {
 	        //String[] params = {};//参数，验证码为5678，30秒内填写
-            String[] params = {"123456","100"};//参数，验证码为123456，100秒内填写
+            String[] params = {code,"10"};//参数，验证码为123456，100秒内填写
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
             SmsSingleSenderResult result = ssender.sendWithParam("86", phoneNumber,
                     templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信

@@ -3,10 +3,7 @@ package csu.edu.happygoat.controller;
 import csu.edu.happygoat.annotation.AuthToken;
 import csu.edu.happygoat.dao.UserMapper;
 import csu.edu.happygoat.domain.User;
-import csu.edu.happygoat.util.Constrant;
-import csu.edu.happygoat.util.Md5TokenGenerator;
-import csu.edu.happygoat.util.RedisPool;
-import csu.edu.happygoat.util.ResponseTemplate;
+import csu.edu.happygoat.util.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +47,12 @@ public class UserController {
             result.put("status", "failed");
         }
         return new ResponseTemplate(200,"Success",result);
+    }
+
+    @RequestMapping(value = "regist", method = RequestMethod.POST)
+    public ResponseTemplate regist(){
+
+
     }
 
     @RequestMapping(value = "test", method = RequestMethod.GET)
