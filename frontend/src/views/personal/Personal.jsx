@@ -36,7 +36,7 @@ class Personal extends React.Component {
         return (
             <div className='-center container'>
                 <TopNavbar/>
-                <div className='global-wrapper content' ng-controller="ctrl">
+                <div className='content global-wrapper' ng-controller="ctrl">
                     <aside>
                         <ul>
                             <li className={index === 0 ? 'active' : ''} onClick={() => this.changeContent(1)}><h1></h1>
