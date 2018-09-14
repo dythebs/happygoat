@@ -15,7 +15,7 @@
 #todolist {
   margin: 0 auto;
   padding: 2rem 3rem 3rem;
-  background: #FF6666;
+  background: #eb8989;
   color: #FFF;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -79,7 +79,7 @@
   display: block;
   width: 0%;
   height: 1px;
-  /* background: #FFF; */
+  background: #FFF;
   animation: strikeitem .3s ease-out 0s forwards;
 }
 
@@ -97,18 +97,18 @@
   overflow-x:hidden;
 }
 .ant-checkbox-inner {
-  border: #FF6666;
+  border: #eb8989;
 }
 .ant-checkbox:hover {
-  border: #FF6666
+  border: #eb8989
 }
 .ant-checkbox-checked:after {
-  background: #FF6666;
-  border: 1px solid #FF6666;
+  background: #eb8989;
+  border: 1px solid #eb8989;
 }
 .ant-checkbox-checked .ant-checkbox-inner {
-  background-color:#FF6666;
-  border-color: #FF6666;
+  background-color:#eb8989;
+  border-color: #eb8989;
 }
 
 /* TOOGLE COMPONENT */
@@ -152,9 +152,9 @@
   display: block;
   width: 18px;
   height: 18px;
-  /*border:1px solid #FF6666;*/
+  /*border:1px solid #eb8989;*/
   border-radius: 50%;
-  background: #FF6666;
+  background: #eb8989;
   opacity: 0.7;
   transition: all .2s ease-in-out;
 }
