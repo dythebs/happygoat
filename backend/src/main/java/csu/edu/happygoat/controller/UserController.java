@@ -49,11 +49,6 @@ public class UserController {
         return new ResponseTemplate(200,"Success",result);
     }
 
-    @RequestMapping(value = "regist", method = RequestMethod.POST)
-    public ResponseTemplate regist(){
-
-
-    }
 
     @RequestMapping(value = "test", method = RequestMethod.GET)
     @AuthToken

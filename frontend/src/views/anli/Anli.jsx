@@ -120,7 +120,7 @@ class Anli extends React.Component {
     //   this.loadData();
     // }, 0);
 
-    let k = "/AnLi/page" + page.toString();
+    let k = "/AnLi/page/" + page.toString();
 
     this.props.history.push(k);
     // this.loadData();

@@ -1,33 +1,33 @@
 .pagination-custom {
-  margin: 0 auto;
-  /* width: 50%; */
-  text-align: center
+    margin: 0 auto;
+    /* width: 50%; */
+    text-align: center
 }
 
 .filter-container {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  /* position: absolute; */
-  /* position: fixed; */
-  position: relative;
-  /* 准备做成hover的时候出现这个bar */
-  /* top: 70px; */
-  z-index: 3;
-  display: block;
-  background: rgba(255, 255, 255, 0.781);
-  max-width: 80%;
-  margin-top: 10px;
-  /* min-width: 250px;
-  max-width: 320px;
-  height: 470px; */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    /* position: absolute; */
+    /* position: fixed; */
+    position: relative;
+    /* 准备做成hover的时候出现这个bar */
+    /* top: 70px; */
+    z-index: 3;
+    display: block;
+    background: rgba(255, 255, 255, 0.781);
+    max-width: 80%;
+    margin-top: 10px;
+    /* min-width: 250px;
+    max-width: 320px;
+    height: 470px; */
 
-  margin:10px auto;
-  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  -webkit-transition: all 0.3s linear 0s;
-  -moz-transition: all 0.3s linear 0s;
-  -ms-transition: all 0.3s linear 0s;
-  -o-transition: all 0.3s linear 0s;
-  transition: all 0.3s linear 0s;
+    margin: 10px auto;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+    -ms-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+    transition: all 0.3s linear 0s;
 }
