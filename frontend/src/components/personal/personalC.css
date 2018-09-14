@@ -1,0 +1,209 @@
+.info .p_header {
+  width: 100%;
+  height: 5em;
+  border-radius: 20px;
+  /* box-shadow:  */
+}
+
+/* @component-todo */
+@keyframes strikeitem {
+  to {
+    width: calc(100% + 1rem);
+  }
+}
+
+#todolist {
+  margin: 0 auto;
+  padding: 2rem 3rem 3rem;
+  background: #FF6666;
+  color: #FFF;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#todolist h1 {
+  /*text-align:center;*/
+  font-weight: normal;
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+#todolist .emptylist {
+  margin-top: 2.6rem;
+  text-align: center;
+  letter-spacing: .05em;
+  font-style: italic;
+  opacity: 0.8;
+
+}
+
+#todolist ul {
+  margin-top: 2.6rem;
+  list-style: none;
+}
+
+#todolist .todolist-move {
+  transition: transform 1s;
+}
+
+#todolist li {
+  display: flex;
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#todolist .actions {
+  flex-shrink: 0;
+  padding-left: 0.7em;
+  margin-right: 2em;
+}
+
+#todolist .label {
+  position: relative;
+  transition: opacity .2s linear;
+}
+
+#todolist .done .label {
+  opacity: .6;
+}
+
+#todolist .done .label:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -.5rem;
+  display: block;
+  width: 0%;
+  height: 1px;
+  /* background: #FFF; */
+  animation: strikeitem .3s ease-out 0s forwards;
+}
+
+#todolist .btn-picto {
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #FFF;
+}
+
+#todolist .todoArea{
+  height: 20em;
+  overflow-y: auto;
+  overflow-x:hidden;
+}
+.ant-checkbox-inner {
+  border: #FF6666;
+}
+.ant-checkbox:hover {
+  border: #FF6666
+}
+.ant-checkbox-checked:after {
+  background: #FF6666;
+  border: 1px solid #FF6666;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color:#FF6666;
+  border-color: #FF6666;
+}
+
+/* TOOGLE COMPONENT */
+.togglebutton-wrapper {
+  margin-top: 1em;
+}
+
+.togglebutton-wrapper label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.togglebutton-wrapper input {
+  position: absolute;
+  left: -9999px;
+}
+
+.togglebutton-wrapper .togglebutton-label {
+  font-size: .8rem;
+  letter-spacing: .1em
+}
+
+.togglebutton-wrapper .togglebutton-box {
+  position: relative;
+  display: block;
+  margin-left: 0.6em;
+  width: 38px;
+  height: 22px;
+  background: white;
+  /*border:1px solid black;*/
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.togglebutton-wrapper .togglebutton-box:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  /*border:1px solid #FF6666;*/
+  border-radius: 50%;
+  background: #FF6666;
+  opacity: 0.7;
+  transition: all .2s ease-in-out;
+}
+
+.togglebutton-wrapper.togglebutton-focus .togglebutton-box {
+  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1);
+}
+
+.togglebutton-wrapper.togglebutton-checked .togglebutton-box:before {
+  left: calc(100% - 4px - 16px);
+  opacity: 1;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color:transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}

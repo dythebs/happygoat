@@ -33,7 +33,7 @@ a.btn.next {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  overflow: scroll;
+  overflow: auto;
 }
 .card {
   max-width: 300px;

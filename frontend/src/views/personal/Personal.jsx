@@ -3,49 +3,68 @@ import './personal.css'
 import { Icon } from "antd";
 import CartDetail from '../../components/cart/CartDetail';
 import TopNavbar from '../../components/navbar/TopNavbar';
+import Info from '../../components/personal/Info';
+import Coupons from '../../components/personal/Coupons';
+import Order from '../../components/personal/Order';
+import Todo from '../../components/personal/Todo';
 
+const components_ = [
+  <Info/>,
+  <CartDetail/>,
+  <Coupons/>,
+  <Todo/>,
+  <Order/>
+]
 class Personal extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      index:0
+    }
+    this.changeContent = this.changeContent.bind(this);
+  }
+
+  changeContent(i){
+    this.setState({
+      index:i-1
+    })
+  }
    render(){
+     const {index} = this.state;
     return(
-      <div>
+      <div className='-center container'>
         <TopNavbar/>
-        <div class='global-wrapper' ng-controller="ctrl">
+        <div className='global-wrapper content' ng-controller="ctrl">
           <aside>
-            <h1>a</h1>
-
             <ul>
-              <li class="active">
-                <div class="nav-item">
-                  <i class="material-icons">photo_library</i>
-                  <span>View More</span>
+              <li className={index===0 ?'active':''} onClick={()=>this.changeContent(1)}><h1></h1></li>
+              <li className={index=== 1?'active':''} onClick={()=>this.changeContent(2)}>
+                <div className="nav-item">
+                  <Icon type="star" theme="outlined" />
+                  <span>收藏夹</span>
                 </div>
               </li>
-              <li>
-                <div class="nav-item">
-                  {/* <i class="material-icons">local_atm</i> */}
+              <li className={index=== 2?'active':''} onClick={()=>this.changeContent(3)}>
+                <div className="nav-item">
                   <Icon type="credit-card" theme="outlined" />
-                  <span>Transactions</span>
+                  <span>我的卡券</span>
                 </div>
               </li>
-            </ul>
-
-            <ul>
-              <li>
-                <div class="nav-item">
-                  {/* <i class="material-icons">settings</i> */}
-                  <Icon type="setting" className='material-icons' theme="outlined" />
-                  <span>settings</span>
+              <li className={index=== 3?'active':''} onClick={()=>this.changeContent(4)}>
+                <div className="nav-item">
+                  <Icon type="check-square" theme="outlined" />
+                  <span>婚礼进度</span>
                 </div>
               </li>
-              <li>
-                <div class="nav-item">
-                  {/* <i class="material-icons">launch</i> */}
+              <li className={index=== 4?'active':''} onClick={()=>this.changeContent(5)}>
+                <div className="nav-item">
+                  {/* <i className="material-icons">launch</i> */}
                   <span>launch</span>
                 </div>
               </li>
-              <li>
-                <div class="nav-item">
-                  {/* <i class="material-icons">info_outline</i> */}
+              <li className={index=== 5?'active':''} onClick={()=>this.changeContent(6)}>
+                <div className="nav-item">
+                  {/* <i className="material-icons">info_outline</i> */}
                   <span>learn more</span>
                 </div>
               </li>
@@ -53,17 +72,20 @@ class Personal extends React.Component {
           </aside>
 
           <main id="main">
-            <div id="blackout-on-hover"></div>
-            <header>
+             {/* <div id="blackout-on-hover"></div> */}
+             {
+               components_[index]
+             }
+           {/* <header>
               <nav>Help ?</nav>
               <h2>View More</h2>
-            </header>
-            <CartDetail />
+            </header> */}
+            {/* <CartDetail /> */}
             {/* <section id="card-view">
 
             <article>
-              <div class="card-image"></div>
-              <div class="card-text">
+              <div className="card-image"></div>
+              <div className="card-text">
                 <h3>Cool Card</h3>
                 <p>more cool text area for this cool card</p>
               </div>
@@ -71,16 +93,16 @@ class Personal extends React.Component {
             </article>
 
             <article>
-              <div class="card-image"></div>
-              <div class="card-text">
+              <div className="card-image"></div>
+              <div className="card-text">
                 <h3>Cool Card</h3>
                 <p>more cool text area for this cool card</p>
               </div>
               <button>Cool Button</button>
             </article>
             <article>
-              <div class="card-image"></div>
-              <div class="card-text">
+              <div className="card-image"></div>
+              <div className="card-text">
                 <h3>Cool Card</h3>
                 <p>more cool text area for this cool card</p>
               </div>

@@ -13,7 +13,9 @@ body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
 } */
-
+.-center {
+  height: 100%;
+}
 .global-wrapper {
   position: relative;
   height: 100%;
@@ -25,7 +27,7 @@ body {
   width: 112px;
   float: left;
   text-align: center;
-  height: 100%;
+  /* height:15em; */
   transition: all 0.3s ease-in-out;
   border: 1px solid silver;
 }
@@ -36,7 +38,8 @@ body {
   width: 45px;
   height: 45px;
   margin: 25px auto;
-  background: #0FA0EB;
+  /* background: #0FA0EB; */
+  background: #ce7d88
 }
 
 .global-wrapper aside ul {
@@ -90,18 +93,11 @@ body {
   color: #0FA0EB !important;
 }
 
-.global-wrapper aside ul:nth-child(3) {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
 .global-wrapper main {
   float: left;
   width: calc(100% - 114px);
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   transition: all 0.3s ease-in-out;
 }
 
@@ -112,7 +108,8 @@ body {
 
 .global-wrapper main header {
   position: relative;
-  background: #0FA0EB;
+  /* background: #0FA0EB; */
+  background: #ce7d88;
   width: 100%;
   height: 264px;
 }
