@@ -8,12 +8,12 @@ import TopNavbar from '../../components/navbar/TopNavbar';
 
 const loc = "sh";
 const debug = true;
-const urlSample = "https://" + loc + ".daoxila.com/HunYan"
+const urlSample = "https://" + loc + ".daoxila.com/HunShaSheYing/PinPai";
 // Page-1"
 
 // http://localhost:8080/search/hunshasheying/{url}
 // http://localhost:8080/search/hunshasheying/https~3A~2F~2Fchangsha.daoxila.com~2FHunShaSheYing~2FPinPai~2FFuRong-Less4999~2FPage-2
-const suffix = "/page-";
+const suffix = "/Page-";
 
 class Sheying extends React.Component {
     constructor(props) {
@@ -307,7 +307,7 @@ class Sheying extends React.Component {
         let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
         let that = this;
         // console.log(url.split('-'));
-        fetch(ajaxhost + '/search/hunyanjiudian/' + url, {
+        fetch(ajaxhost + '/search/hunshasheying/' + url, {
             method: 'GET'
         }).then((res) => {
             if (res.ok) {
@@ -338,7 +338,7 @@ class Sheying extends React.Component {
         let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
         let that = this;
         // console.log(url.split('-'));
-        fetch(ajaxhost + '/search/hunyanjiudian/' + url, {
+        fetch(ajaxhost + '/search/hunshasheying/' + url, {
             method: 'GET'
         }).then((res) => {
             if (res.ok) {

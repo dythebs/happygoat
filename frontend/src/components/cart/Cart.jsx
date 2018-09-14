@@ -1,31 +1,46 @@
 import React from 'react'
 import "../chatbox/chatbox.css"
+import {connect} from 'react-redux'
+import {Icon} from 'antd'
+import * as Actions from '../../action/ActionType'
+import {Link } from "react-router-dom";
 class Cart extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       showcart:this.props.showcart,
-      data:[]
+      data:this.props.cartData
     }
     this.hidecart = this.hidecart.bind(this);
+    this.delCart = this.delCart.bind(this);
   }
 
   componentDidMount(){
-
+    console.log(this.props.cartData);
   }
 
   componentWillReceiveProps(nextProps){
     if(nextProps!==this.props){
       this.setState({
-        showcart:nextProps.showcart
+        showcart:nextProps.showcart,
+        data:nextProps.cartData
       })
     }
   }
   hidecart(){
     this.props.hideComponent();
   }
+
+  delCart(index){
+    const {data} = this.state;
+    const select = data[index];
+    console.log(index,'select',select);
+    this.props.delproduct(select.title);
+   this.forceUpdate();
+  }
    render(){
-     const {showcart} = this.state;
+     const {showcart,data} = this.state;
+     console.log(this.props.cartData,"9999")
     return(
       showcart &&
       <div className="avenue-messenger">
@@ -44,22 +59,35 @@ class Cart extends React.Component {
           </div>
           <div className="messages" >
             <div className="messages-content" id="box" ref="container_" >
-              {/* {
+              {
+                data!==undefined &&
                 data.map((item, index) => (
-                  item[0] === 0 ?
-                    <div className="message new"><figure className="avatar"><img src="http://askavenue.com/img/17.jpg" /></figure> {item[1]}</div> :
-                    <div className="message message-personal new">{item[1]}</div>
-                  // <div className="message loading new"><figure className="avatar"><img src="http://askavenue.com/img/17.jpg" /></figure><span></span></div>
+                  <div className='cart-item' key={index}>
+                    <img className="item-img" src={item.img}/>
+                    <div className="item-detail">
+                      <p><a className='item-title'>{item.title}</a></p>
+                      <p>{item.detail}</p>
+                    </div>
+                    <span className='button-save'><Icon type="minus-circle" theme="outlined" onClick={()=>this.delCart(index)}/></span>
+                  </div>
                 ))
-              } */}
+              }
             </div>
           </div>
           <div className="message-box">
-            {/* <textarea type="text" className="message-input" ref="textarea"></textarea> */}
-            <button type="submit" className="message-submit">查看详情</button>
+            <button className="message-submit clear-button" onClick={this.props.clearCart}>清空</button>
+            <Link className="message-submit" to='/Personal/#cart'>查看详情</Link>
           </div>
         </div>
       </div>
     );
 }}
-export default Cart;
+const mapStateToProps = state => ({
+  cartData:state.data
+})
+const mapDispatchToProps = dispatch => ({
+  // addproduct: item => dispatch(Actions.addproduct(item))
+  delproduct: title => dispatch(Actions.delproduct(title)),
+  clearCart: () => dispatch(Actions.clear_cart())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Cart);

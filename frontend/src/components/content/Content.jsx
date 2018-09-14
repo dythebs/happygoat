@@ -19,7 +19,7 @@ export default class Content extends React.Component {
         <div className='content'>
           <div className="blog-slider">
 
-            <Carousel vertical autoplay >
+            <Carousel vertical  effect="fade" >
               <Slide />
               <Slide />
               <Slide />

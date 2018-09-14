@@ -1,0 +1,72 @@
+.coupons {
+  background: #eee;
+  padding: 20px;
+  width: 500px;
+}
+
+.coupons .coupon {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+}
+
+.coupons .coupon>div {
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.coupons .coupon .coupon-intro {
+  position: relative;
+  background: #fff;
+  flex: 3;
+}
+
+.coupons .coupon .coupon-intro ul {
+  color: #aaa;
+  padding-left: 20px;
+}
+
+.coupons .coupon .coupon-intro:after {
+  content: ' ';
+  border: 2px dashed #eee;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -2px;
+  z-index: 2;
+}
+
+.coupons .coupon .coupon-value {
+  display: flex;
+  flex: 1;
+  position: relative;
+  background: #faad14;
+  color: #fff;
+  font-size: 38px;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupons .coupon .coupon-value:before {
+  content: ' ';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  border-radius: 100%;
+  background: #eee;
+}
+
+.coupons .coupon .coupon-value:after {
+  content: ' ';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  bottom: -12px;
+  left: -12px;
+  border-radius: 100%;
+  background: #eee;
+}

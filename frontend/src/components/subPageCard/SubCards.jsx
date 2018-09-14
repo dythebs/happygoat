@@ -50,7 +50,7 @@ class SubCards extends React.Component {
     // const item = data[0];
     // console.log(item.title);
     console.log(data);
-    // if(ll){
+    if(ll){
       return (
         <div className="container">
           {
@@ -59,14 +59,14 @@ class SubCards extends React.Component {
             ))
           }
         </div >)
-    // }else{
-    //   return (
-    //     <div className="container">
-    //       <Spin indicator={antIcon} />
-    //       {/* <Loading/> */}
-    //     </div>
-    //   )
-    // }
+    }else{
+      return (
+        <div className="container">
+          {/* <Spin indicator={antIcon} /> */}
+          <Loading/>
+        </div>
+      )
+    }
 
 
   }

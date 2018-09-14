@@ -196,8 +196,7 @@ a {
 
 .navbar>.list>.item.-link {
   line-height: 68px;
-  /* color: #555; */
-    color:#fff;
+  color: #555;
   border-bottom: 4px solid transparent;
 }
 
@@ -206,5 +205,13 @@ a {
 .navbar>.list>.item.-link:hover,
 .navbar>.list>.item.-link:focus {
   color: #333;
-  border-bottom-color: #673ab7;
+  border-bottom-color: #f12252;
+}
+
+.-home {
+  color: #fff!important;
+}
+
+.scrolled .anticon {
+  color: #333!important;
 }
