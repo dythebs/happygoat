@@ -20,7 +20,7 @@
     USER.USER_NAME
     FROM USER, SIGNON
     WHERE USER.USER_PHONE = #{phonenumber}
-    AND SIGNON.PASSWORD = USER.USER_PASSWORD
+    AND SIGNON.PHONE = USER.USER_PHONE
   </select>
 
     <insert id="insertAccount" parameterType="csu.edu.happygoat.domain.User">
