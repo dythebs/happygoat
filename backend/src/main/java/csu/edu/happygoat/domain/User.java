@@ -15,6 +15,13 @@ public class User {
     private String user_wechat;
     private String user_headimg;
 
+    public User(){
+        user_name = "无";
+        user_password = "无";
+        user_city = "无";
+        user_sex = "无";
+        user_phone = "无";
+    }
     public long getUser_id() {
         return user_id;
     }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 
+import javax.validation.constraints.Null;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,24 +30,25 @@ public class UserController {
     @Autowired
     Md5TokenGenerator tokenGenerator;
 
+    //登录：需要json格式传入phonenumber，password
     @RequestMapping(value = "login", method = RequestMethod.POST)
     @AuthToken
     public ResponseTemplate login(@RequestBody(required = false) String userInfo){
         System.out.println(userInfo);
         JSONObject object = JSONObject.parseObject(userInfo);
-        String username = object.getString("username");
+        String phonenumber = object.getString("phonenumber");
         String password = object.getString("password");
-        User curentUser = userService.getUser(username);
+        User curentUser = userService.getUser(phonenumber);
         JSONObject result = new JSONObject();
         if(curentUser != null){
             Jedis jedis = RedisPool.getJedis();
-            String token = tokenGenerator.generate(username, password);
-            jedis.set(username, token);
-            jedis.expire(username, Constrant.TOKEN_EXPIRE_TIME);
-            jedis.set(token, username);
+            String token = tokenGenerator.generate(phonenumber, password);
+            jedis.set(phonenumber, token);
+            jedis.expire(phonenumber, Constrant.TOKEN_EXPIRE_TIME);
+            jedis.set(token, phonenumber);
             jedis.expire(token, Constrant.TOKEN_EXPIRE_TIME);
             Long currentTime = System.currentTimeMillis();
-            jedis.set(token + username, currentTime.toString());
+            jedis.set(token + phonenumber, currentTime.toString());
             jedis.close();
             result.put("status", "success");
             result.put("token", token);
@@ -56,6 +58,7 @@ public class UserController {
         return new ResponseTemplate(200,"Success",result);
     }
 
+    //手机验证：需要json格式传入phonenumber
     @RequestMapping(value = "p_validation", method = RequestMethod.POST)
     public ResponseTemplate p_validation(@RequestBody(required = false) String userInfo){
         JSONObject object = JSONObject.parseObject(userInfo);
@@ -68,18 +71,16 @@ public class UserController {
         return new ResponseTemplate(200,"Success");
     }
 
+    //用户注册：需要json格式传入phonenumber
     @RequestMapping(value = "regist", method = RequestMethod.POST)
     public ResponseTemplate regist(@RequestBody(required = false) String userInfo){
         JSONObject object = JSONObject.parseObject(userInfo);
-        String username = object.getString("username");
-        String password = object.getString("password");
         String phonenumber = object.getString("phonenumber");
         String Verification_code = object.getString("code");
         JSONObject result = new JSONObject();
         if(mp_phone.get(phonenumber).equals(Verification_code)){
-            userService.insert(username,password,phonenumber);
+            userService.insert(phonenumber);
             User user = new User();
-            user.setUser_name(username);
             user.setUser_phone(phonenumber);
             return new ResponseTemplate(200,"Success",user);
         }else {
@@ -89,6 +90,28 @@ public class UserController {
         return new ResponseTemplate(400,"Success",result);
     }
 
+    //修改个人信息：需要json格式传入除了phonenumber之外的其他信息，注册成功后应立即设置密码
+    @RequestMapping(value = "edit",method = RequestMethod.POST)
+    public ResponseTemplate edit(@RequestBody(required = false) String userInfo){
+        JSONObject object = JSONObject.parseObject(userInfo);
+        String phonenumber = object.getString("phonenumber");
+        User user = new User();
+        user.setUser_phone(phonenumber);
+        if(object.getString("username")!=null){
+            String username = object.getString("username");
+            user.setUser_name(username);
+        }
+        if(object.getString("city")!=null){
+            String city = object.getString("city");
+            user.setUser_city(city);
+        }
+        if(object.getString("password")!=null){
+            String password = object.getString("password");
+            user.setUser_password(password);
+        }
+        userService.update(user);
+        return new ResponseTemplate(200,"Success");
+    }
 
     @RequestMapping(value = "test", method = RequestMethod.GET)
     @AuthToken

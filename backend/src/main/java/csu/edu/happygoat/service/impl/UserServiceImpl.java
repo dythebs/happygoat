@@ -13,18 +13,22 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public User getUser(String username) {
-        return userMapper.getUserByUsername(username);
+    public User getUser(String phonenumber) {
+        return userMapper.getAccountByPhone(phonenumber);
     }
 
 
     @Override
-    public void insert(String username, String password, String phonenumber) {
+    public void insert(String phonenumber) {
         User user = new User();
-        user.setUser_name(username);
         user.setUser_phone(phonenumber);
         userMapper.insertAccount(user);
         userMapper.insertSignon(user);
+    }
+
+    @Override
+    public void update(User user) {
+        userMapper.updateAccount(user);
     }
 }
 
