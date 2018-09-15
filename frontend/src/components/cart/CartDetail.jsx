@@ -1,7 +1,15 @@
 import React from 'react'
 import './cartDetail.css'
-
+import { connect } from "react-redux";
+import * as Actions from "../../action/ActionType"
 class CartDetail extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data:this.props.cartData
+    }
+    console.log('cartData',this.props.data);
+  }
   render() {
     return (
       <div className='cart-detail'>
@@ -62,4 +70,12 @@ class CartDetail extends React.Component {
   }
 }
 
-export default CartDetail;
+const mapStateToProps = state => ({
+  cartData: state.data
+})
+const mapDispatchToProps = dispatch => ({
+  // addproduct: item => dispatch(Actions.addproduct(item))
+  delproduct: title => dispatch(Actions.delproduct(title)),
+  // clearCart: () => dispatch(Actions.clear_cart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(CartDetail);

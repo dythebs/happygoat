@@ -306,7 +306,8 @@ class Sheying extends React.Component {
         }
         let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
         let that = this;
-        // console.log(url.split('-'));
+        console.log(url);
+        console.log(url_);
         fetch(ajaxhost + '/search/hunshasheying/' + url, {
             method: 'GET'
         }).then((res) => {

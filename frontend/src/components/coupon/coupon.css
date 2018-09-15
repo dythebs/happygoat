@@ -1,7 +1,6 @@
 .coupons {
-  background: #eee;
   padding: 20px;
-  width: 500px;
+  max-width: 500px;
 }
 
 .coupons .coupon {
@@ -30,7 +29,7 @@
 
 .coupons .coupon .coupon-intro:after {
   content: ' ';
-  border: 2px dashed #eee;
+  border: 2px dashed  #eb8989;;
   height: 100%;
   position: absolute;
   top: 0;
@@ -57,7 +56,7 @@
   top: -12px;
   left: -12px;
   border-radius: 100%;
-  background: #eee;
+  background: #eb8989;
 }
 
 .coupons .coupon .coupon-value:after {
@@ -68,5 +67,5 @@
   bottom: -12px;
   left: -12px;
   border-radius: 100%;
-  background: #eee;
+  background:  #eb8989;;
 }

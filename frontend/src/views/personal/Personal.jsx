@@ -61,16 +61,16 @@ class Personal extends React.Component {
                             </li>
                             <li className={index === 4 ? 'active' : ''} onClick={() => this.changeContent(5)}>
                                 <div className="nav-item">
-                                    {/* <i className="material-icons">launch</i> */}
-                                    <span>launch</span>
+                                    <Icon type="snippets" theme="outlined" />
+                                    <span>我的订单</span>
                                 </div>
                             </li>
-                            <li className={index === 5 ? 'active' : ''} onClick={() => this.changeContent(6)}>
-                                <div className="nav-item">
+                            {/* <li className={index === 5 ? 'active' : ''} onClick={() => this.changeContent(6)}>
+                                <div className="nav-item"> */}
                                     {/* <i className="material-icons">info_outline</i> */}
-                                    <span>learn more</span>
-                                </div>
-                            </li>
+                                    {/* <span>learn more</span> */}
+                                {/* </div> */}
+                            {/* </li> */}
                         </ul>
                     </aside>
 
