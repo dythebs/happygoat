@@ -23,6 +23,22 @@
     AND SIGNON.USERNAME = USER.USER_NAME
   </select>
 
+    <insert id="insertAccount" parameterType="csu.edu.happygoat.domain.User">
+    INSERT INTO USER
+    (USER_NAME,USER_ID,USER_NICKNAME,USER_SEX,USER_CITY,USER_REALNAME,USER_ZIP,USER_ADDRESS,USER_QQ,USER_WECHAT,USER_HEADIMG,USER_PHONE)
+    VALUES
+    (#{user_name}, 0, NULL, NULL, NULL, NULL, NULL,NULL, NULL, NULL,NULL, #{user_phone})
+    </insert>
+
+    <!--<update id="updateSignon" parameterType="com.software.jpetstore.domain.Account">-->
+    <!--UPDATE SIGNON SET PASSWORD = #{password}-->
+    <!--WHERE USERNAME = #{username}-->
+    <!--</update>-->
+
+    <insert id="insertSignon" parameterType="csu.edu.happygoat.domain.User">
+    INSERT INTO SIGNON (USERNAME,PASSWORD)
+    VALUES (#{user_name}, 0)
+    </insert>
     <!--<select id="getAccountByUsernameAndPassword" parameterType="com.software.jpetstore.domain.Account" resultType="com.software.jpetstore.domain.Account">-->
     <!--SELECT-->
     <!--SIGNON.USERNAME,-->
