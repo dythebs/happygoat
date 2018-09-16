@@ -31,9 +31,9 @@ a.btn.next {
 }
 .cards {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
-  overflow: auto;
+  overflow: visible;
 }
 .card {
   max-width: 300px;

@@ -25,7 +25,7 @@
   position: absolute;
   top: -10%;
   left: 5%;
-  background: #EAC7CC;
+  background: #eb8989;
   width: 320px;
   height: 500px;
   border-radius: 5px;
@@ -94,7 +94,7 @@
 }
 
 .sign-container span {
-  color: #EAC7CC;
+  color: #eb8989;
 }
 
 .flower {
@@ -127,7 +127,7 @@
 }
 
 .sign-container button:hover {
-  background: #EAC7CC;
+  background: #eb8989;
   color: #f6f6f6;
   transition: background-color 1s ease-out;
 }
@@ -136,7 +136,7 @@
   margin-top: 3%;
   background: #f6f6f6;
   color: #ce7d88;
-  border: solid 1px #EAC7CC;
+  border: solid 1px #eb8989;
 }
 
 /* form styling */
@@ -171,9 +171,8 @@
 }
 
 .sign-container input {
-  background: #EAC7CC;
-  width: 65%;
-  color: #ce7d88;
+  background: #eb8989;
+  color: #000;
   border: none;
   border-bottom: 1px solid rgba(246, 246, 246, 0.5);
   padding: 9px;
@@ -222,4 +221,17 @@
 .checkbox input[type="checkbox"]:checked+label {
   color: #ce7d88;
   transition: .5s all ease;
+}
+
+.signupClick{
+  transform: translateX(80%);
+}
+
+.signinClick {
+  transform: translateX(0%);
+}
+
+.code input{
+  width: 60%;
+  margin-left: 0.5em;
 }

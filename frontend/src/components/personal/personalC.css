@@ -1,10 +1,78 @@
+.info{
+  background-color: #eb8989;
+  height: 35em;
+}
+.info .helper{
+  height: 2em;
+}
 .info .p_header {
-  width: 100%;
-  height: 5em;
-  border-radius: 20px;
+  width: 80%;
+  height: 20%;
+  border-radius:10px;
+  padding: 2em;
+  margin: 0 auto;
+  background-color:rgba(255,255,255,0.1);
+  text-align: center
   /* box-shadow:  */
 }
 
+.info .ant-avatar{
+  width: 5em;
+  height:5em;
+}
+
+.info .ant-avatar-image {
+  border-radius: 50%;
+  border: 1px solid #F5F5F5;
+}
+.info .ant-avatar-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: -2em;
+}
+.info .ant-avatar .anticon-plus{
+  font-size: 5em;
+  font-weight: 200
+}
+
+.info .p_header .anticon svg {
+  width: 0.5em;
+}
+.info .content {
+  background-color: rgba(255, 255, 255, .2);
+  width: 80%;
+  margin: 1em auto;
+  border-radius: 5px;
+  overflow: auto;
+  height: 24em;
+}
+
+.info .info_display {
+  width: 80%;
+  margin: 0 auto;
+  /* transition:transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) */
+}
+.info .info_display p {
+  text-align: center;
+  color: #F5F5F5;
+}
+.info .login-form {
+  margin: 0 auto;
+  transition: all 1s ease-out;
+}
+
+.info .ant-form-item-control-wrapper:nth-child(2){
+  display: inline-block;
+}
+.info .helper_content {
+  position: relative;
+}
+.info .setting {
+  position: absolute;
+  font-size: 40px;
+  bottom: 0.5em;
+  right: 0.5em;
+  color: bisque;
+}
 /* @component-todo */
 @keyframes strikeitem {
   to {
@@ -15,7 +83,7 @@
 #todolist {
   margin: 0 auto;
   padding: 2rem 3rem 3rem;
-  background: #FF6666;
+  background: #eb8989;
   color: #FFF;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -79,7 +147,7 @@
   display: block;
   width: 0%;
   height: 1px;
-  /* background: #FFF; */
+  background: #FFF;
   animation: strikeitem .3s ease-out 0s forwards;
 }
 
@@ -97,18 +165,18 @@
   overflow-x:hidden;
 }
 .ant-checkbox-inner {
-  border: #FF6666;
+  border: #eb8989;
 }
 .ant-checkbox:hover {
-  border: #FF6666
+  border: #eb8989
 }
 .ant-checkbox-checked:after {
-  background: #FF6666;
-  border: 1px solid #FF6666;
+  background: #eb8989;
+  border: 1px solid #eb8989;
 }
 .ant-checkbox-checked .ant-checkbox-inner {
-  background-color:#FF6666;
-  border-color: #FF6666;
+  background-color:#eb8989;
+  border-color: #eb8989;
 }
 
 /* TOOGLE COMPONENT */
@@ -152,9 +220,9 @@
   display: block;
   width: 18px;
   height: 18px;
-  /*border:1px solid #FF6666;*/
+  /*border:1px solid #eb8989;*/
   border-radius: 50%;
-  background: #FF6666;
+  background: #eb8989;
   opacity: 0.7;
   transition: all .2s ease-in-out;
 }
@@ -184,26 +252,49 @@
   -webkit-font-smoothing: antialiased;
 }
 
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-	border-radius: 10px;
+
+.p-coupons {
+  margin: 0 auto;
+  padding: 2rem 3rem 3rem;
+  background: #eb8989;
+  color: #FFF;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 35em;
 }
 
-::-webkit-scrollbar
-{
-	width: 10px;
-	background-color:transparent;
+/* @group coupons*/
+.p-coupons .title {
+  text-align: right;
+  font-weight: normal;
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 
-::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-image: -webkit-gradient(linear,
-									   left bottom,
-									   left top,
-									   color-stop(0.44, rgb(122,153,217)),
-									   color-stop(0.72, rgb(73,125,189)),
-									   color-stop(0.86, rgb(28,58,148)));
+/* @component order */
+.order {
+  background: #eb8989;
+  height: 35em;
+  padding: 2rem 3rem 3rem;
+}
+
+.order .title {
+  text-align: right;
+  font-weight: normal;
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.order .ant-tabs-nav .ant-tabs-tab-active {
+  color:#FFF;
+}
+
+.order .ant-tabs-nav .ant-tabs-tab {
+  color: #eedfce
+}
+
+.order .ant-tabs-ink-bar{
+  color: #ff4d4f;
 }

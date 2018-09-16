@@ -4,9 +4,9 @@
 
 <mapper namespace="csu.edu.happygoat.dao.UserMapper">
 
-    <select id="getUserByUsername" parameterType="String" resultType="csu.edu.happygoat.domain.User">
+    <select id="getAccountByPhone" parameterType="String" resultType="csu.edu.happygoat.domain.User">
     SELECT
-    SIGNON.USERNAME,
+    SIGNON.PHONE,
     USER.USER_ID,
     USER.USER_NICKNAME,
     USER.USER_SEX,
@@ -17,12 +17,28 @@
     USER.USER_QQ,
     USER.USER_WECHAT,
     USER.USER_HEADIMG,
-    USER.USER_PHONE
+    USER.USER_NAME
     FROM USER, SIGNON
-    WHERE USER.USER_NAME = #{username}
-    AND SIGNON.USERNAME = USER.USER_NAME
+    WHERE USER.USER_PHONE = #{phonenumber}
+    AND SIGNON.PHONE = USER.USER_PHONE
   </select>
 
+    <insert id="insertAccount" parameterType="csu.edu.happygoat.domain.User">
+    INSERT INTO USER
+    (USER_NAME,USER_ID,USER_NICKNAME,USER_SEX,USER_CITY,USER_REALNAME,USER_ZIP,USER_ADDRESS,USER_QQ,USER_WECHAT,USER_HEADIMG,USER_PHONE)
+    VALUES
+    (#{user_name}, 0, NULL, NULL, NULL, NULL, NULL,NULL, NULL, NULL,NULL, #{user_phone})
+    </insert>
+
+    <!--<update id="updateSignon" parameterType="com.software.jpetstore.domain.Account">-->
+    <!--UPDATE SIGNON SET PASSWORD = #{password}-->
+    <!--WHERE USERNAME = #{username}-->
+    <!--</update>-->
+
+    <insert id="insertSignon" parameterType="csu.edu.happygoat.domain.User">
+    INSERT INTO SIGNON (USERNAME,PASSWORD)
+    VALUES (#{user_name}, 0)
+    </insert>
     <!--<select id="getAccountByUsernameAndPassword" parameterType="com.software.jpetstore.domain.Account" resultType="com.software.jpetstore.domain.Account">-->
     <!--SELECT-->
     <!--SIGNON.USERNAME,-->
@@ -50,21 +66,13 @@
     <!--AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY-->
     <!--</select>-->
 
-    <!--<update id="updateAccount" parameterType="com.software.jpetstore.domain.Account">-->
-    <!--UPDATE ACCOUNT SET-->
-    <!--EMAIL = #{email},-->
-    <!--FIRSTNAME = #{firstName},-->
-    <!--LASTNAME = #{lastName},-->
-    <!--STATUS = #{status},-->
-    <!--ADDR1 = #{address1},-->
-    <!--ADDR2 = #{address2,jdbcType=VARCHAR},-->
-    <!--CITY = #{city},-->
-    <!--STATE = #{state},-->
-    <!--ZIP = #{zip},-->
-    <!--COUNTRY = #{country},-->
-    <!--PHONE = #{phone}-->
-    <!--WHERE USERID = #{username}-->
-    <!--</update>-->
+    <update id="updateAccount" parameterType="csu.edu.happygoat.domain.User">
+    UPDATE USER SET
+    USER_CITY = #{user_city},
+    USER_PASSWORD = #{user_password},
+    USER_SEX = #{user_sex}
+    WHERE USER_PHONE = #{user_phone}
+    </update>
 
     <!--<insert id="insertAccount" parameterType="com.software.jpetstore.domain.Account">-->
     <!--INSERT INTO ACCOUNT-->

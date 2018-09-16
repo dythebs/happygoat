@@ -1,3 +1,7 @@
+.cart-detail {
+  background: #eb8989;
+  height: 35em;
+}
 .cart-detail ol,
 .cart-detail ul {
   list-style: none;
@@ -184,11 +188,11 @@ body {
   width: 100%;
   vertical-align: middle;
   padding: 1.5em;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid rgba(255,255,255,.2);
 }
 
 .cart-detail .cart .items.even {
-  background: #fafafa;
+  background: rgba(255,255,255,.2);
 }
 
 .cart-detail .cart .items .infoWrap {
@@ -293,7 +297,7 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
   font-weight: bold;
-  background: #e0e0e0;
+  background: rgba(255,255,255,.4);
   padding: .5em;
   font-size: .75em;
   display: inline-block;
