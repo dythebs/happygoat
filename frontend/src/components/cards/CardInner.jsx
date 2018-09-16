@@ -42,12 +42,9 @@ class CardInner extends React.Component {
           </a>
           <h3>{data_.name}</h3>
           <Rate disabled value={data_.rating} />
-          {/* <p>Image from unsplash.com</p> */}
         </div>
         <div className="card-flap flap1">
           <div className="card-description">
-            {/* This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available
-            etc. */}
             价格：{data_.price}
             桌数：{data_.desks}
           </div>

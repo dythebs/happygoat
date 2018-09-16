@@ -172,8 +172,7 @@
 
 .sign-container input {
   background: #eb8989;
-  width: 65%;
-  color: #ce7d88;
+  color: #000;
   border: none;
   border-bottom: 1px solid rgba(246, 246, 246, 0.5);
   padding: 9px;
@@ -222,4 +221,17 @@
 .checkbox input[type="checkbox"]:checked+label {
   color: #ce7d88;
   transition: .5s all ease;
+}
+
+.signupClick{
+  transform: translateX(80%);
+}
+
+.signinClick {
+  transform: translateX(0%);
+}
+
+.code input{
+  width: 60%;
+  margin-left: 0.5em;
 }

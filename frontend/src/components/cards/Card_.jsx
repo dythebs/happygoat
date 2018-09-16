@@ -67,18 +67,25 @@ class Card_ extends React.Component {
     const { isShowing ,data,indexStart} = this.state;
     return (
       <div className={["cards",isShowing?"showing":""].join(" ")}>
-        <a href="#" className="toggle-info btn prev" onClick={this.handlePrev}>
+        {/* <a href="#" className="toggle-info btn prev" onClick={this.handlePrev}>
           <Icon type="left" theme="outlined" style={{fontSize:'24px',}}/>
         </a>
         <a href="#" className="toggle-info btn next" onClick={this.handleNext}>
           <Icon type="right" theme="outlined" style={{ fontSize: '24px'}} />
-        </a>
-        <CardInner changeShowing={this.divcard}
+        </a> */}
+        {
+          data.map((item,index) => (
+            <CardInner key={index} changeShowing={this.divcard}
+              item={item}
+            />
+          ))
+        }
+        {/* <CardInner changeShowing={this.divcard}
           item = {data[indexStart]}
         />
         <CardInner changeShowing={this.divcard}
           item = {data[indexStart+1]}
-        />
+        /> */}
       </div>
     );
   }

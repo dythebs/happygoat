@@ -1,0 +1,89 @@
+
+/* reset */
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+.s-container figure {
+  margin: 0;
+  display: block;
+}
+
+.s-container img,
+.s-container svg {
+  display: block;
+  max-width: 100%;
+}
+
+.s-container h3:first-child {
+  margin-top: 0;
+}
+
+/* container */
+.s-container {
+  display: flex;
+  overflow: auto;
+}
+
+/*card */
+.s-container .card {
+  vertical-align: middle;
+  margin: 4% 0;
+  min-width: 300px;
+  border: solid 0.5em transparent;
+  background: #fff;
+  background-clip: padding-box;
+}
+
+.s-container .card figure,
+.s-container .card img,
+.s-container .card svg {
+  width: 100%;
+}
+
+.s-container .card__caption {
+  padding: 1em;
+}
+
+/* cardlist */
+.s-container .cardlist {
+  margin: -0.5em;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.s-container .cardlist .card {
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 500px) {
+  .s-container .cardlist .card {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .s-container .cardlist .card {
+    width: 33.3333%;
+  }
+}
+
+/* a card that is a link */
+.s-container a.card {
+  display: block;
+}
+
+.s-container a.card:focus,
+.s-container a.card:hover {
+  text-decoration: none;
+}
+
+/* mixins */
