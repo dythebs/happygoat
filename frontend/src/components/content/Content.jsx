@@ -3,6 +3,7 @@ import "./content.css"
 import Slide from '../slide/Slide';
 import { Carousel } from "antd";
 import Card_ from '../cards/Card_';
+import CardsSheying from '../cards/CardsSheying';
 export default class Content extends React.Component {
   constructor(props){
     super(props);
@@ -32,6 +33,24 @@ export default class Content extends React.Component {
             <Card_ />
           </div>
        </div>
+
+       <div className='content'>
+        <div className='box'>
+            <CardsSheying  type='sheying'/>
+        </div>
+       </div>
+
+        <div className='content'>
+          <div className='box'>
+            <CardsSheying type='hunsha'/>
+          </div>
+        </div>
+
+        <div className='content'>
+          <div className='box'>
+            <CardsSheying type='miyue' />
+          </div>
+        </div>
       </div>
     );
 }}
