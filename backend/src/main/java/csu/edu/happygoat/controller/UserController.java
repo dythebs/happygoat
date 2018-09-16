@@ -76,12 +76,14 @@ public class UserController {
     public ResponseTemplate regist(@RequestBody(required = false) String userInfo){
         JSONObject object = JSONObject.parseObject(userInfo);
         String phonenumber = object.getString("phonenumber");
+        String password = object.getString("password");
         String Verification_code = object.getString("code");
         JSONObject result = new JSONObject();
         if(mp_phone.get(phonenumber).equals(Verification_code)){
             userService.insert(phonenumber);
             User user = new User();
             user.setUser_phone(phonenumber);
+            user.setUser_password(password);
             return new ResponseTemplate(200,"Success",user);
         }else {
             System.out.println(mp_phone.get(phonenumber));
