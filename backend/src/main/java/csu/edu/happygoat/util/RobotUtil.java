@@ -17,10 +17,10 @@ public class RobotUtil {
         String url = "http://www.tuling123.com/openapi/api?key=";//设置访问接口地址
         CloseableHttpClient httpClient = HttpClients.createDefault();//创建并实例化连接
         JSONObject jsonObject = new JSONObject();//创建并实例化jsonobject
-        jsonObject.put("key", "6654b78507664bf782bcb4fada650caa");//输入key
+        jsonObject.put("key", "b053e63905ad4405a28ff9c0790a872d");//输入key
         jsonObject.put("info", text);//输入信息
 //	    jsonObject.put("loc", "北京市中关村");//设置地点
-        String key = "6654b78507664bf782bcb4fada650caa";
+        String key = "b053e63905ad4405a28ff9c0790a872d";
         jsonObject.put("userid", "915b34e41cb351c0371");//设置用户id
         System.out.println(jsonObject);
         // String arguments = jsonObject.toString();//将json数据转化为参数

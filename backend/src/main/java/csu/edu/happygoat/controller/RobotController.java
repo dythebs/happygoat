@@ -26,6 +26,6 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ResponseTemplate(200, "success", answer);
+        return new ResponseTemplate(200, "Success", answer);
     }
 }
