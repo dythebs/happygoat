@@ -1,14 +1,15 @@
 import React from 'react'
 import "./jiudian.css"
-import { Icon,message} from "antd";
-import {connect} from 'react-redux'
+import { Icon, message } from "antd";
+import { connect } from 'react-redux'
 import * as Actions from "../../action/ActionType"
 // import {addToCart,getCartItems, clearCart} from '../../utils/cartOperation';
 class JiudianCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      datas:this.props.datas
+      datas: this.props.datas,
+      type: this.props.type
     }
     // this.state = {
     //   datas: [
@@ -54,15 +55,16 @@ class JiudianCard extends React.Component {
     //           }
     //         ]
     //     }
-      // ]
+    // ]
     // }
 
     this.addJiudianToCart = this.addJiudianToCart.bind(this);
+    this.addSheyingToCart = this.addSheyingToCart.bind(this);
   }
 
-  addJiudianToCart(index){
+  addJiudianToCart(index) {
 
-    const {datas} = this.state;
+    const { datas } = this.state;
     let select = datas[index];
     select.detail = select.cast + " " + select.opinions.join(" ");
     console.log(select);
@@ -78,6 +80,14 @@ class JiudianCard extends React.Component {
     this.props.addproduct(select)
 
   }
+
+  addSheyingToCart(index){
+    const { datas } = this.state;
+    let select = datas[index];
+    select.detail = select.cast + " " + select.tags.join(' ');
+    message.info('已添加');
+    this.props.addproduct(select);
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.datas !== this.props.datas) {
       this.setState({
@@ -86,52 +96,92 @@ class JiudianCard extends React.Component {
     }
   }
   render() {
-    const { datas } = this.state;
-    return (
-      <div className="j-container">
-        {
-          datas.map((item, index) => (
-            <div key={index} className="j-column">
-            {/* {
+    const { datas, type } = this.state;
+    if (type === 'jiudian') {
+      return (
+        <div className="j-container">
+          {
+            datas.map((item, index) => (
+              <div key={index} className="j-column">
+                {/* {
               console.log('index',index)
             } */}
-              <div className="blog-card">
-                <img src={item["img"]} className="post-image" />
-                <div className="article-details">
-                  <h3 className="post-title">{item['title']}</h3>
-                  <h3 className="j-cast">{item['cast']}</h3>
-                  <div className="post-description j-room">
-                    {/* {
-                      item['rooms'].map((room, j) => (
-                        <div className="room" key={j}>
-                          <img src={room['img']} />
-                          <p>{room['name']}</p>
-                        </div>
-                      ))
-                    } */}
+                <div className="blog-card">
+                  <img src={item["img"]} className="post-image" />
+                  <div className="article-details">
+                    <h3 className="post-title">{item['title']}</h3>
+                    <h3 className="j-cast">{item['cast']}</h3>
+                    <div className="post-description j-room">
+                      {
+                        item['rooms'].map((room, j) => (
+                          <div className="room" key={j}>
+                            <img src={room['img']} />
+                            <p>{room['name']}</p>
+                          </div>
+                        ))
+                      }
+                    </div>
+                    <p className="post-author">
+                      {
+                        item['opinions'].map((opinion, i) => (
+                          <span key={i}>{opinion}</span>
+                        ))
+                      }
+                      <span className="star"><Icon type="star" theme="outlined" onClick={() => this.addJiudianToCart(index)} /></span>
+                    </p>
                   </div>
-                  <p className="post-author">
-                    {
-                      item['opinions'].map((opinion, i) => (
-                        <span key={i}>{opinion}</span>
-                      ))
-                    }
-                    <span className="star"><Icon type="star" theme="outlined" onClick={() => this.addJiudianToCart(index)}/></span>
-                  </p>
                 </div>
               </div>
-            </div>
-          ))
-        }
-      </div >)
+            ))
+          }
+        </div >
+      )
+    } else if (type === 'sheying'){
+      return (
+        <div className="j-container">
+          {
+            datas.map((item, index) => (
+              <div key={index} className="j-column sheying-img">
+                <div className="blog-card">
+                  <img src={item["img"]} className="post-image" />
+                  <h3 className="post-title">{item['title']}</h3>
+
+                  <div className="article-details">
+                    <h3 className="j-cast">{item['cast']}</h3>
+                    <div className="post-description j-room">
+                      <p>{item['zone']}</p>
+                      <p>套系：{item['taoxi']}</p>
+                      <p>案例：{item['anli']}</p>
+                      <br/>
+                      <a href={item['href']}></a>
+                    </div>
+                    <p className="post-author">
+                      {
+                        item['tags'].map((opinion, i) => (
+                          <span key={i}>{opinion}</span>
+                        ))
+                      }
+                      <span className="star"><Icon type="star" theme="outlined" onClick={() => this.addSheyingToCart(index)} /></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div >
+      )
+    }
+    else {
+      return null
+    }
   }
 }
 function mapStateToProps(state) {
   return {
-    data:state.data
+    data: state.data
   }
 }
 const mapDispatchToProps = dispatch => ({
-  addproduct:item =>dispatch(Actions.addproduct(item))
+  addproduct: item => dispatch(Actions.addproduct(item))
 })
-export default connect(mapStateToProps,mapDispatchToProps)(JiudianCard);
+export default connect(mapStateToProps, mapDispatchToProps)(JiudianCard);

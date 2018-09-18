@@ -8,11 +8,12 @@ import {withRouter, Link} from "react-router-dom";
 import "./anli.css"
 import Footer_ from '../../components/footer/Footer_';
 import Filter from '../../components/filter/Filter';
+import Loading from '../../components/loading/Loading';
 
+const loc = 'sh';
 const debug = true;
-
 const suffix = "/Page-";
-
+const urlSample = 'https://' + loc + ".daoxila.com/HunQing/Shop/Anli"
 class Anli extends React.Component {
     constructor(props) {
         super(props);
@@ -87,6 +88,8 @@ class Anli extends React.Component {
         } else {
             url_ = this.state.url + suffix + page
         }
+
+        console.log(encodeURIComponent('https://changsha.daoxila.com/HunQing/Shop/HuangJia-Photo-3803').replace(new RegExp("%", "g"), '~'))
         let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
         let that = this;
         // console.log(url.split('-'));
@@ -95,7 +98,7 @@ class Anli extends React.Component {
         }).then((res) => {
             if (res.ok) {
                 res.json().then(function (result) {
-                    debug && console.log(result);
+                    debug && console.log('loading',result);
                     that.setState({
                         clearfixs: result.clearfixs,
                         datas: result.datas,
@@ -165,25 +168,29 @@ class Anli extends React.Component {
         let p = 5;
         const current = parseInt(this.props.match.params.page);
         const total = parseInt(pages.list[pages.list.length - 1].num);
-        return (
-            // loading &&
-            <div history={this.props.history}>
-                <TopNavbar/>
-                <SuspendBar/>
-                <div className="filter-container">
-                    <Filter title="婚礼预算" datas={clearfixs["yusuan"]}/>
-                    <Filter title="婚礼风格" datas={clearfixs["fengge"]}/>
-                    <Filter title="主题颜色" datas={clearfixs["zhuti"]}/>
-                    <Filter title="所在区域" datas={clearfixs["quyu"]}/>
-                </div>
-                <SubCards datas={datas}/>
-                <div className="pagination-custom">
-                    <Pagination defaultCurrent={current} total={total} onChange={this.changePage}/>
-                </div>
-                <Link to={"/Anli/" + p}/>
-                <Footer_/>
-            </div>
-        );
+        console.log(total);
+        if(loading){
+           return (
+               <div history={this.props.history}>
+                   <TopNavbar />
+                   <SuspendBar />
+                   <div className="filter-container">
+                       <Filter title="婚礼预算" datas={clearfixs["yusuan"]} />
+                       <Filter title="婚礼风格" datas={clearfixs["fengge"]} />
+                       <Filter title="主题颜色" datas={clearfixs["zhuti"]} />
+                       <Filter title="所在区域" datas={clearfixs["quyu"]} />
+                   </div>
+                   <SubCards datas={datas} />
+
+                   <div className="pagination-custom">
+                       <Pagination defaultCurrent={current} total={total} onChange={this.changePage} />
+                   </div>
+                   <Footer_ />
+               </div>
+           );
+       }else{
+           return <Loading/>
+       }
     }
 }
 

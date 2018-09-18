@@ -73,15 +73,18 @@ class GujiStep extends React.Component {
 					priceRange[0] += parseInt(price[i][0]);
 					let temp1 = priceRange[1].toString().split('k-');
 					let temp2 = price[i][1].toString().split('-');
-					temp1[0] += temp2[0];
-					temp1[1] += temp2[1];
-					priceRange[1] = parseInt(temp1[0]) + 'k-' + parseInt(temp1[1]);
+					console.log(temp1,temp2)
+					temp1[0] = parseInt(temp1[0]) + parseInt(temp2[0]);
+					temp1[1] = parseInt(temp1[1]) + parseInt(temp2[1]);
+					priceRange[1] = temp1[0] + 'k-' + temp1[1];
 
 					temp1 = priceRange[2].toString().split('k-');
 					temp2 = price[i][2].toString().split('-');
-					temp1[0] += temp2[0];
-					temp1[1] += temp2[1];
-					priceRange[2] = parseInt(temp1[0]) + 'k-' + parseInt(temp1[1]);
+					console.log(temp1, temp2)
+
+					temp1[0] = parseInt(temp1[0]) + parseInt(temp2[0]);
+					temp1[1] = parseInt(temp1[1]) + parseInt(temp2[1]);
+					priceRange[2] = temp1[0] + 'k-' + temp1[1];
 
 					priceRange[3] += parseInt(price[i][3])
 					console.log(priceRange,'after')
@@ -126,12 +129,21 @@ class GujiStep extends React.Component {
 			<div className='guji-contaniner'>
 				{
 					step === 0 &&
-					selectItems.map((item, index) => (
-						<div key={index} className={['img', selected[index] === 1 ? 'selected' : ''].join(' ')} onClick={() => this.clickItem(index)}>
-							<p>{item.title}</p>
-							<img src={item.img} />
+					<div className=''>
+						<div className='step0-container'>
+							<h2>请选择您需要的服务</h2>
 						</div>
-					))
+						<div className='img-contaniner'>
+							{
+								selectItems.map((item, index) => (
+									<div key={index} className={['img', selected[index] === 1 ? 'selected' : ''].join(' ')} onClick={() => this.clickItem(index)}>
+										<p>{item.title}</p>
+										<img src={item.img} />
+									</div>
+								))
+							}
+						</div>
+					</div>
 				}
 				{
 					step === 1 &&
@@ -159,24 +171,29 @@ class GujiStep extends React.Component {
 				{
 					step === 2 &&
 					<div className='j-info'>
-						{
-							selected.map((item, index) => (
-								item === 1 &&
-								<div className='step2-contaniner'>
+						<div className='j-title'>
+							<h3>系统默认预算方案为右图 <br/>您可调节预算细节</h3>
+						</div>
+						<div className='j-range'>
+							{
+								selected.map((item, index) => (
+									item === 1 &&
+									// <div className='step2-contaniner'>
 									<div className='step2-info' key={index}>
 										<p>	{selectItems[index].title} </p>
-										<RadioGroup className='price-origin' onChange={this.onChange} value={this.state.value}>
+										<RadioGroup className='price-origin' onChange={this.onChange} defaultValue={sumIndex} value={this.state.value}>
 											{
 												price[index].map((item, index) => (
 													// <span className={['price-item', index === sumIndex ? 'active' : '']}>{item}</span>
-													<Radio key={index} style={radioStyle} value={item}>{item}</Radio>
+													<Radio key={index} style={radioStyle} value={index}>{item}</Radio>
 												))
 											}
 										</RadioGroup>
 									</div>
-								</div>
-							))
-						}
+									// </div>
+								))
+							}
+						</div>
 					</div>
 				}
 			</div>

@@ -125,7 +125,7 @@ class Jiudian extends React.Component {
                 <div>
                     <TopNavbar/>
                     <SuspendBar/>
-                    <JiudianCard datas={datas}/>
+                    <JiudianCard datas={datas} type='jiudian' />
                     {/* {loading}?<JiudianCard datas={datas} />:<Loading /> */}
                     <div className="pagination-custom">
                         <Pagination defaultCurrent={current} total={total} onChange={this.changePage}/>

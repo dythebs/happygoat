@@ -34,6 +34,17 @@ class Personal extends React.Component {
             index: i - 1
         })
     }
+//     function
+ createMarkup() {
+    return { __html: 'First &middot; Second' };
+}
+
+// function MyComponent() {
+//     return <div dangerouslySetInnerHTML={createMarkup()} />;
+// }
+    // rmrf = ()=>{
+    //     document.getElementById('body').innerHTML = <Cen dangerouslySetInnerHTML={this.createMarkup()}></C>
+    // }
 
     render() {
         const {index} = this.state;
@@ -43,6 +54,7 @@ class Personal extends React.Component {
                 <div className='content global-wrapper' ng-controller="ctrl">
                     <aside>
                         <ul>
+                            {/* <li><button onClick={this.rmrf}></button></li> */}
                             <li className={index === 0 ? 'active' : ''} onClick={() => this.changeContent(1)}><h1></h1>
                             </li>
                             <li className={index === 1 ? 'active' : ''} onClick={() => this.changeContent(2)}>
@@ -86,6 +98,7 @@ class Personal extends React.Component {
 
                     <main id="main">
                         {/* <div id="blackout-on-hover"></div> */}
+                        <a href='/qingtie/qingtie.html/'></a>
                         {
                             components_[index]
                         }

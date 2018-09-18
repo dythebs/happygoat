@@ -1,5 +1,7 @@
 import React from 'react'
-import {Icon} from 'antd'
+import {Icon, message} from 'antd';
+import { connect } from 'react-redux'
+import * as Actions from "../../action/ActionType"
 
 const htttps = "https://";
 class SubCard extends React.Component {
@@ -16,6 +18,8 @@ class SubCard extends React.Component {
       tags:this.props.item.tags,
       cast:this.props.item.cast
     }
+
+    this.addAnliToCart = this.addAnliToCart.bind(this)
   }
 
   componentWillReceiveProps(nextProps){
@@ -33,6 +37,14 @@ class SubCard extends React.Component {
         cast:nextProps.item.cast
       })
     }
+  }
+
+  addAnliToCart(){
+    const { title, shopname, tags} = this.state;
+    let select = this.state;
+    select.detail = title + shopname + tags.join(' ');
+    message.info('已添加');
+    this.props.addproduct(select);
   }
    render(){
     const {zan,img,title,changdi,shoppic,shopname,span,tags,cast} = this.state;
@@ -63,7 +75,7 @@ class SubCard extends React.Component {
             </div>
             <img src={img} />
             <div className='mask'>
-              <button className='fill'></button>
+              <button className='fill'><Icon type="star" theme="outlined" onClick={this.addAnliToCart} /></button>
             </div>
           </div>
           <div className="post-content">
@@ -84,4 +96,12 @@ class SubCard extends React.Component {
     );
 }}
 
-export default SubCard;
+function mapStateToProps(state) {
+  return {
+    data: state.data
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  addproduct: item => dispatch(Actions.addproduct(item))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(SubCard);
