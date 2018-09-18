@@ -7,13 +7,17 @@ import Info from '../../components/personal/Info';
 import Coupons from '../../components/personal/Coupons';
 import Order from '../../components/personal/Order';
 import Todo from '../../components/personal/Todo';
+import Jiri from '../../components/personal/Jiri';
+import Guji from '../../components/personal/Guji';
 
 const components_ = [
     <Info/>,
     <CartDetail/>,
     <Coupons/>,
     <Todo/>,
-    <Order/>
+    <Order/>,
+    <Jiri/>,
+    <Guji/>
 ]
 
 class Personal extends React.Component {
@@ -65,12 +69,18 @@ class Personal extends React.Component {
                                     <span>我的订单</span>
                                 </div>
                             </li>
-                            {/* <li className={index === 5 ? 'active' : ''} onClick={() => this.changeContent(6)}>
-                                <div className="nav-item"> */}
-                                    {/* <i className="material-icons">info_outline</i> */}
-                                    {/* <span>learn more</span> */}
-                                {/* </div> */}
-                            {/* </li> */}
+                            <li className={index === 5 ? 'active' : ''} onClick={() => this.changeContent(6)}>
+                                <div className="nav-item">
+                                    <Icon type="calendar" theme="outlined" />
+                                     <span>吉日查询</span>
+                                </div>
+                            </li>
+                            <li className={index === 6 ? 'active' : ''} onClick={() => this.changeContent(7)}>
+                                <div className="nav-item">
+                                    <Icon type="pay-circle" theme="outlined" />
+                                    <span>预算估计</span>
+                                </div>
+                            </li>
                         </ul>
                     </aside>
 
@@ -79,44 +89,8 @@ class Personal extends React.Component {
                         {
                             components_[index]
                         }
-                        {/* <header>
-              <nav>Help ?</nav>
-              <h2>View More</h2>
-            </header> */}
-                        {/* <CartDetail /> */}
-                        {/* <section id="card-view">
-
-            <article>
-              <div className="card-image"></div>
-              <div className="card-text">
-                <h3>Cool Card</h3>
-                <p>more cool text area for this cool card</p>
-              </div>
-              <button>Cool Button</button>
-            </article>
-
-            <article>
-              <div className="card-image"></div>
-              <div className="card-text">
-                <h3>Cool Card</h3>
-                <p>more cool text area for this cool card</p>
-              </div>
-              <button>Cool Button</button>
-            </article>
-            <article>
-              <div className="card-image"></div>
-              <div className="card-text">
-                <h3>Cool Card</h3>
-                <p>more cool text area for this cool card</p>
-              </div>
-              <button>Cool Button</button>
-            </article>
-          </section> */}
-
                     </main>
-
                 </div>
-
             </div>
         );
     }

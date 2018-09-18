@@ -50,7 +50,7 @@ export default class TopNavbar extends React.PureComponent {
       <div>
         <div className={["navbar-component", scrollFixed ? "scrolled" : ""].join(" ")}>
           <div className="navbar area">
-            <a href="#" className="brand">LOGO</a>
+            <a href="#" className="brand"><img src='/images/logo.png'/></a>
 
             <nav role="navigation" id="navigation" className={["list", collapse ? "-on" : ""].join(" ")}>
               {/* <a href="#" className="item -link">Home</a>  */}
@@ -58,7 +58,7 @@ export default class TopNavbar extends React.PureComponent {
               <NavLink to="/AnLi/1" className={["item -link",type?'-home':''].join(' ')}>案例推荐</NavLink>
               <NavLink to="/Sheying/1" className={["item -link", type ? '-home' : ''].join(' ')}>婚纱摄影</NavLink>
 
-              <a href="#" className={["item -link",type?'-home':''].join(' ')}>婚纱摄影</a>
+              {/* <a href="#" className={["item -link",type?'-home':''].join(' ')}>婚纱摄影</a> */}
               <a href="#" className={["item -link",type?'-home':''].join(' ')}>蜜月游</a>
               <a href="#" className={["item -link",type?'-home':''].join(' ')}>酒店推荐</a>
               {/* <a href="#" className={["item -link",type?'-home':''].join(' ')}>个人中心</a> */}

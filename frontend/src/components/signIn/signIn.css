@@ -235,3 +235,8 @@
   width: 60%;
   margin-left: 0.5em;
 }
+
+.code .ant-form-item-control {
+    width: 85%;
+    margin: auto;
+}

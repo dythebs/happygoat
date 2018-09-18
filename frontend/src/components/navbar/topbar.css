@@ -73,7 +73,12 @@ a {
   color: #777;
   margin: 22px;
 }
+/* .nab */
+/* .nab */
 
+.navbar > .brand img{
+  width: 80%;
+}
 .navbar>.toggle {
   outline: none;
   border: 0;
