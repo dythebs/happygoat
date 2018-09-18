@@ -22,7 +22,6 @@ public class RobotUtil {
 //	    jsonObject.put("loc", "北京市中关村");//设置地点
         String key = "b053e63905ad4405a28ff9c0790a872d";
         jsonObject.put("userid", "915b34e41cb351c0371");//设置用户id
-        System.out.println(jsonObject);
         // String arguments = jsonObject.toString();//将json数据转化为参数
         //    System.out.println(arguments);
         HttpPost httpPost = new HttpPost(url+key+"&info="+text);//请求post接口
@@ -34,7 +33,6 @@ public class RobotUtil {
         int length = 0;//声明变量length，表示读取长度
         while ((length = reader.read(buff)) != -1) {//循环读取字符输入流
             String x = new String(buff, 0, length);//获取读取到的有效内容
-            System.out.println(x);//输出内容
             buffer.append(x);//将读取到的内容添加到stringbuffer中
         }
         JSONObject dsa = new JSONObject(buffer.toString().trim());//将响应结果转化为jsonobject
