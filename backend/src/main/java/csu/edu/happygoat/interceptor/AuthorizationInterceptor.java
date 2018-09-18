@@ -1,7 +1,7 @@
 package csu.edu.happygoat.interceptor;
 
 import csu.edu.happygoat.annotation.AuthToken;
-import csu.edu.happygoat.util.Constrant;
+import csu.edu.happygoat.util.Constant;
 import csu.edu.happygoat.util.RedisPool;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -45,9 +45,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             if (username != null && !username.trim().equals("")) {
                 Long tokeBirthTime = Long.valueOf(jedis.get(token + username));
                 Long diff = System.currentTimeMillis() - tokeBirthTime;
-                if (diff > Constrant.TOKEN_RESET_TIME) {
-                    jedis.expire(username, Constrant.TOKEN_EXPIRE_TIME);
-                    jedis.expire(token, Constrant.TOKEN_EXPIRE_TIME);
+                if (diff > Constant.TOKEN_RESET_TIME) {
+                    jedis.expire(username, Constant.TOKEN_EXPIRE_TIME);
+                    jedis.expire(token, Constant.TOKEN_EXPIRE_TIME);
                     Long newBirthTime = System.currentTimeMillis();
                     jedis.set(token + username, newBirthTime.toString());
                 }

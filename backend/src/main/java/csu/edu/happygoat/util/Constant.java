@@ -1,6 +1,6 @@
 package csu.edu.happygoat.util;
 
-public final class Constrant {
+public final class Constant {
     public static final Integer DEL_FLAG_TRUE = 1;
 
     public static final Integer DEL_FLAG_FALSE = 0;
