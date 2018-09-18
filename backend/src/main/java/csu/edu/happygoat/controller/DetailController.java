@@ -22,8 +22,33 @@ public class DetailController {
     @GetMapping("/detail/hunlicehua/{url}")
     public String detailHunlicehua(@PathVariable("url") String url) {
         url = UrlUtil.trimUrl(url);
+        String content = detailService.getHunlicehuaData(url);
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        return jsonObject.getString("content");
+    }
+
+    @GetMapping("/detail/hunyanjiudian/{url}")
+    public String detailHunyanjiudian(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
         String content = detailService.getHunyanjiudianData(url);
         JSONObject jsonObject = JSONObject.parseObject(content);
         return jsonObject.getString("content");
     }
+
+    @GetMapping("/detail/hunshasheying/{url}")
+    public String detailHunshasheying(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
+        String content = detailService.getHunshasheyingData(url);
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        return jsonObject.getString("content");
+    }
+
+    @GetMapping("/detail/miyue/{url}")
+    public String detailMiyue(@PathVariable("url") String url) {
+        url = UrlUtil.trimUrl(url);
+        String content = detailService.getMiyueData(url);
+        JSONObject jsonObject = JSONObject.parseObject(content);
+        return jsonObject.getString("content");
+    }
+
 }

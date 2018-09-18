@@ -26,6 +26,7 @@ public class DetailServiceImpl implements DetailService {
 
     @Override
     public String getMiyueData(String url) {
-        return null;
+        String[] cmd = new String[] {"python", "miyuexiangqing.py", url};
+        return PythonExec.getResult(cmd);
     }
 }
