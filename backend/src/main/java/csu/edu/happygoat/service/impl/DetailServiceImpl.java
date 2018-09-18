@@ -14,12 +14,14 @@ public class DetailServiceImpl implements DetailService {
 
     @Override
     public String getHunyanjiudianData(String url) {
-        return null;
+        String[] cmd = new String[] {"python", "hunyanjiudianxiangqing.py", url};
+        return PythonExec.getResult(cmd);
     }
 
     @Override
     public String getHunshasheyingData(String url) {
-        return null;
+        String[] cmd = new String[] {"python", "hunshasheyingxiangqing.py", url};
+        return PythonExec.getResult(cmd);
     }
 
     @Override

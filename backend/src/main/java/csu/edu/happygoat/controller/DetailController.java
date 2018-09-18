@@ -22,7 +22,7 @@ public class DetailController {
     @GetMapping("/detail/hunlicehua/{url}")
     public String detailHunlicehua(@PathVariable("url") String url) {
         url = UrlUtil.trimUrl(url);
-        String content = detailService.getHunlicehuaData(url);
+        String content = detailService.getHunyanjiudianData(url);
         JSONObject jsonObject = JSONObject.parseObject(content);
         return jsonObject.getString("content");
     }
