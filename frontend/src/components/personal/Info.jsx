@@ -94,11 +94,10 @@ class Info extends React.Component {
               })( */}
           {/* <Checkbox>Remember me</Checkbox> */}
           {/* )} */}
-          {/* <a className="login-form-forgot" href="">Forgot password</a>
+          {/* <a className="login-form-forgot" href="">Forgot password</a>*/}
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+           保存修改
           </Button>
-          Or <a href="">register now!</a> */}
         </FormItem>
       </Form>
     }

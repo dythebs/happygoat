@@ -7,6 +7,7 @@ import Sheying from '../views/sheying/Sheying';
 import Personal from '../views/personal/Personal';
 import Sign from '../components/signIn/Sign';
 import Coupon from '../components/coupon/Coupon';
+import Story from '../components/storyTeller/Story';
 
 class RouterIndex extends React.Component{
     render(){
@@ -20,7 +21,7 @@ class RouterIndex extends React.Component{
                     <Route path="/Sheying/:page" exact render={ props => <Sheying {...props}/>}></Route>
                     <Route path='/Center' render={ props => <Personal {...props}/>}></Route>
                     <Route path='/Sign' render={ props => <Sign {...props} />}></Route>
-                    <Route path='/temp' render={ props => <Coupon {...props} />}></Route>
+                    <Route path='/temp' render={ props => <Story {...props} />}></Route>
                     {/* <Route path="/help" exact component={Help}></Route> */}
                     {/* <Route path="/help/helpDetail/:helpId" exact component={HelpDetail}></Route> */}
                     {/* <Redirect from="/*" to="/home" /> */}

@@ -5,8 +5,7 @@
 }
 
 .filter-container {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-radius: 25px;
     /* position: absolute; */
     /* position: fixed; */
     position: relative;
@@ -15,7 +14,7 @@
     z-index: 3;
     display: block;
     background: rgba(255, 255, 255, 0.781);
-    max-width: 80%;
+    max-width: 1080px;
     margin-top: 10px;
     /* min-width: 250px;
     max-width: 320px;

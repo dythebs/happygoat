@@ -115,6 +115,21 @@
     width: 100%;
   }
 }
+.sheying-img {
+  width: 45%!important;
+  max-width: 550px!important;
+}
+.sheying-img .blog-card {
+  height: 10em;
+}
+
+.sheying-img .article-details {
+  width: 60%;
+  overflow-y: auto
+}
+.sheying-img .j-room {
+  min-height: 0
+}
 /*
 @supports (display: grid) {
   .j-container {
