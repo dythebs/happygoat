@@ -4,7 +4,7 @@ import json
 import re
 import sys
 
-url = 'https://changsha.daoxila.com/HunShaSheYing/PinPai/Less4999/Page-2'
+url = sys.argv[1]
 base_url = re.findall('(https://.*?)/', url)[0]
 
 html = requests.get(url).text

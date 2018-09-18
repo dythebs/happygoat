@@ -25,14 +25,12 @@ public class OrderController {
     public ResponseTemplate updateOrder(@PathVariable("orderId") String orderId,
                                         @RequestParam("status") String status,
                                         @RequestParam("detail") String detail,
-                                        @RequestParam("time") String time,
-                                        @RequestParam("phoneNumber") String phoneNumber) {
+                                        @RequestParam("time") String time) {
         Order order = new Order();
         order.setOrderId(orderId);
         order.setStatus(status);
         order.setDetail(detail);
         order.setTime(time);
-        order.setPhoneNumber(phoneNumber);
         orderService.updateOrder(order);
         return new ResponseTemplate(200, "Success");
     }
