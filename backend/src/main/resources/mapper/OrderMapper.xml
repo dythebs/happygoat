@@ -6,28 +6,28 @@
 
     <select id="getOrder" parameterType="java.lang.String" resultType="csu.edu.happygoat.domain.Order">
     SELECT
-    ORDER.STATUS,
-    ORDER.DETAIL,
-    ORDER.ORDERID,
-    ORDER.PHONENUMBER,
-    ORDER.TIME
-    FROM ORDER
-    WHERE ORDER.ORDERID = #{orderid}
+    ORDERS.STATUS,
+    ORDERS.DETAIL,
+    ORDERS.ORDERID,
+    ORDERS.PHONENUMBER,
+    ORDERS.TIME
+    FROM ORDERS
+    WHERE ORDERS.ORDERID = #{orderid}
     </select>
 
     <select id="getOrdersByPhoneNumber" parameterType="java.lang.String" resultType="csu.edu.happygoat.domain.Order">
     SELECT
-    ORDER.STATUS,
-    ORDER.DETAIL,
-    ORDER.ORDERID,
-    ORDER.PHONENUMBER,
-    ORDER.TIME
-    FROM ORDER
-    WHERE ORDER.PHONENUMBER = #{phonenumber}
+    ORDERS.STATUS,
+    ORDERS.DETAIL,
+    ORDERS.ORDERID,
+    ORDERS.PHONENUMBER,
+    ORDERS.TIME
+    FROM ORDERS
+    WHERE ORDERS.PHONENUMBER = #{phonenumber}
     </select>
 
     <insert id="insertOrder" parameterType="csu.edu.happygoat.domain.Order">
-    INSERT INTO ORDER
+    INSERT INTO ORDERS
     (ORDERID, PHONENUMBER, STATUS, DETAIL, TIME)
     VALUES
     (#{orderid}, #{phonenumber}, #{status}, #{detail}, #{time})
@@ -37,7 +37,7 @@
     UPDATE USER SET
     STATUS = #{status},
     DETAIL = #{detail}
-    WHERE ORDERID = #{orderid}
+    WHERE ORDERS.ORDERID = #{orderid}
     </update>
 
 
