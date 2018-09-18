@@ -111,5 +111,3 @@ while True:
 	# 创建新线程来处理TCP连接:
 	#threading.Thread(target=tcplink, args=(sock, addr)).start()
 	tcplink(sock, addr)
-
-
