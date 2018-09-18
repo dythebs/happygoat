@@ -4,7 +4,7 @@
 
 <mapper namespace="csu.edu.happygoat.dao.UserMapper">
 
-    <select id="getAccountByPhone" parameterType="String" resultType="csu.edu.happygoat.domain.User">
+    <select id="getAccountByPhone" parameterType="java.lang.String" resultType="csu.edu.happygoat.domain.User">
     SELECT
     SIGNON.PHONE,
     USER.USER_ID,

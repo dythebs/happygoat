@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csu.edu.happygoat.dao.OrderMapper">
+
+    <select id="getOrder" parameterType="java.lang.String" resultType="csu.edu.happygoat.domain.Order">
+    SELECT
+    ORDERS.STATUS,
+    ORDERS.DETAIL,
+    ORDERS.ORDERID,
+    ORDERS.PHONENUMBER,
+    ORDERS.TIME
+    FROM ORDERS
+    WHERE ORDERS.ORDERID = #{orderid}
+    </select>
+
+    <select id="getOrdersByPhoneNumber" parameterType="java.lang.String" resultType="csu.edu.happygoat.domain.Order">
+    SELECT
+    ORDERS.STATUS,
+    ORDERS.DETAIL,
+    ORDERS.ORDERID,
+    ORDERS.PHONENUMBER,
+    ORDERS.TIME
+    FROM ORDERS
+    WHERE ORDERS.PHONENUMBER = #{phonenumber}
+    </select>
+
+    <insert id="insertOrder" parameterType="csu.edu.happygoat.domain.Order">
+    INSERT INTO ORDERS
+    (ORDERID, PHONENUMBER, STATUS, DETAIL, TIME)
+    VALUES
+    (#{orderid}, #{phonenumber}, #{status}, #{detail}, #{time})
+    </insert>
+
+    <update id="updateOrder" parameterType="csu.edu.happygoat.domain.Order">
+    UPDATE USER SET
+    STATUS = #{status},
+    DETAIL = #{detail}
+    WHERE ORDERS.ORDERID = #{orderid}
+    </update>
+
+
+</mapper>

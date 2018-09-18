@@ -1,19 +1,15 @@
 package csu.edu.happygoat.controller;
 
 import csu.edu.happygoat.annotation.AuthToken;
-import csu.edu.happygoat.dao.UserMapper;
 import csu.edu.happygoat.domain.User;
 import csu.edu.happygoat.service.UserService;
 import csu.edu.happygoat.util.*;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 
-import javax.validation.constraints.Null;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -44,9 +40,9 @@ public class UserController {
             Jedis jedis = RedisPool.getJedis();
             String token = tokenGenerator.generate(phonenumber, password);
             jedis.set(phonenumber, token);
-            jedis.expire(phonenumber, Constrant.TOKEN_EXPIRE_TIME);
+            jedis.expire(phonenumber, Constant.TOKEN_EXPIRE_TIME);
             jedis.set(token, phonenumber);
-            jedis.expire(token, Constrant.TOKEN_EXPIRE_TIME);
+            jedis.expire(token, Constant.TOKEN_EXPIRE_TIME);
             Long currentTime = System.currentTimeMillis();
             jedis.set(token + phonenumber, currentTime.toString());
             jedis.close();
@@ -76,12 +72,14 @@ public class UserController {
     public ResponseTemplate regist(@RequestBody(required = false) String userInfo){
         JSONObject object = JSONObject.parseObject(userInfo);
         String phonenumber = object.getString("phonenumber");
+        String password = object.getString("password");
         String Verification_code = object.getString("code");
         JSONObject result = new JSONObject();
         if(mp_phone.get(phonenumber).equals(Verification_code)){
             userService.insert(phonenumber);
             User user = new User();
             user.setUser_phone(phonenumber);
+            user.setUser_password(password);
             return new ResponseTemplate(200,"Success",user);
         }else {
             System.out.println(mp_phone.get(phonenumber));

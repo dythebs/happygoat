@@ -1,5 +1,6 @@
 package csu.edu.happygoat.controller;
 
+import csu.edu.happygoat.util.ResponseTemplate;
 import csu.edu.happygoat.util.RobotUtil;
 import csu.edu.happygoat.util.UrlUtil;
 import javax.servlet.http.HttpServletResponse;
@@ -17,24 +18,14 @@ public class RobotController {
     RobotUtil robotUtil = new RobotUtil();
 
     @GetMapping("/robot/ask/{info}")
-    public void searchHunlicehua(@PathVariable("info")String info,HttpServletResponse response) {
+    public ResponseTemplate getReply(@PathVariable("info")String info) {
+        String answer = null;
         try {
-            String answer = robotUtil.getReplyFromRobot(info);
+            answer = robotUtil.getReplyFromRobot(info);
             JSONObject object = new JSONObject();
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            if (!answer.equals("")){
-                object.put("answer",answer);
-                out.println(object);
-            }else {
-                object.put("answer","error");
-                out.println(object);
-            }
-            out.flush();
-            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return new ResponseTemplate(200, "Success", answer);
     }
 }
