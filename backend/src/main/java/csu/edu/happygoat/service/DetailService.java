@@ -8,4 +8,5 @@ public interface DetailService {
     public String getHunshasheyingData(String url);
 
     public String getMiyueData(String url);
+
 }
