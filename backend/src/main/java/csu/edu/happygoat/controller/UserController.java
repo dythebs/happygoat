@@ -116,9 +116,12 @@ public class UserController {
     public ResponseTemplate getMessage(@RequestBody(required = false) String userInfo) {
         JSONObject object = JSONObject.parseObject(userInfo);
         String phonenumber = object.getString("phonenumber");
+        JSONObject result = new JSONObject();
         User currentUser = userService.getUser(phonenumber);
         if(currentUser!=null){
-            return new ResponseTemplate(200,"Success",currentUser);
+            result.put("sex",currentUser.getUser_sex());
+            result.put("username",currentUser.getUser_name());
+            return new ResponseTemplate(200,"Success",result);
         }
         return new ResponseTemplate(200,"Success");
     }
