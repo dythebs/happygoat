@@ -76,7 +76,7 @@ public class UserController {
         String Verification_code = object.getString("code");
         JSONObject result = new JSONObject();
         if(mp_phone.get(phonenumber).equals(Verification_code)){
-            userService.insert(phonenumber);
+            userService.insert(phonenumber,password);
             User user = new User();
             user.setUser_phone(phonenumber);
             user.setUser_password(password);

@@ -17,7 +17,8 @@
     USER.USER_QQ,
     USER.USER_WECHAT,
     USER.USER_HEADIMG,
-    USER.USER_NAME
+    USER.USER_NAME,
+    USER.USER_PASSWORD
     FROM USER, SIGNON
     WHERE USER.USER_PHONE = #{phonenumber}
     AND SIGNON.PHONE = USER.USER_PHONE
@@ -25,9 +26,9 @@
 
     <insert id="insertAccount" parameterType="csu.edu.happygoat.domain.User">
     INSERT INTO USER
-    (USER_NAME,USER_ID,USER_NICKNAME,USER_SEX,USER_CITY,USER_REALNAME,USER_ZIP,USER_ADDRESS,USER_QQ,USER_WECHAT,USER_HEADIMG,USER_PHONE)
+    (USER_ID,USER_NAME,USER_NICKNAME,USER_SEX,USER_REALNAME,USER_ADDRESS,USER_ZIP,USER_PHONE,USER_QQ,USER_WECHAT,USER_HEADIMG,USER_PASSWORD,USER_CITY)
     VALUES
-    (NULL, 0, NULL, NULL, NULL, NULL, NULL,NULL, NULL, NULL,NULL, #{user_phone})
+    (0, NULL, NULL, NULL, NULL, NULL, NULL,#{user_phone}, NULL, NULL,NULL, #{user_password},NULL)
     </insert>
 
     <!--<update id="updateSignon" parameterType="com.software.jpetstore.domain.Account">-->
@@ -36,8 +37,8 @@
     <!--</update>-->
 
     <insert id="insertSignon" parameterType="csu.edu.happygoat.domain.User">
-    INSERT INTO SIGNON (USERNAME,PASSWORD)
-    VALUES (#{user_name}, 0)
+    INSERT INTO SIGNON (PHONE,PASSWORD)
+    VALUES (#{user_phone}, #{user_password})
     </insert>
     <!--<select id="getAccountByUsernameAndPassword" parameterType="com.software.jpetstore.domain.Account" resultType="com.software.jpetstore.domain.Account">-->
     <!--SELECT-->
