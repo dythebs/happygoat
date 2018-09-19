@@ -1,7 +1,5 @@
 import numpy as np 
-import cv2
 import socket
-import threading
 import time
 import random
 import os

@@ -22,13 +22,14 @@ class Filter extends React.Component {
   handleFilter(index){
     // if(this.props.filter!==undefined){
     //   this.props.filter();
-    console.log("--")
-      let {active} = this.state;
-      active.fill(0);
-      active[index] = 1;
-      this.setState({
-        active:active
-      })
+    // console.log("--")
+    //   let {active} = this.state;
+    //   active.fill(0);
+    //   active[index] = 1;
+    //   this.setState({
+    //     active:active
+    //   })
+      this.props.filter(index,this.props.index);
     // }
   }
    render(){

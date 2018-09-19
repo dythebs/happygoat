@@ -10,9 +10,10 @@
   font-family: Verdana, Arial, sans-serif;
   line-height: 20px;
    position: relative;
+
 }*/
 
-a {
+.navbar-component a {
   color: #ddd;
   text-decoration: none;
   transition: all 0.3s linear 0s;

@@ -1,4 +1,4 @@
-import {ADD_TO_CART,DEL_FROM_CART,CLEAR_CART} from "../action/ActionType"
+import {ADD_TO_CART,DEL_FROM_CART,CLEAR_CART,SET_TOKEN} from "../action/ActionType"
 const debug = false;
 const initialState = {
   data:[
@@ -21,7 +21,8 @@ const initialState = {
     //     }
     //   ]
     // }
-  ]
+  ],
+  token:''
 }
 var reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -29,6 +30,10 @@ var reducer = (state = initialState, action) => {
     //   return Object.assign({}, state, {
     //     test: action.test
     //   });
+    case SET_TOKEN:
+      return Object.assign({},state,{
+        token:action.token
+      })
     case ADD_TO_CART:
       let flag = false;
       for(let i=0;i<state.data.length;i++){

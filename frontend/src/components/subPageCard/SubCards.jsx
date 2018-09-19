@@ -13,6 +13,7 @@ class SubCards extends React.Component {
 
       data:this.props.datas,
       ll: false,
+      type:this.props.type
       // data: [
       //   {
       //     "img": "iq.dxlfile.com/mall/original/2017-09/20170915143021306.jpg-w363h281",
@@ -46,7 +47,7 @@ class SubCards extends React.Component {
     }
   }
   render() {
-    const { data, ll } = this.state;
+    const { data, type } = this.state;
     // const item = data[0];
     // console.log(item.title);
     console.log(data);
@@ -55,7 +56,7 @@ class SubCards extends React.Component {
       <div className="container">
         {
           data.map((item, index) => (
-            <SubCard item={item} key={index} />
+            <SubCard item={item} key={index} type={type}/>
           ))
         }
       </div >)

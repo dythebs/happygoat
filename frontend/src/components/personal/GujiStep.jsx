@@ -46,7 +46,7 @@ class GujiStep extends React.Component {
 			selected: this.props.selected,
 			priceRange: [0, '0k-0', '0k-0', 0],
 			sumPrice:'',
-			sumIndex:0,
+			sumIndex:-1,
 			value:1
 		}
 		this.clickItem = this.clickItem.bind(this);
@@ -129,20 +129,20 @@ class GujiStep extends React.Component {
 			<div className='guji-contaniner'>
 				{
 					step === 0 &&
-					<div className=''>
-						<div className='step0-container'>
-							<h2>请选择您需要的服务</h2>
-						</div>
-						<div className='img-contaniner'>
-							{
-								selectItems.map((item, index) => (
-									<div key={index} className={['img', selected[index] === 1 ? 'selected' : ''].join(' ')} onClick={() => this.clickItem(index)}>
-										<p>{item.title}</p>
-										<img src={item.img} />
-									</div>
-								))
-							}
-						</div>
+					// <div className=''>
+					// <div className='step0-container'>
+					// 	<h2>请选择您需要的服务</h2>
+					// </div>
+					<div className='img-contaniner'>
+						{
+							selectItems.map((item, index) => (
+								<div key={index} className={['img', selected[index] === 1 ? 'selected' : ''].join(' ')} onClick={() => this.clickItem(index)}>
+									<p>{item.title}</p>
+									<img src={item.img} />
+								</div>
+							))
+						}
+					{/* </div> */}
 					</div>
 				}
 				{
@@ -160,7 +160,7 @@ class GujiStep extends React.Component {
 						<div className='range'>
 							{
 								priceRange.map((item, index) => (
-									<div key={index} className='rangeItem' onClick={()=>this.selectPrice(index)} >
+									<div key={index} className={['rangeItem',index===sumIndex?'clicked':''].join(' ')} onClick={()=>this.selectPrice(index)} >
 										{item}k
 									</div>
 								))

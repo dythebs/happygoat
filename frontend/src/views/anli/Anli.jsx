@@ -9,6 +9,7 @@ import "./anli.css"
 import Footer_ from '../../components/footer/Footer_';
 import Filter from '../../components/filter/Filter';
 import Loading from '../../components/loading/Loading';
+import { message } from "antd";
 
 const loc = 'sh';
 const debug = true;
@@ -19,6 +20,7 @@ class Anli extends React.Component {
         super(props);
         this.state = {
             loading: false,
+            filter:'',
             url: "https://sh.daoxila.com/HunQing/Shop/AnLi",
             // 筛选的条目
             clearfixs:
@@ -80,6 +82,41 @@ class Anli extends React.Component {
         this.loadData();
     }
 
+    handleFilter = (index,filter) => {
+        this.setState({
+            // filter:filter,
+            loading:false
+        })
+        const {clearfixs} = this.state
+        // let url_ = urlSample +'/'+ yusuan[index];
+        let url_ = clearfixs[filter][index].href;
+        let url = encodeURIComponent(url_).replace(new RegExp("%", "g"), '~');
+        console.log(url);
+        let that = this;
+        fetch(ajaxhost + '/search/hunlicehua/' + url, {
+            method: 'GET'
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then(function (result) {
+                    debug && console.log('loading', result);
+                    that.setState({
+                        clearfixs: result.clearfixs,
+                        datas: result.datas,
+                        pages: result.pages,
+                        loading: true
+                    })
+                }).catch((res) => {
+                    message.warning('没有符合要求的案例哦~')
+                    console.log(res);
+                    that.setState({
+                        loading:true
+                    })
+                })
+            }
+        }).catch((res) => {
+            console.log(res);
+        })
+    }
     loadData() {
         let page = this.props.match.params.page;
         let url_;
@@ -175,12 +212,12 @@ class Anli extends React.Component {
                    <TopNavbar />
                    <SuspendBar />
                    <div className="filter-container">
-                       <Filter title="婚礼预算" datas={clearfixs["yusuan"]} />
-                       <Filter title="婚礼风格" datas={clearfixs["fengge"]} />
-                       <Filter title="主题颜色" datas={clearfixs["zhuti"]} />
-                       <Filter title="所在区域" datas={clearfixs["quyu"]} />
+                       <Filter title="婚礼预算" datas={clearfixs["yusuan"]} index='yusuan' filter={this.handleFilter} />
+                       <Filter title="婚礼风格" datas={clearfixs["fengge"]} index='fengge' filter={this.handleFilter} />
+                       <Filter title="主题颜色" datas={clearfixs["zhuti"]} index='zhuti' filter={this.handleFilter} />
+                       <Filter title="所在区域" datas={clearfixs["quyu"]} index='quyu' filter={this.handleFilter} />
                    </div>
-                   <SubCards datas={datas} />
+                   <SubCards datas={datas} type='anli' />
 
                    <div className="pagination-custom">
                        <Pagination defaultCurrent={current} total={total} onChange={this.changePage} />

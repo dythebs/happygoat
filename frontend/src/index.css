@@ -31,3 +31,16 @@
     color-stop(0.72, rgb(73, 125, 189)),
     color-stop(0.86, rgb(28, 58, 148)));
 }
+
+.ant-upload-list-item-error,
+.ant-upload-list-item-error .anticon-paper-clip,
+.ant-upload-list-item-error .ant-upload-list-item-name {
+  color: #000000!important;
+}
+
+a.detail{
+  color:#000000;
+}
+a.detail:hover {
+  color:#1c3a94
+}

@@ -166,7 +166,7 @@ class Todo extends React.Component {
     const { data, moving ,toggle} = this.state;
     return (
       <div id='todolist' className='todo'>
-        <h1>婚礼进度</h1>
+        <h1 className='title'>婚礼进度</h1>
         <div className='todoArea'>
           {
             data.map((item, index) => (

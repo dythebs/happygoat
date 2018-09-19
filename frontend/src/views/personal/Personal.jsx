@@ -55,7 +55,12 @@ class Personal extends React.Component {
                     <aside>
                         <ul>
                             {/* <li><button onClick={this.rmrf}></button></li> */}
-                            <li className={index === 0 ? 'active' : ''} onClick={() => this.changeContent(1)}><h1></h1>
+                            <li className={index === 0 ? 'active' : ''} onClick={() => this.changeContent(1)}>
+                            {/* <h1></h1> */}
+                                <div className="nav-item">
+                                    <Icon type="user" theme="outlined" />
+                                    <span>个人信息</span>
+                                </div>
                             </li>
                             <li className={index === 1 ? 'active' : ''} onClick={() => this.changeContent(2)}>
                                 <div className="nav-item">
