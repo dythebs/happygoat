@@ -25,6 +25,7 @@ for li in lis:
 	data_dict['summary'] = info.p.text
 	price = info.find('p', class_='price')
 	data_dict['price'] = price.text
+	data_dict['img'] = 'https:' + li.a.div.img['src']
 	datas.append(data_dict)
 
 res = {}
