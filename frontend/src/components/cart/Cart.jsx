@@ -74,9 +74,9 @@ class Cart extends React.Component {
               }
             </div>
           </div>
-          <div className="message-box">
+          <div className="message-box" style={{border:'none'}}>
             <button className="message-submit clear-button" onClick={this.props.clearCart}>清空</button>
-            <Link className="message-submit" to='/Personal/#cart'>查看详情</Link>
+            <Link className="message-submit" to='/Center/1'>查看详情</Link>
           </div>
         </div>
       </div>

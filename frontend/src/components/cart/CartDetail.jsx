@@ -2,6 +2,7 @@ import React from 'react'
 import './cartDetail.css'
 import { connect } from "react-redux";
 import * as Actions from "../../action/ActionType"
+import ajaxhost from '../../ajaxhost';
 class CartDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -10,19 +11,41 @@ class CartDetail extends React.Component {
     }
     console.log('cartData', this.props.data);
   }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props !== nextProps ){
+      this.setState({
+        data:nextProps.cartData
+      })
+    }
+  }
   render() {
     const { data } = this.state;
     let dataHtml = '';
     console.log(data,"shoucangjia");
     if (data === undefined || JSON.stringify(data) === '[]' ) {
-      dataHtml = <p>你的收藏夹空空如也</p>
+      dataHtml = <p style={{textAlign:'center'}}>你的收藏夹空空如也</p>
     } else {
       dataHtml = data.map((item, index) => (
-        <div key={index} className="cartSection">
-          <img src={item.img} alt="" className="itemImg" />
-          <p className="itemNumber">{item.title}</p>
-          <h3>{item.detail}</h3>
-        </div>
+        <li className="items">
+
+          <div className="infoWrap">
+            <div key={index} className="cartSection">
+              <img src={item.img} alt="" className="itemImg" />
+              <p className="itemNumber">
+                <a className='detail' target='_blank' href={ajaxhost + item.href}>{item.title}</a>
+              </p>
+              <h3>{item.detail}</h3>
+              <div className="prodTotal cartSection">
+                <p>{item.price}</p>
+              </div>
+            </div>
+
+            <div className="cartSection removeWrap" onClick={() => this.props.delproduct(item.title)}>
+              <a href="#" className="remove">x</a>
+            </div>
+          </div>
+        </li>
       ))
     }
     return (
@@ -31,19 +54,8 @@ class CartDetail extends React.Component {
           <h1 className="projTitle">收藏夹</h1>
           <div className="cart">
             <ul className="cartWrap">
-              <li className="items odd">
-
-                <div className="infoWrap">
-                  {dataHtml}
-                  {/* <div className="prodTotal cartSection">
-                    <p>$15.00</p>
-                  </div> */}
-                  <div className="cartSection removeWrap">
-                    <a href="#" className="remove">x</a>
-                  </div>
-                </div>
-              </li>
-              <li className="items even">
+              {dataHtml}
+              {/* <li className="items even">
 
                 <div className="infoWrap">
                   <div className="cartSection">
@@ -54,7 +66,7 @@ class CartDetail extends React.Component {
 
                     {/* <p> <input type="text" className="qty" placeholder="3" /> x $5.00</p>
 
-                    <p className="stockStatus"> In Stock</p> */}
+                    <p className="stockStatus"> In Stock</p>
                   </div>
 
 
@@ -65,7 +77,7 @@ class CartDetail extends React.Component {
                     <a href="#" className="remove">x</a>
                   </div>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

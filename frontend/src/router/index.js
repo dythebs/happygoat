@@ -21,7 +21,8 @@ class RouterIndex extends React.Component{
                     <Redirect from="/AnLi/page/:page" to="/AnLi/:page"exact component={Anli}></Redirect>
                     <Route path="/Jiudian/:page" exact render={props => <Jiudian {...props}/>}></Route>
                     <Route path="/Sheying/:page" exact render={ props => <Sheying {...props}/>}></Route>
-                    <Route path='/Center' render={ props => <Personal {...props}/>}></Route>
+                    <Route path='/Center' exact render={ props => <Personal {...props}/>}></Route>
+                    <Route path='/Center/:index' exact render={ props => <Personal {...props}/>}></Route>
                     <Route path='/Sign' render={ props => <Sign {...props} />}></Route>
                     <Route path='/temp' render={ props => <Story {...props} />}></Route>
                     <Route path='/404' render={ props => <Egg {...props } />}></Route>

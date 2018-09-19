@@ -1,38 +1,38 @@
 import React from 'react'
-import {Icon, message} from 'antd';
+import { Icon, message } from 'antd';
 import { connect } from 'react-redux'
 import * as Actions from "../../action/ActionType"
 import ajaxhost from '../../ajaxhost';
 
 const htttps = "https://";
 class SubCard extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      zan:this.props.item.zan,
-      img:htttps + this.props.item.img,
-      title:this.props.item.title,
-      changdi:this.props.item.changdi,
+      zan: this.props.item.zan,
+      img: htttps + this.props.item.img,
+      title: this.props.item.title,
+      changdi: this.props.item.changdi,
       shoppic: htttps + this.props.item.shoppic,
-      span:this.props.item.span,
-      shopname:this.props.item.shopname,
-      tags:this.props.item.tags,
-      cast:this.props.item.cast,
-      type:this.props.type,
+      span: this.props.item.span,
+      shopname: this.props.item.shopname,
+      tags: this.props.item.tags,
+      cast: this.props.item.cast,
+      type: this.props.type,
       anlihref: props.item.anlihref,
 
       href: this.props.href,
       summary: this.props.summary,
       price: this.props.item.price,
-      img_:this.props.item.img
+      img_: this.props.item.img
     }
 
     this.addAnliToCart = this.addAnliToCart.bind(this)
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log("subCard",this.props,nextProps);
-    if (nextProps!==this.props) {
+  componentWillReceiveProps(nextProps) {
+    console.log("subCard", this.props, nextProps);
+    if (nextProps !== this.props) {
       this.setState({
         zan: nextProps.item.zan,
         img: "https://" + nextProps.item.img,
@@ -42,28 +42,52 @@ class SubCard extends React.Component {
         span: nextProps.item.span,
         shopname: nextProps.item.shopname,
         tags: nextProps.item.tags,
-        cast:nextProps.item.cast,
-        anlihref:nextProps.item.anlihref,
-        type:nextProps.type,
-        href:nextProps.href,
-        summary:nextProps.summary,
-        price:nextProps.item.price
+        cast: nextProps.item.cast,
+        anlihref: nextProps.item.anlihref,
+        type: nextProps.type,
+        href: nextProps.href,
+        summary: nextProps.summary,
+        price: nextProps.item.price,
+        img_:this.props.item.img
       })
     }
   }
 
-  addAnliToCart(){
-    const { title, shopname, tags} = this.state;
-    let select = this.state;
+  addAnliToCart() {
+    const { title, shopname, tags, cast, anlihref, img } = this.state;
+    let select = {};
     select.detail = title + shopname + tags.join(' ');
+    select.price = cast;
+    select.type = 'anli';
+    select.img = img
+    select.href = '/detail/hunlicehua/https~3A~2F~2Fsh.daoxila.com' + encodeURIComponent(anlihref).replace(new RegExp("%", "g"), '~');
     message.info('已添加');
     this.props.addproduct(select);
   }
-   render(){
-    const {zan,img,title,changdi,shoppic,shopname,span,tags,cast,type,href,summary,price,img_,anlihref} = this.state;
+
+  addMiyueToCart = () => {
+    const { summary, title, price, img_ } = this.state;
+    let select = {};
+
+    if(summary === undefined){
+      select.detail = price
+    } else {
+      select.detail = price + " " + summary;
+    }
+    select.summary = summary;
+    select.price = price;
+    select.title = title;
+    select.img = img_;
+    select.type = 'miyue';
+    select.href = '/detail/miyue/' + encodeURIComponent(select.href).replace(new RegExp("%", "g"), '~')
+    message.info('已添加');
+    this.props.addproduct(select);
+  }
+  render() {
+    const { zan, img, title, changdi, shoppic, shopname, span, tags, cast, type, href, summary, price, img_, anlihref } = this.state;
     let tagsH, changdiH;
 
-    if(type === 'anli'){
+    if (type === 'anli') {
       if (tagsH === []) {
         tagsH = ""
       } else {
@@ -97,8 +121,8 @@ class SubCard extends React.Component {
               {tagsH}
               <div className="cast">{cast}</div>
               <h1 className="title">
-              {console.log(anlihref)}
-                <a className='detail' target='_blank' href={ajaxhost + '/detail/hunlicehua/https~3A~2F~2Fsh.daoxila.com' + encodeURIComponent( anlihref ).replace(new RegExp("%", "g"), '~')}>{title}</a>
+                {console.log(anlihref)}
+                <a className='detail' target='_blank' href={ajaxhost + '/detail/hunlicehua/https~3A~2F~2Fsh.daoxila.com' + encodeURIComponent(anlihref).replace(new RegExp("%", "g"), '~')}>{title}</a>
               </h1>
               <h2 className="sub_title">{shopname}</h2>
               {changdiH}
@@ -112,26 +136,23 @@ class SubCard extends React.Component {
           </div>
         </div>
       );
-    } else if( type === 'miyue') {
+    } else if (type === 'miyue') {
       // console.log(this.props.item,'.......')
       return (
         <div className="column">
           <div className="post-module">
             <div className="thumbnail">
-              <div className="date">
+              <div className="date" onClick={this.addMiyueToCart}>
                 <div className="day">
                   <Icon type="heart" theme="outlined" />
                 </div>
               </div>
               <img src={img_} />
-              {/* <div className='mask'>
-              <button className='fill'><Icon type="star" theme="outlined" onClick={this.addAnliToCart} /></button>
-            </div> */}
             </div>
             <div className="post-content">
               <div className="cast">{price}</div>
               <h1 className="title">
-                <a className='detail' target='_blank' href={ajaxhost + '/detail/miyue/' + encodeURIComponent({href}).replace(new RegExp("%", "g"), '~')}>{title}</a>
+                <a className='detail' target='_blank' href={ajaxhost + '/detail/miyue/' + encodeURIComponent({ href }).replace(new RegExp("%", "g"), '~')}>{title}</a>
               </h1>
               <div className="post-meta">
                 <span className="timestamp">{summary}</span>
@@ -142,7 +163,8 @@ class SubCard extends React.Component {
         </div>
       )
     }
-}}
+  }
+}
 
 function mapStateToProps(state) {
   return {

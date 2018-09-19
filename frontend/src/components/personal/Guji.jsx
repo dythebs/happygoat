@@ -11,10 +11,12 @@ const steps = [{
 }, {
 	title: '选择总预算',
 	content: 'Second-content',
-}, {
-	title: '选择预算方案',
-	content: 'Last-content',
-}, {
+},
+// {
+// 	title: '选择预算方案',
+// 	content: 'Last-content',
+// },
+ {
 	title: '获得推荐方案',
 	content: ''
 }];
@@ -82,10 +84,10 @@ class Guji extends React.Component {
 						current === 2 &&
 						<GujiStep step={2} selected={selected} handle={this.handleComplete} />
 					}
-					{
+					{/* {
 						current === 3 &&
 						<GujiStep step={3} selected={selected} handle={this.handleComplete} />
-					}
+					} */}
 				</div>
 				<div className="steps-action">
 					{

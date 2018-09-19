@@ -1,10 +1,10 @@
 import React from 'react'
 import './personalC.css'
-import { Avatar, Form, Icon, Input, Button, Checkbox, Radio } from "antd";
+import { Avatar, Form, Icon, Input, Button, Checkbox, Radio ,message} from "antd";
 import RadioGroup from '../../../node_modules/antd/lib/radio/group';
 import { withFormik } from "formik";
 import * as yup from 'yup';
-
+import ajaxhost from '../../ajaxhost';
 const FormItem = Form.Item;
 class Info extends React.Component {
   constructor(props) {
@@ -13,19 +13,21 @@ class Info extends React.Component {
       // 0 表示只读，1 表示编辑
       type: 0,
       // 1 女 2 男
-      sex: 1,
-      user_data: {
-        name: 'ZZZ',
-        phone: '18774900335',
-      },
+
+
+      username: 'ZZZ',
+      phone: '18774900335',
+      sex: '',
+      tip:'我是攻略我是攻略我是攻略',
       erpassword: '',
       ephone: '',
       rpassword: this.props.values.rpassword,
     }
     this.clickSetting = this.clickSetting.bind(this);
+    this.handleRepassword = this.handleRepassword.bind(this);
   }
 
-    validataPhone = (number) => {
+  validataPhone = (number) => {
     let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
     if (!myreg.test(number)) {
       return false;
@@ -47,11 +49,42 @@ class Info extends React.Component {
     }
   }
   handleSubmit = (e) => {
-    if(this.validataPhone(this.props.uphone)){
-
+    if (this.validataPhone(this.props.uphone)) {
+      let formData = {};
+      let that = this;
+      // formData.phonenumber = sessionStorage.getItem('phone');
+      formData.phonenumber = this.props.values.uphone;
+      formData.username = this.props.values.uname;
+      formData.city = this.props.values.ucity;
+      formData.password = this.props.values.password;
+      console.log(formData.phonenumber);
+      fetch(ajaxhost + '/edit', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json,text/plain,*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      }).then((res) => {
+        if (res.ok) {
+          res.json().then(function (result) {
+            if (result.code === 200) {
+              console.log(result);
+              if (result.message === 'Success') {
+                message.success('修改成功')
+                that.setState({
+                  phone: formData.phonenumber,
+                  username: result.data.username
+                },
+                  that.clickSetting())
+              }
+            }
+          })
+        }
+      })
     } else {
       this.setState({
-        ephone:'请输入正确的手机号'
+        ephone: '请输入正确的手机号'
       })
     }
     // e.preventDefault();
@@ -64,6 +97,32 @@ class Info extends React.Component {
 
   componentDidMount() {
     // 请求用户个人信息数据
+    let formData = {};
+    let that = this;
+    // formData.phonenumber = sessionStorage.getItem('phone');
+    formData.phonenumber = '18774851735';
+    console.log(formData.phonenumber);
+    fetch(ajaxhost + '/getMessage', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json,text/plain,*/*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then(function (result) {
+          if (result.code === 200) {
+            console.log(result);
+            that.setState({
+              phone: formData.phonenumber,
+              sex: result.data.sex,
+              username: result.data.username
+            })
+          }
+        })
+      }
+    })
   }
 
   handleRepassword(e) {
@@ -86,15 +145,20 @@ class Info extends React.Component {
   render() {
     //  const { getFieldDecorator } = this.props.form;
     const { values, handleChange, handleBlur, handleSubmit, touched, errors } = this.props;
-    const { type, user_data, ephone, erpassword, rpassword } = this.state;
+    const { type, phone, sex, username, ephone, erpassword, rpassword, tip } = this.state;
 
     let form = '';
+    let tip_ = '';
     if (type === 0) {
       form = <div className='info_display'>
-        <p>用户名:<span>{user_data.name} </span></p>
-        <p>性别:<span>XXXX </span></p>
-        <p>绑定手机号:<span>{user_data.phone}</span></p>
+        <p>用户名:<span>{username} </span></p>
+        <p>性别:<span>{sex} </span></p>
+        <p>绑定手机号:<span>{phone}</span></p>
+      </div>;
+      tip_ = <div className='content tip'>
+        <p>{tip}</p>
       </div>
+
     } else {
       form = <Form onSubmit={this.handleSubmit} className="login-form">
         <FormItem
@@ -109,12 +173,25 @@ class Info extends React.Component {
             onBlur={handleBlur}
           />
         </FormItem>
-        <FormItem label='性别'>
+
+        <FormItem>
+          <Input
+            name='ucity'
+            // <Icon type="environment" theme="outlined" />
+            prefix={<Icon type="environment" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="城市"
+            value={values.ucity}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </FormItem>
+
+        {/* <FormItem label='性别'>
           <RadioGroup className='form_sex' onChange={this.onChange} value={this.state.sex}>
             <Radio value={1}>男</Radio>
             <Radio value={2}>女</Radio>
           </RadioGroup>
-        </FormItem>
+        </FormItem> */}
         <FormItem
           help={touched.uphone && errors.uphone ? errors.uphone : '' + ephone}
         >
@@ -174,6 +251,7 @@ class Info extends React.Component {
           <div className='content'>
             {form}
           </div>
+          {tip_}
           <div className='setting' onClick={this.clickSetting}>
             <Icon type="setting" theme="outlined" />
           </div>
@@ -212,7 +290,7 @@ const validationSchema = yup.object().shape({
 
 export default Info = withFormik({
   validationSchema,
-  mapPropsToValues: () => ({ uname: "", uphone: "", password: "", rpassword: ""}),
+  mapPropsToValues: () => ({ uname: "", uphone: "", password: "", rpassword: "", ucity: '' }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
     if (errors) {

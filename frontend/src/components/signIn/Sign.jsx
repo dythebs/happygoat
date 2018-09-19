@@ -59,6 +59,7 @@ class Sign extends React.Component {
             if(result.data.status === 'success') {
               that.props.setToken(result.data.token);
               that.props.history.push('/home');
+              sessionStorage.setItem('phone',formData.phonenumber)
               message.success('登录成功');
             } else if(result.data.status === 'failed') {
               message.warning('账号不存在或密码错误');

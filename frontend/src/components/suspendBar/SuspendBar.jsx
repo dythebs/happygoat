@@ -9,7 +9,7 @@ class SuspendBar extends React.Component {
     this.state = {
       showchat:false,
       showcart:false,
-      percent:40
+      percent:0
     }
     this.showchat = this.showchat.bind(this);
     this.showcart = this.showcart.bind(this);
@@ -19,7 +19,25 @@ class SuspendBar extends React.Component {
 
   componentDidMount(){
     // 获得userid，获得进度,设置进度值
+
   }
+
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.pro !== this.state.percent){
+  //     this.setState({
+  //       percent:nextProps.pro
+  //     })
+  //   }
+  // }
+
+  // updatePercent(){
+  //   let p = sessionStorage.getItem('progress');
+  //   if (p !== undefined) {
+  //     this.setState({
+  //       percent:p
+  //     })
+  //   }
+  // }
   showchat(){
     this.setState({
       showchat:true

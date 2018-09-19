@@ -68,16 +68,13 @@ class JiudianCard extends React.Component {
     const { datas } = this.state;
     let select = datas[index];
     select.detail = select.cast + " " + select.opinions.join(" ");
+    // select.title = ;
+    select.price = select.cast;
+    select.type = 'jiudian';
+    select.href = '/detail/hunyanjiudian/' + encodeURIComponent(select.href).replace(new RegExp("%", "g"), '~')
     console.log(select);
     console.log(this.props);
     message.info("已添加");
-    // const {dispatch} = this.props;
-    // console.log(getCartItems());
-    // console.log();
-    // console.log("hu",index);
-    // addToCart(select);
-    // message.info('已添加');
-    // dispatch(Actions.addproduct(select));
     this.props.addproduct(select)
 
   }
@@ -89,7 +86,10 @@ class JiudianCard extends React.Component {
   addSheyingToCart(index){
     const { datas } = this.state;
     let select = datas[index];
+    select.href = '/detail/hunshasheying/' + encodeURIComponent(select.href).replace(new RegExp("%", "g"), '~');
     select.detail = select.cast + " " + select.tags.join(' ');
+    select.price = select.cast;
+    select.type = 'sheying';
     message.info('已添加');
     this.props.addproduct(select);
   }
@@ -115,7 +115,9 @@ class JiudianCard extends React.Component {
                   <img src={item["img"]} className="post-image" />
                   <div className="article-details">
                     <h3 className="post-title">
-                      <a className='detail' target='_blank' href={ajaxhost + '/detail/hunyanjiudian/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}>{item['title']}</a>
+                      <a className='detail' target='_blank'
+                      href={ajaxhost + '/detail/hunyanjiudian/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}
+                    >{item['title']}</a>
                     </h3>
                     <h3 className="j-cast">{item['cast']}</h3>
                     <div className="post-description j-room">
@@ -151,18 +153,16 @@ class JiudianCard extends React.Component {
               <div key={index} className="j-column sheying-img">
                 <div className="blog-card">
                   <img src={item["img"]} className="post-image" />
-                  <h3 className="post-title">
-                    <a className='detail' target='_blank' href={ajaxhost + '/detail/hunshasheying/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}>{item['title']}</a>
-                  </h3>
-                  <h3 className="j-cast">{item['cast']}</h3>
-
                   <div className="article-details">
-
+                    <h3 className="post-title">
+                      <a className='detail' target='_blank'
+                      href={ajaxhost + '/detail/hunshasheying/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}
+                      >{item['title']}</a>
+                    </h3>
+                    <h3 className="j-cast">{item['cast']}</h3>
                     {/* <div className="post-description j-room"> */}
-                      <p>{item['zone']}</p>
-                      <p>套系：{item['taoxi']}</p>
-                      <p>案例：{item['anli']}</p>
-                      <br/>
+                      <p>{item['zone']} <br/>套系：{item['taoxi']} 案例：{item['anli']}</p>
+
                     {/* </div> */}
                     <p className="post-author">
                       {
@@ -170,8 +170,8 @@ class JiudianCard extends React.Component {
                           <span key={i}>{opinion}</span>
                         ))
                       }
-                      <span className="star"><Icon type="star" theme="outlined" onClick={() => this.addSheyingToCart(index)} /></span>
                     </p>
+                    <p className="star"><Icon type="star" theme="outlined" onClick={() => this.addSheyingToCart(index)} /></p>
                   </div>
                 </div>
               </div>

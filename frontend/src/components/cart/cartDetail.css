@@ -243,8 +243,13 @@ body {
 }
 
 .cart-detail .cart .items .cartSection .itemImg {
-  width: 4em;
+  /* width: 4em; */
   float: left;
+      width: 30%;
+      object-fit: contain;
+      /* width: 8em; */
+      /* display: inline; */
+      padding-right: 1em;
 }
 
 .cart-detail .cart .items .cartSection.qtyWrap,
@@ -264,12 +269,6 @@ body {
   font-size: 1em;
   padding: .25em;
   margin: 1em .5em 0 0;
-}
-
-.cart-detail .cart .items .cartSection .itemImg {
-  width: 8em;
-  display: inline;
-  padding-right: 1em;
 }
 
 .special {

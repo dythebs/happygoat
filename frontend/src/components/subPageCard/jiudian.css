@@ -67,6 +67,7 @@
 }
 .article-details .star {
   font-size:20px;
+ margin-bottom:-1em;
   cursor: pointer;
 }
 .post-category {
@@ -120,12 +121,16 @@
   max-width: 550px!important;
 }
 .sheying-img .blog-card {
-  height: 10em;
+  height: 16em;
 }
 
 .sheying-img .article-details {
-  width: 60%;
+  width: 85%;
   overflow-y: auto
+}
+
+.sheying-img .article-details p {
+  margin-top:0
 }
 .sheying-img .j-room {
   min-height: 0

@@ -43,7 +43,10 @@
   margin: 1em auto;
   border-radius: 5px;
   overflow: auto;
-  height: 24em;
+  /* height: 12em; */
+}
+.tip {
+  height: 5em;
 }
 
 .info .info_display {

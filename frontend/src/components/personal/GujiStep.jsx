@@ -172,7 +172,7 @@ class GujiStep extends React.Component {
 					step === 2 &&
 					<div className='j-info'>
 						<div className='j-title'>
-							<h3>系统默认预算方案为右图 <br/>您可调节预算细节</h3>
+							<h3>系统推荐预算范围</h3>
 						</div>
 						<div className='j-range'>
 							{
@@ -181,14 +181,15 @@ class GujiStep extends React.Component {
 									// <div className='step2-contaniner'>
 									<div className='step2-info' key={index}>
 										<p>	{selectItems[index].title} </p>
-										<RadioGroup className='price-origin' onChange={this.onChange} defaultValue={sumIndex} value={this.state.value}>
+										<div></div>
+										{/* <RadioGroup className='price-origin' onChange={this.onChange} defaultValue={sumIndex} value={this.state.value}>
 											{
 												price[index].map((item, index) => (
 													// <span className={['price-item', index === sumIndex ? 'active' : '']}>{item}</span>
 													<Radio key={index} style={radioStyle} value={index}>{item}</Radio>
 												))
 											}
-										</RadioGroup>
+										</RadioGroup> */}
 									</div>
 									// </div>
 								))

@@ -146,7 +146,7 @@ class Sheying extends React.Component {
                    <TopNavbar />
                    <SuspendBar />
 
-                   <div className="filter-container">
+                   <div className="filter-container" style={{borderRadius:'10px'}}>
                        <Filter title="价格" datas={clearfixs["jiage"]} index='jiage' filter={this.handleFilter} />
                        <Filter title="区域" datas={clearfixs["quyu"]} index='quyu' filter={this.handleFilter} />
                        <Filter title="风格" datas={clearfixs["fengge"]} index='fengge' filter={this.handleFilter} />

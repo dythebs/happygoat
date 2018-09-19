@@ -40,10 +40,17 @@ class Story extends React.Component {
     }).then((res) => {
       if(res.ok) {
         console.log(res);
-        console.log(res.code);
+        // console.log(res.code);
+        //   that.setState({
+        //     story:res
+        //   })
+
+        res.json().then(function (result) {
+          console.log(result);
           that.setState({
-            story:res
+            story:result.data
           })
+        })
       }
     })
   }
@@ -60,7 +67,9 @@ class Story extends React.Component {
         </Dragger>
         <Button onClick={this.story}>生成</Button>
 
-        <p></p>
+        <div>
+          <p>{this.state.story}</p>
+        </div>
      </div>
     );
 }}
