@@ -1,5 +1,6 @@
-import { Upload, Icon, message } from 'antd';
+import { Upload, Icon, message, Button } from 'antd';
 import React from 'react'
+import ajaxhost from '../../ajaxhost';
 
 
 const Dragger = Upload.Dragger;
@@ -8,16 +9,16 @@ const Dragger = Upload.Dragger;
 const props = {
   name: 'file',
   multiple: true,
-  action: '//localhost:3000/images/',
+  action: '//localhost:8080/login',
   onChange(info) {
     const status = info.file.status;
-    if (status !== 'uploading') {
+    if (status !== '上传中') {
       console.log(info.file, info.fileList);
     }
     if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
+      message.success(`${info.file.name} 上传成功.`);
     } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
+      message.success(`${info.file.name} 上传成功.`);
     }
   },
 };
@@ -25,17 +26,42 @@ const props = {
 
 class Story extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      story:''
+    }
+  }
 
+  story = () => {
+    let that = this;
+    fetch(ajaxhost + '/story', {
+      method:'GET'
+    }).then((res) => {
+      if(res.ok) {
+        console.log(res);
+        console.log(res.code);
+          that.setState({
+            story:res
+          })
+      }
+    })
+  }
 
    render(){
     return(
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <Icon type="inbox" />
-        </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
-      </Dragger>
+     <div>
+        <Dragger {...props}>
+          <p className="ant-upload-drag-icon">
+            <Icon type="inbox" />
+          </p>
+          <p className="ant-upload-text">点击或拖拽图片上传</p>
+          <p className="ant-upload-hint">上传图片，生成专属恋爱小故事~</p>
+        </Dragger>
+        <Button onClick={this.story}>生成</Button>
+
+        <p></p>
+     </div>
     );
 }}
 export default Story

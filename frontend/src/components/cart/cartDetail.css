@@ -90,7 +90,7 @@ body {
 
 .cart-detail .projTitle {
   font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
   font-size: 2em;
   padding: 1em 0;

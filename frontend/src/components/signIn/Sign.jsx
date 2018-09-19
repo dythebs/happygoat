@@ -4,6 +4,8 @@ import * as yup from 'yup';
 import { Form, Icon, Input, message } from 'antd';
 import { withFormik } from "formik";
 import ajaxhost from '../../ajaxhost';
+import { connect } from 'react-redux'
+import * as Actions from "../../action/ActionType"
 
 const FormItem = Form.Item;
 class Sign extends React.Component {
@@ -39,8 +41,9 @@ class Sign extends React.Component {
     e.preventDefault();
     this.props.handleSubmit();
     let formData = {};
-    formData.phonenumber = this.props.phonenumber;
-    formData.password = this.props.password;
+    let that = this;
+    formData.phonenumber = this.props.values.ulphone;
+    formData.password = this.props.values.lpassword;
     console.log("params", formData);
     fetch(ajaxhost + '/login',{
       method:'POST',
@@ -53,7 +56,13 @@ class Sign extends React.Component {
       if(res.ok){
         res.json().then(function (result) {
           if(result.code === 200){
-            console.log();
+            if(result.data.status === 'success') {
+              that.props.setToken(result.data.token);
+              that.props.history.push('/home');
+              message.success('登录成功');
+            } else if(result.data.status === 'failed') {
+              message.warning('账号不存在或密码错误');
+            }
           }
         })
       }
@@ -66,7 +75,9 @@ class Sign extends React.Component {
     // formData.append('phonenumber',this.props.values.uphone);
     // formData.append('code',this.props.values.ucode);
     let formData = {};
+    let that = this;
     formData.phonenumber = this.props.values.uphone;
+    formData.password = this.props.values.password
     formData.code = this.props.values.ucode;
     console.log("params", formData);
     fetch(ajaxhost + '/regist', {
@@ -79,9 +90,14 @@ class Sign extends React.Component {
     }).then((res) => {
       if (res.ok) {
         res.json().then(function (result) {
+          console.log(result);
           if (result.code === 200) {
             console.log(result);
-
+            message.info("注册成功")
+            window.location.reload();
+          } else if(result.code === 400){
+            message.warning("验证码错误");
+            that.refs.ucode.value = ''
           }
         })
       }
@@ -107,6 +123,9 @@ class Sign extends React.Component {
       })
     }else{
       if (this.validataPhone(phone)) {
+        this.setState({
+          verifyCodeText:'重新发送'
+        })
         formData.phonenumber = this.props.values.uphone;
         // formData.append('phonenumber',this.props.values.uphone)
         fetch(ajaxhost + '/p_validation', {
@@ -152,7 +171,7 @@ class Sign extends React.Component {
     }, 1000);
   }
   render() {
-    const { pinkbox_, erpassword, rpassword, ephone } = this.state;
+    const { pinkbox_, erpassword, rpassword, ephone, verifyCodeText } = this.state;
     const { values, handleChange, handleBlur, handleSubmit, touched, errors } = this.props;
     // if()
     return (
@@ -228,16 +247,16 @@ class Sign extends React.Component {
 
                   <Input
                     name="ucode"
-
+                    ref='ucode'
                     type="text"
                     placeholder=""
                     value={values.ucode}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  <span style={{ color: '#fff' }} onClick={this.handlesend}>重新发送</span>
+                  <span style={{ color: '#fff' }} onClick={this.handlesend}>{verifyCodeText}</span>
                 </FormItem>
-                <button className="button submit">确定</button>
+                <button className="button submit" type="submit">确定</button>
               </Form>
             </div>
             <div className={["signin", pinkbox_ === 0 ? '' : 'nodisplay'].join(' ')}>
@@ -281,7 +300,7 @@ class Sign extends React.Component {
                   />
                 </FormItem>
                 <div className="checkbox">
-                  <input type="checkbox" id="remember" /><label for="remember">记住我</label>
+                  <input type="checkbox" id="remember" /><label htmlFor="remember">记住我</label>
                 </div>
                 <button className="button submit">登录</button>
               </Form>
@@ -350,7 +369,7 @@ const validationSchema = yup.object().shape({
     .required("请输入密码"),
 });
 
-export default Sign = withFormik({
+const Sign_ = withFormik({
   validationSchema,
   mapPropsToValues: () => ({ uname: "", uphone: "", password: "", rpassword: "", ucode: "",ulphone:'',lpassword:'' }),
   handleSubmit: async (values, { props, setErrors }) => {
@@ -360,3 +379,14 @@ export default Sign = withFormik({
     }
   }
 })(Sign);
+
+function mapStateToProps(state) {
+  return {
+    // data: state.data
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  // addproduct: item => dispatch(Actions.addproduct(item))
+  setToken:token => dispatch(Actions.setToken(token))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Sign_);

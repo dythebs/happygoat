@@ -74,6 +74,7 @@
 .post-module .thumbnail .date .month {
   font-size: 12px;
   margin-top: -10px;
+  cursor: pointer;
 }
 
 .post-module .thumbnail img {

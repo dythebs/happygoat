@@ -3,15 +3,28 @@ import './cartDetail.css'
 import { connect } from "react-redux";
 import * as Actions from "../../action/ActionType"
 class CartDetail extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      data:this.props.cartData
+      data: this.props.cartData
     }
-    console.log('cartData',this.props.data);
+    console.log('cartData', this.props.data);
   }
   render() {
-    const {data} = this.state;
+    const { data } = this.state;
+    let dataHtml = '';
+    console.log(data,"shoucangjia");
+    if (data === undefined || JSON.stringify(data) === '[]' ) {
+      dataHtml = <p>你的收藏夹空空如也</p>
+    } else {
+      dataHtml = data.map((item, index) => (
+        <div key={index} className="cartSection">
+          <img src={item.img} alt="" className="itemImg" />
+          <p className="itemNumber">{item.title}</p>
+          <h3>{item.detail}</h3>
+        </div>
+      ))
+    }
     return (
       <div className='cart-detail'>
         <div className="wrap cf">
@@ -21,38 +34,10 @@ class CartDetail extends React.Component {
               <li className="items odd">
 
                 <div className="infoWrap">
-
-                    if(data === undefined){
-                      <p>你的收藏夹空空如也</p>
-                    } else{
-                    data.map((item, index) => (
-                      // <div className='cart-item' key={index}>
-                      //   <img className="item-img" src={item.img} />
-                      //   <div className="item-detail">
-                      //     <p><a className='item-title'>{item.title}</a></p>
-                      //     <p>{item.detail}</p>
-                      //   </div>
-                      //   <span className='button-save'><Icon type="minus-circle" theme="outlined" onClick={() => this.delCart(index)} /></span>
-                      // </div>
-                      <div key={index} className="cartSection">
-                        <img src={item.img} alt="" className="itemImg" />
-                        <p className="itemNumber">{item.title}</p>
-                        <h3>{item.detail}</h3>
-
-                        {/* <p> <input type="text" className="qty" placeholder="3" /> x $5.00</p>
-
-                    <p className="stockStatus"> In Stock</p> */}
-                      </div>
-                    ))
-                    }
-
-
-
-
-
-                  <div className="prodTotal cartSection">
+                  {dataHtml}
+                  {/* <div className="prodTotal cartSection">
                     <p>$15.00</p>
-                  </div>
+                  </div> */}
                   <div className="cartSection removeWrap">
                     <a href="#" className="remove">x</a>
                   </div>

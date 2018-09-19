@@ -21,7 +21,11 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
-    background: transparent;
+    /* background: transparent; */
+        background: #fff;
+        padding: 0 1em 0 0;
+        margin: 1em;
+        border-radius: 10px;
 }
 
 .global-wrapper aside {
@@ -31,7 +35,9 @@ body {
     text-align: center;
     /* height:15em; */
     transition: all 0.3s ease-in-out;
-    border: 1px solid silver;
+    border-left: 1px solid silver;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .global-wrapper aside h1 {

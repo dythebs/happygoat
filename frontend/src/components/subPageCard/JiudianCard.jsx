@@ -1,8 +1,9 @@
 import React from 'react'
 import "./jiudian.css"
 import { Icon, message } from "antd";
-import { connect } from 'react-redux'
-import * as Actions from "../../action/ActionType"
+import { connect } from 'react-redux';
+import * as Actions from "../../action/ActionType";
+import ajaxhost from '../../ajaxhost';
 // import {addToCart,getCartItems, clearCart} from '../../utils/cartOperation';
 class JiudianCard extends React.Component {
   constructor(props) {
@@ -81,6 +82,10 @@ class JiudianCard extends React.Component {
 
   }
 
+  toDetail = (e,) => {
+    e.preventDefault();
+
+  }
   addSheyingToCart(index){
     const { datas } = this.state;
     let select = datas[index];
@@ -109,7 +114,9 @@ class JiudianCard extends React.Component {
                 <div className="blog-card">
                   <img src={item["img"]} className="post-image" />
                   <div className="article-details">
-                    <h3 className="post-title">{item['title']}</h3>
+                    <h3 className="post-title">
+                      <a className='detail' target='_blank' href={ajaxhost + '/detail/hunyanjiudian/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}>{item['title']}</a>
+                    </h3>
                     <h3 className="j-cast">{item['cast']}</h3>
                     <div className="post-description j-room">
                       {
@@ -144,17 +151,19 @@ class JiudianCard extends React.Component {
               <div key={index} className="j-column sheying-img">
                 <div className="blog-card">
                   <img src={item["img"]} className="post-image" />
-                  <h3 className="post-title">{item['title']}</h3>
+                  <h3 className="post-title">
+                    <a className='detail' target='_blank' href={ajaxhost + '/detail/hunshasheying/' + encodeURIComponent(item['href']).replace(new RegExp("%", "g"), '~')}>{item['title']}</a>
+                  </h3>
+                  <h3 className="j-cast">{item['cast']}</h3>
 
                   <div className="article-details">
-                    <h3 className="j-cast">{item['cast']}</h3>
-                    <div className="post-description j-room">
+
+                    {/* <div className="post-description j-room"> */}
                       <p>{item['zone']}</p>
                       <p>套系：{item['taoxi']}</p>
                       <p>案例：{item['anli']}</p>
                       <br/>
-                      <a href={item['href']}></a>
-                    </div>
+                    {/* </div> */}
                     <p className="post-author">
                       {
                         item['tags'].map((opinion, i) => (

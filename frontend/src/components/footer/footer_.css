@@ -15,20 +15,8 @@ footer_{
   font-size: 3px;
   margin-top: 2em;
   margin-bottom: 4em;
-  text-align:left;
-  text-decoration: none;
 }
-.footer-area2 {
-  font-size: 3px;
-  margin-top: 2em;
-  margin-bottom: 4em;
-  text-align:center;
-  text-decoration: none;
-}
-.footer-{
-  font-size: 1.5em;
-  margin-top:100px;
-	margin-bottom:100px;
-  margin-right:50px;
-  position: relative;
+
+.footer-area p {
+  text-align: center
 }
