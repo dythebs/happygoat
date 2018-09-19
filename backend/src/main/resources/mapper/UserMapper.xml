@@ -27,7 +27,7 @@
     INSERT INTO USER
     (USER_NAME,USER_ID,USER_NICKNAME,USER_SEX,USER_CITY,USER_REALNAME,USER_ZIP,USER_ADDRESS,USER_QQ,USER_WECHAT,USER_HEADIMG,USER_PHONE)
     VALUES
-    (#{user_name}, 0, NULL, NULL, NULL, NULL, NULL,NULL, NULL, NULL,NULL, #{user_phone})
+    (NULL, 0, NULL, NULL, NULL, NULL, NULL,NULL, NULL, NULL,NULL, #{user_phone})
     </insert>
 
     <!--<update id="updateSignon" parameterType="com.software.jpetstore.domain.Account">-->
