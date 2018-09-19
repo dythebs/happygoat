@@ -111,6 +111,18 @@ public class UserController {
         return new ResponseTemplate(200,"Success");
     }
 
+    //获取个人信息：需要json格式传入phonenumber
+    @RequestMapping(value = "getMessage",method = RequestMethod.POST)
+    public ResponseTemplate getMessage(@RequestBody(required = false) String userInfo) {
+        JSONObject object = JSONObject.parseObject(userInfo);
+        String phonenumber = object.getString("phonenumber");
+        User currentUser = userService.getUser(phonenumber);
+        if(currentUser!=null){
+            return new ResponseTemplate(200,"Success",currentUser);
+        }
+        return new ResponseTemplate(200,"Success");
+    }
+
     @RequestMapping(value = "test", method = RequestMethod.GET)
     @AuthToken
     public ResponseTemplate test(){
