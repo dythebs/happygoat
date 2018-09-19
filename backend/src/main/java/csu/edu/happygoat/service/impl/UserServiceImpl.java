@@ -19,9 +19,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void insert(String phonenumber) {
+    public void insert(String phonenumber,String password) {
         User user = new User();
         user.setUser_phone(phonenumber);
+        user.setUser_password(password);
         userMapper.insertAccount(user);
         userMapper.insertSignon(user);
     }

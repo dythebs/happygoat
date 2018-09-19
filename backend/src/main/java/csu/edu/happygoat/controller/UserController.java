@@ -76,7 +76,7 @@ public class UserController {
         String Verification_code = object.getString("code");
         JSONObject result = new JSONObject();
         if(mp_phone.get(phonenumber).equals(Verification_code)){
-            userService.insert(phonenumber);
+            userService.insert(phonenumber,password);
             User user = new User();
             user.setUser_phone(phonenumber);
             user.setUser_password(password);
@@ -108,6 +108,18 @@ public class UserController {
             user.setUser_password(password);
         }
         userService.update(user);
+        return new ResponseTemplate(200,"Success");
+    }
+
+    //获取个人信息：需要json格式传入phonenumber
+    @RequestMapping(value = "getMessage",method = RequestMethod.POST)
+    public ResponseTemplate getMessage(@RequestBody(required = false) String userInfo) {
+        JSONObject object = JSONObject.parseObject(userInfo);
+        String phonenumber = object.getString("phonenumber");
+        User currentUser = userService.getUser(phonenumber);
+        if(currentUser!=null){
+            return new ResponseTemplate(200,"Success",currentUser);
+        }
         return new ResponseTemplate(200,"Success");
     }
 
