@@ -4,8 +4,7 @@ import re
 import sys
 import json
 
-#url = sys.argv[1]
-url = 'https://www.daoxila.com/MiYue/Tours-141'
+url = sys.argv[1]
 
 html = requests.get(url).text
 html = html.replace('<head>', '<head><style type="text/css">#orderNow,#payNow,.hotel_logo,.dxl_logo,.guess,.talkwindow,.toolMain,.indexTool{ display: none ! important;}</style>')

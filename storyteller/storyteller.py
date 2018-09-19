@@ -3,6 +3,7 @@ import socket
 import time
 import random
 import os
+import json
 #import tensorflow as tf 
 
 '''
@@ -86,7 +87,6 @@ print(sess.run(y, feed_dict={x:[image], keep_prob:1.0}))
 '''
 
 
-
 with open('stories.txt', 'r', encoding='utf-8') as fp:
 	stories = fp.readlines()
 
@@ -96,7 +96,9 @@ def tcplink(sock, addr):
 		data = sock.recv(1024)
 		if not data or data.decode('utf-8') == 'exit':
 			break
-		sock.send((random.choice(stories).encode()))
+		res = {}
+		res['data'] = random.choice(stories)
+		sock.send((json.dumps(res).encode()))
 	sock.close()
 
 sk = socket.socket()

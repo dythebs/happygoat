@@ -1,6 +1,6 @@
 import React from 'react'
 import './personal.css'
-import {Icon} from "antd";
+import {Icon} from "antd"；
 import CartDetail from '../../components/cart/CartDetail';
 import TopNavbar from '../../components/navbar/TopNavbar';
 import Info from '../../components/personal/Info';

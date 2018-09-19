@@ -1,4 +1,18 @@
+footer_{
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+  height: 400px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* transition: all 0s ease; */
+}
 .footer-area {
+  font-size: 3px;
   margin-top: 2em;
   margin-bottom: 4em;
 }
