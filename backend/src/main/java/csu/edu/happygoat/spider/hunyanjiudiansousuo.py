@@ -23,6 +23,7 @@ for li in lis:
 	data_dict['title'] = li.find('a', class_='name')['title']
 	data_dict['img'] = li.article.a.img['src']
 	data_dict['cast'] = '￥ '+li.find('strong').text.replace(' ','').strip()
+	data_dict['href'] = base_url + li.find('a', class_='pic')['href']
 	opinions = li.find('div', class_='opinion clearfix').find_all('i')
 	opinions_list = []
 	for opinion in opinions:

@@ -25,8 +25,8 @@ class Egg extends React.Component {
     const {showloading} = this.state;
     let style = {
       cursor: 'pointer',
-      width:'58%',
-      margin:'8em auto 0',
+      width:'100%',
+      margin:'0 auto',
       display:'block',
       borderRadius:'10px',
       transition:'all .2 .3 ease-in-out',

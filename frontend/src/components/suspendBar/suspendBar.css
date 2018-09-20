@@ -14,6 +14,7 @@
   transition: 0.3s ease;
   color: #ffffff;
   text-align: center;
+  cursor: pointer;
 }
 .bar-button{
   outline: 0;

@@ -19,6 +19,11 @@ class CartDetail extends React.Component {
       })
     }
   }
+
+  delproduct = (title) => {
+    this.props.delproduct(title);
+    this.forceUpdate();
+  }
   render() {
     const { data } = this.state;
     let dataHtml = '';
@@ -41,7 +46,7 @@ class CartDetail extends React.Component {
               </div>
             </div>
 
-            <div className="cartSection removeWrap" onClick={() => this.props.delproduct(item.title)}>
+            <div className="cartSection removeWrap" onClick={() => this.delproduct(item.title)}>
               <a href="#" className="remove">x</a>
             </div>
           </div>

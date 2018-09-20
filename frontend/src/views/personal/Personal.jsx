@@ -35,11 +35,11 @@ class Personal extends React.Component {
     }
 
     changeContent(i) {
-        if(this.state.token !== undefined){
+        if(this.state.token !== undefined && this.state.token !== ''){
             this.setState({
                 index: i - 1
             })
-        } else if(i === 1 || i=== 5){
+        } else if(i === 2 || i=== 4){
             this.setState({
                 index: i - 1
             })

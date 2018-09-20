@@ -21,10 +21,10 @@ class SubCard extends React.Component {
       tags: this.props.item.tags,
       cast: this.props.item.cast,
       type: this.props.type,
-      anlihref: props.item.anlihref,
+      anlihref: this.props.item.anlihref,
 
-      href: this.props.href,
-      summary: this.props.summary,
+      href: this.props.item.href,
+      summary: this.props.item.summary,
       price: this.props.item.price,
       img_: this.props.item.img
     }
@@ -47,8 +47,8 @@ class SubCard extends React.Component {
         cast: nextProps.item.cast,
         anlihref: nextProps.item.anlihref,
         type: nextProps.type,
-        href: nextProps.href,
-        summary: nextProps.summary,
+        href: nextProps.item.href,
+        summary: nextProps.item.summary,
         price: nextProps.item.price,
         img_:this.props.item.img
       })
@@ -155,7 +155,7 @@ class SubCard extends React.Component {
             <div className="post-content">
               <div className="cast">{price}</div>
               <h1 className="title">
-                <a className='detail' target='_blank' href={ajaxhost + '/detail/miyue/' + encodeURIComponent({ href }).replace(new RegExp("%", "g"), '~')}>{title}</a>
+                <a className='detail' target='_blank' href={ajaxhost + '/detail/miyue/' + encodeURIComponent( href ).replace(new RegExp("%", "g"), '~')}>{title}</a>
               </h1>
               <div className="post-meta">
                 <span className="timestamp">{summary}</span>
