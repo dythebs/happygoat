@@ -4,7 +4,8 @@ import './suspendBar.css'
 import Chatbox from '../chatbox/Chatbox';
 import Cart from '../cart/Cart';
 import { connect } from "react-redux";
-import * as Actions from "../../action/ActionType"
+import * as Actions from "../../action/ActionType";
+import { withRouter } from "react-router-dom";
 class SuspendBar extends React.Component {
   constructor(props){
     super(props);
@@ -63,6 +64,10 @@ class SuspendBar extends React.Component {
       showchat:false
     })
   }
+
+  toDetail = () => {
+    this.props.history.push('/Center/3')
+  }
   render() {
     const {showchat,showcart,percent} = this.state;
     return (
@@ -73,7 +78,7 @@ class SuspendBar extends React.Component {
         <button className="bar-button" id="codepen" title="购物车" onClick={this.showcart}>
           <Icon type="star" theme="outlined" className="icon" />
         </button>
-        <button className="bar-button" id='progress' href="#" title="婚礼进度">
+        <button className="bar-button" id='progress' href="#" title="婚礼进度" onClick={this.toDetail}>
           <Progress type="circle" percent={percent} width={40} />
         </button>
         <BackTop>
@@ -92,4 +97,4 @@ const mapStateToProps = state => ({
   progress:state.progress
 })
 
-export default connect(mapStateToProps)(SuspendBar);
+export default connect(mapStateToProps)(withRouter(SuspendBar));
