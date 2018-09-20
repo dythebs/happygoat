@@ -7,6 +7,9 @@ import ajaxhost from '../../ajaxhost';
 import {Pagination} from "antd"
 import JiudianCard from '../../components/subPageCard/JiudianCard';
 
+import { connect } from "react-redux";
+import * as Actions from "../../action/ActionType"
+
 const loc = "sh";
 const debug = false;
 const urlSample = "https://" + loc + ".daoxila.com/HunYan"
@@ -145,3 +148,12 @@ class Jiudian extends React.Component {
 }
 
 export default Jiudian;
+
+// const mapStateToProps = state => ({
+//     progress: state.progress
+// })
+// const mapDispatchToProps = dispatch => ({
+//     setprogress: progress => dispatch(Actions.setProgress(progress))
+//     // clearCart: () => dispatch(Actions.clear_cart())
+// })
+// export default connect(mapStateToProps, mapDispatchToProps)(Jiudian);

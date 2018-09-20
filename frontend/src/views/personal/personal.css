@@ -22,10 +22,10 @@ body {
     height: 100%;
     width: 100%;
     /* background: transparent; */
-        background: #fff;
-        padding: 0 1em 0 0;
-        margin: 1em;
-        border-radius: 10px;
+    background: #fff;
+    padding: 0 1em 0 0;
+    margin: 1em;
+    border-radius: 10px;
 }
 
 .global-wrapper aside {
@@ -203,12 +203,12 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
-.global-wrapper aside:hover ~ #main {
+.global-wrapper aside:hover~#main {
     width: calc(100% - 302px);
     transition: all 0.3s ease-in-out;
 }
 
-.global-wrapper aside:hover ~ #main #blackout-on-hover {
+.global-wrapper aside:hover~#main #blackout-on-hover {
     position: absolute;
     background: black;
     width: 100%;
@@ -216,4 +216,24 @@ body {
     z-index: 10;
     opacity: 0.5;
     transition: opacity 0.3s ease-in-out;
+}
+
+.story-content {
+    width: 40%;
+    text-align: center;
+    vertical-align: middle;
+    background: #eb8989;
+    padding: 2em;
+    border-radius: 20px;
+    margin: 2em auto;
+    color: #fff;
+    transition: all .3s ease-in-out;
+}
+
+.story-content:hover {
+     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
+}
+.story-content button {
+    background: transparent;
+    margin-bottom: 1em;
 }

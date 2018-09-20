@@ -1,19 +1,21 @@
 import React from 'react'
 import "./slide.css"
+import { Link } from "react-router-dom";
 class Slide extends React.Component {
 
   render() {
+    const { img,title,span} = this.props
     return (
       <div className="blog-slider__wrp swiper-wrapper">
         <div className="blog-slider__item swiper-slide swiper-slide-active">
           <div className="blog-slider__img">
-            <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1535759872/kuldar-kalvik-799168-unsplash.jpg" alt="" />
+            <img src={img} alt="" />
           </div>
           <div className="blog-slider__content">
             <span className="blog-slider__code">案例推荐</span>
-            <div className="blog-slider__title">十里桃林</div>
-            <div className="blog-slider__text">中式梦幻|仙气十足|古韵情怀 </div>
-            <a href="#" className="blog-slider__button">查看更多</a>
+            <div className="blog-slider__title">{title}</div>
+            <div className="blog-slider__text">{span} </div>
+            <Link to='/Anli/1' className="blog-slider__button">查看更多</Link>
           </div>
         </div>
       </div>

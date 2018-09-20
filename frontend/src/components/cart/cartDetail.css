@@ -1,5 +1,5 @@
 .cart-detail {
-  background: #eb8989;
+  /* background: #eb8989; */
   height: 35em;
 }
 .cart-detail ol,
@@ -494,4 +494,9 @@ body {
     width: 100%;
     text-align: center;
   }
+}
+
+.cartWrap {
+      height: 26em;
+      overflow: auto;
 }

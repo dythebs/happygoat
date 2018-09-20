@@ -3,6 +3,8 @@ import { Icon, message } from 'antd';
 import { connect } from 'react-redux'
 import * as Actions from "../../action/ActionType"
 import ajaxhost from '../../ajaxhost';
+import LOCATION from '../../loc';
+
 
 const htttps = "https://";
 class SubCard extends React.Component {
@@ -56,7 +58,8 @@ class SubCard extends React.Component {
   addAnliToCart() {
     const { title, shopname, tags, cast, anlihref, img } = this.state;
     let select = {};
-    select.detail = title + shopname + tags.join(' ');
+    select.title = title
+    select.detail = shopname + tags.join(' ');
     select.price = cast;
     select.type = 'anli';
     select.img = img
@@ -122,7 +125,7 @@ class SubCard extends React.Component {
               <div className="cast">{cast}</div>
               <h1 className="title">
                 {console.log(anlihref)}
-                <a className='detail' target='_blank' href={ajaxhost + '/detail/hunlicehua/https~3A~2F~2Fsh.daoxila.com' + encodeURIComponent(anlihref).replace(new RegExp("%", "g"), '~')}>{title}</a>
+                <a className='detail' target='_blank' href={ajaxhost + '/detail/hunlicehua/https~3A~2F~2F'+LOCATION+'.daoxila.com' + encodeURIComponent(anlihref).replace(new RegExp("%", "g"), '~')}>{title}</a>
               </h1>
               <h2 className="sub_title">{shopname}</h2>
               {changdiH}

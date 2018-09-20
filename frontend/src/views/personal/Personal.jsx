@@ -120,7 +120,7 @@ class Personal extends React.Component {
                             <li className={index === 7 ? 'active' : ''} onClick={() => this.changeContent(8)}>
                                 <div className="nav-item">
                                     <Icon type="book" theme="outlined" />
-                                    <span>我的故事</span>
+                                    <span>我的祝福</span>
                                 </div>
                             </li>
                         </ul>

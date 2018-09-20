@@ -31,6 +31,7 @@ a.btn.next {
 }
 .cards {
   display: flex;
+  overflow: auto;
   /* flex-wrap: wrap; */
   justify-content: space-around;
   overflow: visible;

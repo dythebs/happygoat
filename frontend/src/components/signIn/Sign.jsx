@@ -222,7 +222,7 @@ class Sign extends React.Component {
                     name="password"
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     type="password"
-                    placeholder="Password"
+                    placeholder="密码"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -235,7 +235,7 @@ class Sign extends React.Component {
                     name="rpassword"
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     type="password"
-                    placeholder="Password"
+                    placeholder="重复密码"
                     value={rpassword}
                     onChange={this.handleRepassword}
                   // onInput={this.handleChange}

@@ -111,12 +111,13 @@ class GujiStep extends React.Component {
 
 	selectPrice(index) {
 		const {priceRange} = this.state;
+		// alert("...")
 		this.setState({
 			sumPrice:priceRange[index],
 			sumIndex:index,
 			value:index
-		})
-		this.props.handle();
+		}, this.props.handle())
+
 	}
 	render() {
 		const { step, selected, priceRange, num,sumIndex } = this.state;
@@ -160,7 +161,7 @@ class GujiStep extends React.Component {
 						<div className='range'>
 							{
 								priceRange.map((item, index) => (
-									<div key={index} className={['rangeItem',index===sumIndex?'clicked':''].join(' ')} onClick={()=>this.selectPrice(index)} >
+									<div key={index} className={['rangeItem',index===this.state.sumIndex?'clicked':''].join(' ')} onClick={()=>this.selectPrice(index)} >
 										{item}k
 									</div>
 								))
@@ -171,17 +172,19 @@ class GujiStep extends React.Component {
 				{
 					step === 2 &&
 					<div className='j-info'>
-						<div className='j-title'>
-							<h3>系统推荐预算范围</h3>
-						</div>
+						{/* <div className='r-title'>
+						</div> */}
 						<div className='j-range'>
+							<h3 className='r-info'>系统推荐预算范围</h3>
 							{
 								selected.map((item, index) => (
 									item === 1 &&
 									// <div className='step2-contaniner'>
 									<div className='step2-info' key={index}>
 										<p>	{selectItems[index].title} </p>
-										<div></div>
+										<div className='rangeItem' style={{width:'100%'}}>
+												{price[index][this.state.value]}k
+										</div>
 										{/* <RadioGroup className='price-origin' onChange={this.onChange} defaultValue={sumIndex} value={this.state.value}>
 											{
 												price[index].map((item, index) => (

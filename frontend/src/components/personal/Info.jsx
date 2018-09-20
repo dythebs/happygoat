@@ -13,12 +13,10 @@ class Info extends React.Component {
       // 0 表示只读，1 表示编辑
       type: 0,
       // 1 女 2 男
-
-
       username: 'ZZZ',
       phone: '18774900335',
       sex: '',
-      tip:'我是攻略我是攻略我是攻略',
+      tip: '30桌以上的婚礼，如何来安排敬酒环节呢？桌数在30桌以上的注定要分批敬酒了。每场仪式结束后在换装之间就要开始敬酒，并且要有优先安排，先敬长辈和领导，因为通常这批宾客是不会闹的。把“钉子户”们放到最后敬酒，甚至可以送走来宾后再跟“钉子户”们耗战到底。当然，如果父母能够同意的话不妨吧敬酒环节取消，用点蜡烛等仪式来代替。',
       erpassword: '',
       ephone: '',
       rpassword: this.props.values.rpassword,
@@ -156,6 +154,7 @@ class Info extends React.Component {
         <p>绑定手机号:<span>{phone}</span></p>
       </div>;
       tip_ = <div className='content tip'>
+      <h3>结婚攻略</h3>
         <p>{tip}</p>
       </div>
 
@@ -248,7 +247,7 @@ class Info extends React.Component {
           <Avatar style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} icon="plus" alt='绑定另一半' />
         </div>
         <div className='helper_content'>
-          <div className='content'>
+          <div className={['content', type === 1 ? 'clickedinfo' : ''].join(' ')}>
             {form}
           </div>
           {tip_}

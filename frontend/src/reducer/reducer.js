@@ -1,4 +1,4 @@
-import {ADD_TO_CART,DEL_FROM_CART,CLEAR_CART,SET_TOKEN} from "../action/ActionType"
+import {ADD_TO_CART,DEL_FROM_CART,CLEAR_CART,SET_TOKEN, SET_PROGRESS, SET_LOC} from "../action/ActionType"
 const debug = false;
 const initialState = {
   data:[
@@ -22,7 +22,8 @@ const initialState = {
     //   ]
     // }
   ],
-  token:''
+  token:'',
+  progress:32
 }
 var reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,6 +34,14 @@ var reducer = (state = initialState, action) => {
     case SET_TOKEN:
       return Object.assign({},state,{
         token:action.token
+      })
+    case SET_PROGRESS:
+      return Object.assign({}, state, {
+        progress:action.progress
+      })
+    case SET_LOC:
+      return Object.assign({}, state, {
+        loc:action.loc
       })
     case ADD_TO_CART:
       let flag = false;

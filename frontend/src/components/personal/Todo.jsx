@@ -2,7 +2,8 @@ import React from 'react'
 import './personalC.css'
 import { Switch, Checkbox } from 'antd'
 
-
+import { connect } from "react-redux";
+import * as Actions from "../../action/ActionType"
 class Todo extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ class Todo extends React.Component {
       //   0, 0, 0, 0, 0,
       // ],
       toggle:false,
+      progress:this.props.progress,
       initdata: [
         {
           title: '商议结婚',
@@ -92,14 +94,30 @@ class Todo extends React.Component {
     this.sortTodo = this.sortTodo.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props !== nextProps){
+      this.setState({
+        progress:nextProps.progress
+      })
+    }
+  }
+
   changeTodoState(index,innerIndex) {
     let temp = this.state.data;
     let init = this.state.initdata;
+    let progress = this.state.progress;
     temp[index].data[innerIndex].todo = !temp[index].data[innerIndex].todo;
     init[index].data[innerIndex].todo = !init[index].data[innerIndex].todo;
+    if(temp[index].data[innerIndex].todo){
+      progress += 16
+    } else {
+      progress -= 16
+    }
+    this.props.setprogress(progress);
     this.setState({
       data:temp,
-      initdata:init
+      initdata:init,
+      progress:progress
     })
     // console.log(this.state.todo)
   }
@@ -200,73 +218,11 @@ class Todo extends React.Component {
   }
 }
 
-export default Todo;
-
-// Vue.component('togglebutton', {
-//   props: ['label', 'name'],
-//   template: `<div class="togglebutton-wrapper" v-bind:class="isactive ? 'togglebutton-checked' : ''">
-//       <label v-bind:for="name">
-//         <span class="togglebutton-label">{{ label }}</span>
-//         <span class="tooglebutton-box"></span>
-//       </label>
-//       <input v-bind:id="name" type="checkbox" v-bind:name="name" v-model="isactive" v-on:change="onToogle">
-//   </div>`,
-//   model: {
-//     prop: 'checked',
-//     event: 'change'
-//   },e
-//   data: function () {
-//     return {
-//       isactive: false
-//     }
-//   },
-//   methods: {
-//     onToogle: function () {
-//       this.$emit('clicked', this.isactive)
-//     }
-//   }
-// });
-
-// var todolist = new Vue({
-//   el: '#todolist',
-//   data: {
-//     newitem: '',
-//     sortByStatus: false,
-//     todo: [
-//       { id: 1, label: "Learn VueJs", done: true },
-//       { id: 2, label: "Code a todo list", done: false },
-//       { id: 3, label: "Learn something else", done: false }
-//     ]
-//   },
-//   methods: {
-//     addItem: function () {
-//       this.todo.push({ id: Math.floor(Math.random() * 9999) + 10, label: this.newitem, done: false });
-//       this.newitem = '';
-//     },
-//     markAsDoneOrUndone: function (item) {
-//       item.done = !item.done;
-//     },
-//     deleteItemFromList: function (item) {
-//       let index = this.todo.indexOf(item)
-//       this.todo.splice(index, 1);
-//     },
-//     clickontoogle: function (active) {
-//       this.sortByStatus = active;
-//     }
-//   },
-//   computed: {
-//     todoByStatus: function () {
-
-//       if (!this.sortByStatus) {
-//         return this.todo;
-//       }
-
-//       var sortedArray = []
-//       var doneArray = this.todo.filter(function (item) { return item.done; });
-//       var notDoneArray = this.todo.filter(function (item) { return !item.done; });
-
-//       sortedArray = [...notDoneArray, ...doneArray];
-//       return sortedArray;
-//     }
-//   }
-// });
+const mapStateToProps = state => ({
+  progress: state.progress
+})
+const mapDispatchToProps = dispatch => ({
+  setprogress:progress => dispatch(Actions.setProgress(progress))
+  // clearCart: () => dispatch(Actions.clear_cart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

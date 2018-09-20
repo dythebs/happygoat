@@ -12,19 +12,19 @@ class CardsSheying extends React.Component {
         sheying:[
           {
             name: "韩国艺匠ARTIZ STUDIO",
-            image: "/images/grogshop/1.jpg-w530h400"
+            image: "/images/sheying/1.jpg"
           },
           {
             name: "珍妮花婚纱摄影",
-            image: "/images/grogshop/1.jpg-w530h400"
+            image: "/images/sheying/2.jpg"
           },
           {
             name: "呈色Lisa摄影工作室",
-            image: "/images/grogshop/1.jpg-w530h400"
+            image: "/images/sheying/3.jpg"
           },
           {
             name: '巴黎婚纱摄影',
-            image: "/images/grogshop/1.jpg-w530h400"
+            image: "/images/sheying/4.png"
           },
         ],
         hunsha:[

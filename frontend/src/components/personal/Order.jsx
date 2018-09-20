@@ -8,9 +8,9 @@ class Order extends React.Component {
     return(
       <div className='order'>
         <Tabs tabBarExtraContent={operations}>
-          <TabPane tab="待店家确认" key="1">Content of tab 1</TabPane>
-          <TabPane tab="店家确认成功" key="2">Content of tab 2</TabPane>
-          <TabPane tab="已完成" key="3">Content of tab 3</TabPane>
+          <TabPane tab="待店家确认" key="1">您还没有订单哦</TabPane>
+          <TabPane tab="店家确认成功" key="2">您还没有订单哦</TabPane>
+          <TabPane tab="已完成" key="3">您还没有订单哦</TabPane>
         </Tabs>
       </div>
     );

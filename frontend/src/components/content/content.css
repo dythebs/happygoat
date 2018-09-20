@@ -9,7 +9,7 @@
 }
 
 .content:first-child{
-  margin-top: 12em;
+  margin-top: 17em;
 }
 .blog-slider {
   width: 95%;
@@ -30,7 +30,7 @@
       width: 100%;
       padding: 10%;
       background: #fff; */
-  width: 95%;
+  /* width: 95%; */
   /* max-width: 800px; */
   margin: auto;
   background-color: #fff;

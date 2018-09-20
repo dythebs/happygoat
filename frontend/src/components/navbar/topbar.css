@@ -221,3 +221,26 @@
 .scrolled .anticon {
   color: #333!important;
 }
+
+.item {
+  cursor: pointer;
+}
+.switcher {
+      /* height: 4em; */
+      position: absolute;
+      bottom: -30%;
+      right: 10%;
+      z-index: 5;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.switcher a {
+  color: #333
+}
+
+.switcher p {
+  transition: all .2s ease-in-out
+}

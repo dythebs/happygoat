@@ -56,6 +56,7 @@ class Story extends React.Component {
   }
 
    render(){
+
     return(
      <div>
         <Dragger {...props}>
@@ -63,11 +64,12 @@ class Story extends React.Component {
             <Icon type="inbox" />
           </p>
           <p className="ant-upload-text">点击或拖拽图片上传</p>
-          <p className="ant-upload-hint">上传图片，生成专属恋爱小故事~</p>
+          <p className="ant-upload-hint">上传图片，给您专属祝福~</p>
         </Dragger>
-        <Button onClick={this.story}>生成</Button>
 
-        <div>
+        <div className='story-content'>
+          <Button onClick={this.story}>生成</Button>
+
           <p>{this.state.story}</p>
         </div>
      </div>

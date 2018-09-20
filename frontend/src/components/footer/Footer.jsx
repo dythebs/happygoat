@@ -41,21 +41,24 @@ class Footer extends React.Component {
     return(
       <footer className={scrollToBottom?"topper":""}>
         <div className='col'>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-          <div className='colheader'>Column 1</div>
+          {/* <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> */}
+          <img src='/images/footer1.png' />
+          <div className='colheader'>精选服务给您十分满意</div>
         </div>
         <div className='col'>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-          <div className='colheader'>Column 2</div>
+          {/* <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> */}
+          <img src='/images/footer2.png' />
+          <div className='colheader'>实时咨询给您十分贴心</div>
         </div>
         <div className='col'>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-          <div className='colheader'>Column 3</div>
+          {/* <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> */}
+          <img src='/images/footer3.png' />
+          <div className='colheader'>结婚工具让您的婚礼完美唯一</div>
         </div>
-        <div className='col'>
+        {/* <div className='col'>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-          <div className='colheader'>Column 4</div>
-        </div>
+          <div className='colheader'>喜羊羊婚庆网站</div>
+        </div> */}
       </footer>
     );
 }}

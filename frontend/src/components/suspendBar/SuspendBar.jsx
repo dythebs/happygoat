@@ -3,13 +3,15 @@ import { Icon,BackTop,Progress} from "antd";
 import './suspendBar.css'
 import Chatbox from '../chatbox/Chatbox';
 import Cart from '../cart/Cart';
+import { connect } from "react-redux";
+import * as Actions from "../../action/ActionType"
 class SuspendBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       showchat:false,
       showcart:false,
-      percent:0
+      percent:this.props.progress
     }
     this.showchat = this.showchat.bind(this);
     this.showcart = this.showcart.bind(this);
@@ -22,13 +24,13 @@ class SuspendBar extends React.Component {
 
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if(nextProps.pro !== this.state.percent){
-  //     this.setState({
-  //       percent:nextProps.pro
-  //     })
-  //   }
-  // }
+  componentWillReceiveProps(nextProps){
+    if(nextProps !== this.props){
+      this.setState({
+        percent:nextProps.progress
+      })
+    }
+  }
 
   // updatePercent(){
   //   let p = sessionStorage.getItem('progress');
@@ -75,7 +77,9 @@ class SuspendBar extends React.Component {
           <Progress type="circle" percent={percent} width={40} />
         </button>
         <BackTop>
-          <div className="bar-button">UP</div>
+          <div className="bar-button">
+            <Icon type="up-circle" theme="outlined" />
+          </div>
         </BackTop>
         <Chatbox showchat={showchat} hideComponent={this.hidechat}/>
         <Cart showcart={showcart} hideComponent={this.hidecart}/>
@@ -84,4 +88,8 @@ class SuspendBar extends React.Component {
   }
 }
 
-export default SuspendBar;
+const mapStateToProps = state => ({
+  progress:state.progress
+})
+
+export default connect(mapStateToProps)(SuspendBar);

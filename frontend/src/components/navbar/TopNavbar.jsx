@@ -4,6 +4,8 @@ import { Icon } from 'antd'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as Actions from "../../action/ActionType"
+import CitySwitcher from '../addr/CitySwitcher';
+
 class TopNavbar extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -11,7 +13,9 @@ class TopNavbar extends React.PureComponent {
       collapse: false,
       scrollFixed: false,
       type: this.props.type,
-      token: this.props.token
+      token: this.props.token,
+      show:false,
+      loc:''
     }
     this.handleScroll = this.handleScroll.bind(this);
     this.changeCollapseState = this.changeCollapseState.bind(this);
@@ -31,6 +35,12 @@ class TopNavbar extends React.PureComponent {
       })
     }
   }
+
+  hideAddr = () => {
+    this.setState({
+      show:false
+    })
+  }
   handleScroll(event) {
     // let screenTopE = event.srcElement.body.scrollTop;
     const screenTopE = window.pageYOffset ||
@@ -49,6 +59,19 @@ class TopNavbar extends React.PureComponent {
       })
     }
   }
+  showAddr = () =>{
+    let {show} = this.state;
+    let loc_ = sessionStorage.getItem('loc');
+    console.log(loc_);
+    if(loc_!==null && loc_ !== undefined && loc_!==''){
+      this.setState({
+        loc:loc_
+      })
+    }
+    this.setState({
+      show:!show
+    })
+  }
   changeCollapseState() {
     const targetEl = this.state.collapse;
     this.setState({
@@ -56,7 +79,7 @@ class TopNavbar extends React.PureComponent {
     })
   }
   render() {
-    const { collapse, scrollFixed, type, token } = this.state;
+    const { collapse, scrollFixed, type, token, show, loc } = this.state;
     let login = '';
     console.log(token);
     if ( token !== undefined && token !== '' ) {
@@ -80,9 +103,11 @@ class TopNavbar extends React.PureComponent {
               <NavLink to="/Jiudian/1" className={["item -link", type ? '-home' : ''].join(' ')}>酒店推荐</NavLink>
               {/* <NavLink to="/Center" className={["item -link", type ? '-home' : ''].join(' ')}>个人中心</NavLink> */}
               {login}
-              <span className="item"><Icon type="environment" theme="outlined" className={type ? '-home' : ''} style={{ fontSize: '20px' }} /></span>
+              <span className="item" onClick = {this.showAddr}><Icon type="environment" theme="outlined" className={type ? '-home' : ''} style={{ fontSize: '20px' }} /></span>
             </nav>
-
+            {
+              show && <CitySwitcher loc={loc} hide = {this.hideAddr}/>
+            }
             <button data-collapse={collapse} onClick={this.changeCollapseState} data-target="#navigation" className={["toggle", collapse ? "-active" : ""].join(" ")}>
               <span className="icon" />
             </button>

@@ -200,7 +200,7 @@
 
 .sign-container label {
   font-family: "Open Sans", sans-serif;
-  color: #ce7d88;
+  /* color: #ce7d88; */
   font-size: 0.8em;
   letter-spacing: 1px;
 }
@@ -214,12 +214,12 @@
 }
 
 .sign-container input[type=checkbox] {
-  width: 7px;
+  width: 10px;
   background: #ce7d88;
 }
 
 .checkbox input[type="checkbox"]:checked+label {
-  color: #ce7d88;
+  /* color: #ce7d88; */
   transition: .5s all ease;
 }
 
@@ -239,4 +239,10 @@
 .code .ant-form-item-control {
     width: 85%;
     margin: auto;
+}
+
+.ant-input-affix-wrapper input:focus,
+.ant-input-affix-wrapper input:hover {
+  color: #000;
+  border-color: #eb8989
 }

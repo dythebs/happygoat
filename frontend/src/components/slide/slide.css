@@ -80,13 +80,13 @@
 }
 
 .blog-slider__img {
-  width: 300px;
+  width: 60%;
   flex-shrink: 0;
-  height: 300px;
+  height: 310px;
   background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
   box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
   border-radius: 20px;
-  transform: translateX(-80px);
+  transform: translateX(0);
   overflow: hidden;
   /* z-index: 4; */
 }
@@ -133,7 +133,8 @@
 }
 
 .blog-slider__content {
-  padding-right: 25px;
+  /* padding-right: 25px; */
+  margin: auto
 }
 
 @media screen and (max-width: 768px) {
