@@ -30,7 +30,7 @@ class RouterIndex extends React.Component{
 
                     {/* <Route path="/help" exact component={Help}></Route> */}
                     {/* <Route path="/help/helpDetail/:helpId" exact component={HelpDetail}></Route> */}
-                    {/* <Redirect from="/*" to="/home" /> */}
+                    <Redirect from="/*" to="/home" />
                 </Switch>
             </Router>
         );

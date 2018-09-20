@@ -23,7 +23,7 @@ export default class Content extends React.Component {
             <Carousel vertical  autoplay effect="fade" >
               <Slide img={'/images/1.jpg'} title='一世相守就是最美的告白' span='' />
               <Slide img={'/images/2.jpg'} title='摘下天下繁星戴于你指尖' span='' />
-              <Slide img={'/images/3.jpg'} title='爱琴海畔结长长久久之源' span='' />
+              <Slide img={'/images/3.jpg'} title='爱琴海畔结长长久久之缘' span='' />
             </Carousel>
           </div>
         </div>
