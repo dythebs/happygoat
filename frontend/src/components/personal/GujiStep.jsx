@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radio } from 'antd';
+import JiudianCard from '../subPageCard/JiudianCard';
 
 const RadioGroup = Radio.Group;
 const selectItems = [
@@ -45,9 +46,9 @@ class GujiStep extends React.Component {
 			step: this.props.step,
 			selected: this.props.selected,
 			priceRange: [0, '0k-0', '0k-0', 0],
-			sumPrice:'',
-			sumIndex:-1,
-			value:1
+			sumPrice: '',
+			sumIndex: -1,
+			value: 1
 		}
 		this.clickItem = this.clickItem.bind(this);
 	}
@@ -73,7 +74,7 @@ class GujiStep extends React.Component {
 					priceRange[0] += parseInt(price[i][0]);
 					let temp1 = priceRange[1].toString().split('k-');
 					let temp2 = price[i][1].toString().split('-');
-					console.log(temp1,temp2)
+					console.log(temp1, temp2)
 					temp1[0] = parseInt(temp1[0]) + parseInt(temp2[0]);
 					temp1[1] = parseInt(temp1[1]) + parseInt(temp2[1]);
 					priceRange[1] = temp1[0] + 'k-' + temp1[1];
@@ -87,12 +88,12 @@ class GujiStep extends React.Component {
 					priceRange[2] = temp1[0] + 'k-' + temp1[1];
 
 					priceRange[3] += parseInt(price[i][3])
-					console.log(priceRange,'after')
+					console.log(priceRange, 'after')
 				}
 			}
 			this.setState({
 				priceRange: priceRange,
-				num:num
+				num: num
 			})
 		}
 	}
@@ -110,17 +111,29 @@ class GujiStep extends React.Component {
 	}
 
 	selectPrice(index) {
-		const {priceRange} = this.state;
+		const { priceRange } = this.state;
 		// alert("...")
 		this.setState({
-			sumPrice:priceRange[index],
-			sumIndex:index,
-			value:index
+			sumPrice: priceRange[index],
+			sumIndex: index,
+			value: index
 		}, this.props.handle())
 
 	}
 	render() {
-		const { step, selected, priceRange, num,sumIndex } = this.state;
+		const { step, selected, priceRange, num, sumIndex } = this.state;
+		const data_ = [
+			{
+				anli: "31",
+				cast:"￥2599-￥5988",
+				href:"https://sh.daoxila.com/HunShaSheYing/ShengXueGuoJi-Info",
+				img	:"https://iq.dxlfile.com/mall/original/2015-05/20150528175568418.jpg-w216h162",
+				tags	:	[],
+				taoxi:"5",
+				title	:	"圣雪国际婚纱摄影",
+				zone:"虹口区 上海圣雪国际婚纱摄影"
+			}
+		]
 		const radioStyle = {
 			display: 'block',
 			height: '30px',
@@ -143,14 +156,14 @@ class GujiStep extends React.Component {
 								</div>
 							))
 						}
-					{/* </div> */}
+						{/* </div> */}
 					</div>
 				}
 				{
 					step === 1 &&
 					<div className='j-info'>
 						<div className='r-title'>
-							<h3 className='r-info'>请选择您为这{num}项服务<br/>准备的预算范围</h3>
+							<h3 className='r-info'>请选择您为这{num}项服务<br />准备的预算范围</h3>
 							{
 								selected.map((item, index) => (
 									item === 1 &&
@@ -161,7 +174,7 @@ class GujiStep extends React.Component {
 						<div className='range'>
 							{
 								priceRange.map((item, index) => (
-									<div key={index} className={['rangeItem',index===this.state.sumIndex?'clicked':''].join(' ')} onClick={()=>this.selectPrice(index)} >
+									<div key={index} className={['rangeItem', index === this.state.sumIndex ? 'clicked' : ''].join(' ')} onClick={() => this.selectPrice(index)} >
 										{item}k
 									</div>
 								))
@@ -175,16 +188,17 @@ class GujiStep extends React.Component {
 						{/* <div className='r-title'>
 						</div> */}
 						<div className='j-range'>
-							<h3 className='r-info'>系统推荐预算范围</h3>
+							<h3 className='r-info' style={{margin:0}}>系统推荐预算范围</h3>
 							{
 								selected.map((item, index) => (
 									item === 1 &&
 									// <div className='step2-contaniner'>
 									<div className='step2-info' key={index}>
 										<p>	{selectItems[index].title} </p>
-										<div className='rangeItem' style={{width:'100%'}}>
-												{price[index][this.state.value]}k
+										<div className='rangeItem' style={{ width: '5em' }}>
+											{price[index][this.state.value]}k
 										</div>
+										{/* <JiudianCard type='sheying' datas={data_} /> */}
 										{/* <RadioGroup className='price-origin' onChange={this.onChange} defaultValue={sumIndex} value={this.state.value}>
 											{
 												price[index].map((item, index) => (
@@ -193,6 +207,7 @@ class GujiStep extends React.Component {
 												))
 											}
 										</RadioGroup> */}
+										<img style={{width:'70%'}}src='/images/re.png' />
 									</div>
 									// </div>
 								))
