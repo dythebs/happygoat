@@ -15,21 +15,21 @@ class Card_ extends React.Component {
           rating:5,
           price:"498-1388",
           desks:55,
-          image:"/images/grogshop/1.jpg-w530h400"
+          image:"/images/grogshop/1.jpg"
         },
         {
           name: "太平洋酒店",
           rating: 4,
           price: "498-1388",
           desks: 55,
-          image: "/images/grogshop/1.jpg-w530h400"
+          image: "/images/grogshop/2.jpg"
         },
         {
           name: "lall酒店",
           rating: 3,
           price: "498-1388",
           desks: 55,
-          image: "/images/grogshop/1.jpg-w530h400"
+          image: "/images/grogshop/3.jpg"
         }
       ]
     }
